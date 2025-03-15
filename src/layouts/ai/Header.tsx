@@ -20,31 +20,31 @@ const Header: React.FC = () => {
         </Link>
         <ul className="hidden w-1/2 lg:flex justify-between p-3 gap-4 font-Poppins text-fade-gray border border-fade-gray/50 rounded-full">
           <Link
-            to="/radio/playlists"
+            to="/"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             About
           </Link>
           <Link
-            to="/products"
+            to="/"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Products
           </Link>
           <Link
-            to="/community"
+            to="/"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Community
           </Link>
           <Link
-            to="/community"
+            to="/"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Team
           </Link>
           <Link
-            to="/radio/reachus"
+            to="/"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Contact
