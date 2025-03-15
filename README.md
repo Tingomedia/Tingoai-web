@@ -2,9 +2,12 @@
 
 Welcome to **TingoAI**, where we're bringing the future closer with cutting-edge AI products such as **tingoGPT**, **Tingo AI Radio** (First in Africa), and more.
 
+---
+<img src="public/Macbook-Air-localhost (1).png" alt="mac" />
+
 ## 🚀 Features
-- **tingoGPT** – AI-powered chatbot
-- **Tingo AI Radio** – Africa’s first AI-driven radio
+- **tingoGPT** – AI-powered model
+- **Tingo AI Radio** – Africa’s first AI-powered radio
 - Scalable and modular architecture for AI applications
 
 ## 📋 Requirements
@@ -16,8 +19,8 @@ Before running this project, ensure you have the following installed:
 
 ## 🛠️ Tech Stack
 - **Frontend**: React, TypeScript, Tailwind CSS
-- **Backend**: Node.js, Express (if applicable)
-- **AI Services**: OpenAI, Hugging Face
+- **Backend**: Python, Flask 
+- **AI Services**: 
 - **Database**: PostgreSQL / Firebase
 - **Deployment**: Vercel, AWS, or DigitalOcean
 
@@ -25,11 +28,13 @@ Before running this project, ensure you have the following installed:
 ```
 TingoAI/
 │── src/
+│   ├── contexts/     # State management
 │   ├── components/   # Reusable UI components
 │   ├── pages/        # App pages
 │   ├── assets/       # Images, fonts, etc.
 │   ├── hooks/        # Custom hooks
 │   ├── utils/        # Utility functions
+│   ├── pages/        # External pages
 │── public/           # Static files
 │── .env.example      # Environment variable sample
 │── package.json      # Dependencies and scripts
@@ -83,8 +88,6 @@ For detailed documentation, refer to:
 - [API Docs](https://docs.tingoai.com)
 - [AI Services Integration](https://huggingface.co/docs)
 
-## 📜 License
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 For any inquiries, contact us at **team@tingomedia.ai** or visit [TingoAI](https://tingomedia.ai). 🚀
