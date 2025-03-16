@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useFormik, FormikHelpers } from "formik";
-import * as Yup from "yup";
+import Yup from "yup";
 import bg from "../../assets/images/gpt/authbg.png"
 import tingoai from "../../assets/icons/tingo_ai_logo.png"
 import dividers from "../../assets/icons/Dividers.png"
