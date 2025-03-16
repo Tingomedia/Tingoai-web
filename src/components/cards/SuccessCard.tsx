@@ -1,5 +1,6 @@
 import React from "react";
-import { FaListCheck } from "react-icons/fa6";
+// import { FaListCheck } from "react-icons/fa6";
+import { MdLibraryAddCheck } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 
@@ -16,7 +17,7 @@ const SuccessCard: React.FC<WaitListFormProps> = () => {
       <div className="py-16">
         <div className="flex justify-center">
         <div className="w-[60px] h-[60px] md:w-[150px] md:h-[150px] bg-lime-200 flex justify-center items-center rounded-full">
-        <FaListCheck className="w-16 h-16 md:w-40 md:h-40 text-green p-2"/>
+        <MdLibraryAddCheck className="w-16 h-16 md:w-40 md:h-40 text-green p-2"/>
         </div>
         </div>
         <div className="py-4 w-full border-gray-300">
