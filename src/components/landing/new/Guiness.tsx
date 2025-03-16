@@ -25,7 +25,7 @@ const Guiness: React.FC = () => {
         <img src={guinessImage} alt="Robot image" className="relative z-30" />
         <div className="flex flex-col justify-center bg-transparent items-center lg:items-start px-4 sm:px-8 lg:px-0 gap-4 xl:gap-10 text-white xl:pr-20 relative z-30">
           <Title>Here’s what we’re up to</Title>
-          <h1 className="font-bold text-[39px] font-poppins">
+          <h1 className="font-bold text-[24px] md:text-[39px] font-poppins">
             Our 2025 Mission
           </h1>
           <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">

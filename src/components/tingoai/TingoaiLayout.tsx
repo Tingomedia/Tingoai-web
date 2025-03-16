@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../navs/GptHeader";
-import SidebarGpt from "../navs/SidNavGpt";
+import Header from "../../layouts/navs/GptHeader";
+import SidebarGpt from "../../layouts/navs/SidNavGpt";
 import { historyData } from "../../db/gtptDb";
 /**
  * Admin Layout component that wraps the main content of the admin section.
@@ -41,7 +41,7 @@ const TingoaiLayout: FC = (): JSX.Element => {
       />
       <Header toggleSidebar={toggleSidebar} />
 
-      <div className="col-span-1 lg:col-start-2 lg:py-10 overflow-scroll hide-scrollbar p-12">
+      <div className="col-span-1 lg:col-start-2 lg:py-10 overflow-scroll hide-scrollbar">
         <Outlet />
       </div>
     </div>

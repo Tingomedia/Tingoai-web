@@ -1,7 +1,7 @@
 import React from "react";
-import mapImage from "../../assets/images/old_tingo/reachus.jpeg";
-import RHeader from "../../layouts/radio/general/RHeader";
-import RFotter from "../../layouts/radio/general/RFotter";
+import mapImage from "../../../assets/images/old_tingo/reachus.jpeg";
+import RHeader from "../../../layouts/radio/general/RHeader";
+import RFotter from "../../../layouts/radio/general/RFotter";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 

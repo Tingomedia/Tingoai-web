@@ -9,8 +9,8 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="px-[10%] fixed w-full top-4 z-50">
-      <div className="w-full container mx-auto h-[70px] md:h-[88px] flex items-center justify-between px-[3%] rounded-full backdrop-blur-lg bg-opacity-90 shadow-xl">
+    <div className="px-[3%] lg:px-[10%] fixed w-full top-4 z-50">
+      <div className="w-full container mx-auto h-[70px] md:h-[88px] flex items-center justify-between px-[3%] rounded-full border border-white/20 backdrop-blur-lg bg-opacity-90 shadow-xl">
         <Link to="/" className=" text-white items-baseline relative">
           <img
             src={logo}
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
             About
           </Link>
           <Link
-            to="/"
+            to="/tingo-products"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Products
@@ -64,7 +64,7 @@ const Header: React.FC = () => {
         </button>
 
         {isMenuOpen && (
-          <div className="absolute top-[80px] left-0 w-full bg-primary/90 shadow-xl rounded-lg">
+          <div className="absolute top-[80px] left-0 w-full bg-[#1D2739] shadow-xl rounded-lg">
             <nav className="flex flex-col items-center px-4 py-6 space-y-4 text-fade-gray font-Poppins">
               <Link
                 to="/radio/playlists"
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
                 About
               </Link>
               <Link
-                to="/products"
+                to="/tingo-products"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 Products

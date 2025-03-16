@@ -85,7 +85,7 @@ export default function FAQSection() {
             <span className="inline-block px-4 py-[7px] text-[14px] font-medium tracking-wide bg-[#1e293b] rounded-full mb-4 border border-[#374151] bg-custom-gradient">
               FAQ
             </span>
-            <h2 className="text-[36px] font-semibold mb-4 text-[#E5E7EB]">Got Questions? We've Got Answers!</h2>
+            <h2 className="text-[24px] md:text-[40px] font-semibold mb-4 text-[#E5E7EB]">Got Questions? We've Got Answers!</h2>
             <p className="text-[#A1A6B4] text-[20px]">Everything you need to know about the product and billing.</p>
           </div>
 

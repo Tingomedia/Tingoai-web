@@ -4,11 +4,11 @@ import axios from "axios";
 import logoM from "/tingo_ai_logo2.png";
 import { MdLibraryMusic } from "react-icons/md";
 import { MdAccountCircle } from "react-icons/md";
-import MainStudio from "../../components/landing/studio/MainStudio";
-import LeftSideBar from "../../components/landing/studio/LeftSideBar";
+import MainStudio from "../../../components/landing/old_website/studio/MainStudio";
+import LeftSideBar from "../../../components/landing/old_website/studio/LeftSideBar";
 import { Link } from "react-router-dom";
-import AudioControlC from "../../components/landing/studio/rightside/AudioControl";
-import StudioHeader from "../../components/landing/studio/header/StudioHeader";
+import AudioControlC from "../../../components/landing/old_website/studio/rightside/AudioControl";
+import StudioHeader from "../../../components/landing/old_website/studio/header/StudioHeader";
 
 const API_URL =import.meta.env.VITE_REACT_APP_HF_API_URL;
 const HF_TOKEN = import.meta.env.VITE_REACT_APP_HF_TOKEN;

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import tunnel from "/tunnel.svg";
-import RHeader from "../../layouts/radio/general/RHeader";
-import RFotter from "../../layouts/radio/general/RFotter";
-import NewsCard from "../../components/cards/NewsCard";
-import { programDb } from "../../db";
+import PlaylistCard from "../../../components/cards/PlaylistCard";
+import { playlistData } from "../../../db";
 import RadioModal from "./RadioModal";
-import { calculateDateRange, formatDateTime } from "../../utils/helpers";
+import { calculateDateRange } from "../../../utils/helpers";
+import RFotter from "../../../layouts/radio/general/RFotter";
+import RHeader from "../../../layouts/radio/general/RHeader";
 
 const ITEMS_PER_PAGE = 6;
 
-const NewsWeather: React.FC = () => {
+const Playlist: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("Today");
-  const [filteredPrograms, setFilteredPrograms] = useState<typeof programDb>([]);
+  const [filteredData, setFilteredData] = useState<typeof playlistData>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const categories = [
@@ -25,30 +25,29 @@ const NewsWeather: React.FC = () => {
     "5 years ago",
   ];
 
-  
+  // Calculate the filtered data based on the selected category
   useEffect(() => {
     const range = calculateDateRange(selectedCategory);
-
     if (range) {
-      const filtered = programDb.filter((program) => {
-        const programDate = new Date(program.timeStamp);
-        return programDate >= range[0] && programDate <= range[1];
+      const filtered = playlistData.filter((track) => {
+        const trackDate = new Date(track.timeStamp);
+        return trackDate >= range[0] && trackDate <= range[1];
       });
-      setFilteredPrograms(filtered);
+      setFilteredData(filtered);
     } else {
-      setFilteredPrograms(programDb); // Show all programs if no range
+      setFilteredData(playlistData);
     }
     setCurrentPage(1); // Reset to the first page when category changes
   }, [selectedCategory]);
 
-  // Paginate filtered programs
-  const paginatedPrograms = filteredPrograms.slice(
+  // Paginate the filtered data
+  const paginatedData = filteredData.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
 
   // Calculate total pages
-  const totalPages = Math.ceil(filteredPrograms.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
@@ -59,7 +58,7 @@ const NewsWeather: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <>
       <div
         className="w-full min-h-screen bg-radioprimary relative"
         style={{
@@ -71,7 +70,7 @@ const NewsWeather: React.FC = () => {
         <RHeader />
         <div className="relative container mx-auto flex flex-col justify-center items-center w-full h-full text-white gap-8 text-center z-10 pt-[180px] py-20">
           <h1 className="font-Poppins text-[40px] md:text-[56px] font-semibold md:leading-[67px] text-center mb-20">
-            News & Weather
+            Playlists
           </h1>
           <RadioModal
             title="Date"
@@ -80,16 +79,17 @@ const NewsWeather: React.FC = () => {
             defaultCategory="Today"
           />
           <div className="w-full md:w-11/12 lg:w-10/12 2xl:w-9/12 mx-auto grid grid-col-1 md:grid-cols-2 xl:grid-cols-3 gap-8 gap-y-10 place-items-center">
-            {paginatedPrograms.map((program, index) => (
-              <NewsCard
-                key={index}
-                title={program.title}
-                artist={program.artist}
-                airingTime={formatDateTime(program.timeStamp)}
-                coverImage={program.coverImage}
+            {paginatedData.map((track) => (
+              <PlaylistCard
+                key={track.id}
+                artist={track.artist}
+                status={track.status}
+                airingTime={track.airingTime}
+                coverImage={track.coverImage}
               />
             ))}
           </div>
+
           {/* Pagination Controls */}
           {totalPages > 1 && (
             <div className="flex items-center justify-center gap-4 mt-8">
@@ -115,8 +115,8 @@ const NewsWeather: React.FC = () => {
         </div>
       </div>
       <RFotter />
-    </div>
+    </>
   );
 };
 
-export default NewsWeather;
+export default Playlist;

@@ -85,7 +85,7 @@ export default function Testimonial() {
       />
           <div className="mb-10 text-center">
             <Title>Testimonial</Title>
-            <h2 className="text-[36px] font-semibold my-3 text-[#E5E7EB]">
+            <h2 className="text-[24px] md:text-[40px] font-semibold my-4 text-[#E5E7EB]">
               What Our Clients Say
             </h2>
             <p className="text-[#A1A6B4] font-Inter text-[20px]">

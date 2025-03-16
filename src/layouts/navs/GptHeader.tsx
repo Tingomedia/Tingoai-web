@@ -3,6 +3,7 @@ import { FC } from "react";
 import UserAvatar from "../../utils/libs/UserAvatar";
 import { CgMenuGridO } from "react-icons/cg";
 import CustomDropDown from "../../utils/libs/CustomSelect";
+import { Link } from "react-router-dom";
 
 
 
@@ -41,7 +42,7 @@ const handleSelection = (value: string) => {
     <div className="px-16 py-6 bg-[#1D2739] border-b flex justify-between">
       {/* Hamburger menu icon for mobile */}
       <div className="flex lg:hidden gap-4 items-center justify-center">
-        <h1 className="font-bold text-3xl text-tremor-brand-muted">Tingo<span className="text-primary-200">{title}</span></h1>
+        <Link to="/" className="font-bold h1 text-3xl text-tremor-brand-muted">Tingo<span className="text-primary-200">{title}</span></Link>
         <CgMenuGridO
           className="text-tremor-brand-muted text-4xl cursor-pointer"
           onClick={toggleSidebar}

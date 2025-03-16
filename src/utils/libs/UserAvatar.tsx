@@ -40,12 +40,12 @@ function UserAvatar() {
       <img
         src={menuSq}
         alt="avatar"
-        className="hidden md:flex hover:bg-primary-200"
+        className="hidden lg:flex hover:bg-primary-200"
       />
       <img
         src={line}
         alt="avatar"
-        className="hidden md:flex"
+        className="hidden lg:flex"
       />
       <img
         src={avatar}

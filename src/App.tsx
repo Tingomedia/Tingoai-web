@@ -2,13 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import GptHome from "./components/gpt/GptHome";
+import NewGridHome from "./components/landing/new/NewGridHome";
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
-const Product = lazy(() => import("./pages/landingPage/Products"));
-const Contact = lazy(() => import("./pages/landingPage/Contact"));
-const About = lazy(() => import("./pages/landingPage/About"));
+const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
+const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
+const About = lazy(() => import("./pages/landingPage/old_website/About"));
 const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
-const TingoaiLayout = lazy(() => import("./layouts/ai/TingoaiLayout"));
+const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
 const Signin = lazy(() => import("./pages/auth/Signin"))
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
 const OtpCode = lazy(() => import("./pages/auth/OtpCode"));
@@ -18,10 +19,10 @@ const Signup = lazy(() => import("./pages/auth/Signup"));
 const TingoaiProducts = lazy(() => import("./components/tingoai/TingoaiProducts"));
 const GptPromptInput = lazy(() => import("./components/gpt/GptPromtInput"));
 const RadioLayout = lazy(() => import("./layouts/radio/RadioLayout"));
-const RadioHome = lazy(() => import("./pages/radio/RadioHome"));
-const Playlist = lazy(() => import("./pages/radio/Playlist"));
-const NewsWeather = lazy(() => import("./pages/radio/News&weather"));
-const Reachus = lazy(() => import("./pages/radio/Reachus"));
+const RadioHome = lazy(() => import("./pages/old_radio/radio/RadioHome"));
+const Playlist = lazy(() => import("./pages/old_radio/radio/Playlist"));
+const NewsWeather = lazy(() => import("./pages/old_radio/radio/News&weather"));
+const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         {/* General Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/tingo-products" element={<NewGridHome/>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Product />} />

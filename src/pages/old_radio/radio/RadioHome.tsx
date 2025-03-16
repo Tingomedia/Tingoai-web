@@ -47,8 +47,8 @@
 import { FaPlay, FaPause } from "react-icons/fa6";
 import tunnel from "/tunnel.svg";
 import radial from "/radicalgradient.svg";
-import bgvideo from "../../assets/images/old_tingo/headset-animate.mp4";
-import { useRadio } from "../../contexts/RadioContext";
+import bgvideo from "../../../assets/images/old_tingo/headset-animate.mp4";
+import { useRadio } from "../../../contexts/RadioContext";
 
 const RadioHome: React.FC = () => {
   const { isPlaying, loading, handlePlayPause, error } = useRadio();

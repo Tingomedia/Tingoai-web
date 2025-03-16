@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                 className="w-[150px] h-[64px] mb-4"
               />
             </Link>
-            <p className="text-gray-300 font-Manrope mb-2 w-[388px]">
+            <p className="text-gray-300 font-Manrope mb-2 md:w-[388px]">
               Tingo AI combines innovative AI technology with responsible
               practices to deliver AI-powered data center services and Africa's
               first AI-driven radio station.
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="flex justify-center">
-          <p className="xl:text-[200px] text-[80px] font-Poppins font-semibold bg-gradient-to-r from-[#C9C9C9CC] via-[#C4C4C41A] 80% to-[#c4c4c402] bg-clip-text text-transparent">
+          <p className="xl:text-[200px] text-[50px] font-Poppins font-semibold bg-gradient-to-r from-[#C9C9C9CC] via-[#C4C4C41A] 80% to-[#c4c4c402] bg-clip-text text-transparent">
             Tingo ai
           </p>
         </div>
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
         <div className="flex justify-between pt-8 border-t border-t-gray-600/50">
           <div className="flex flex-col justify-between items-start md:items-center gap-4">
             <p className="text-gray-400 text-[14px] sm:text-[16px] font-Manrope">
-              © 2024 TingoAI. All Rights Reserved.
+              © 2025 TingoAI. All Rights Reserved.
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end gap-4">

@@ -26,7 +26,7 @@ const CloseButton: FC<ChildProps> = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="text-gray-400 hover:text-gray-800 text-4xl px-2 py-1 "
+      className="text-gray-400 hover:text-primary-200 text-6xl px-2 py-1 "
     >
       &times;
     </button>

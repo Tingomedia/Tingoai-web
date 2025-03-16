@@ -4,8 +4,8 @@
   import { IoMdShare, IoIosNotifications } from "react-icons/io";
   import { BiSolidVolumeMute } from "react-icons/bi";
   import { CiMenuKebab } from "react-icons/ci";
-  import { SliceText } from "../../utils/helpers";
-  import radioimg from "../../assets/images/old_tingo/ai-radio-presenter.jpg";
+  import { SliceText } from "../../../utils/helpers";
+  import radioimg from "../../../assets/images/old_tingo/ai-radio-presenter.jpg";
 
 
   interface SongProps {

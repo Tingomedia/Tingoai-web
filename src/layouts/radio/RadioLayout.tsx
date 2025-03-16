@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import RHeader from "./general/RHeader";
-import BottomPlayerBar from "../../pages/radio/BottomPlayerBar";
+import BottomPlayerBar from "../../pages/old_radio/radio/BottomPlayerBar";
 import { RadioProvider, useRadio } from "../../contexts/RadioContext";
 import RFotter from "./general/RFotter";
 

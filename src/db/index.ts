@@ -66,10 +66,11 @@ export type Product = {
   imageSrc: string;
   tryItLink: string;
   demoLink: string;
-  tag?: string;
+  tag: boolean;
   lightIcon?: string;
 };
 
+// db
 export const productsDb: Product[] = [
   {
     id: 1,
@@ -77,9 +78,9 @@ export const productsDb: Product[] = [
     description: "Unleash AI creativity - Generate text, voice, videos and images instantly!",
     imageSrc: gptIcon,
     lightIcon: lightIcon,
-    tryItLink: "/studio",
-    demoLink: "/studio",
-    tag: "Active",
+    tryItLink: "/tingogpt",
+    demoLink: "/tingogpt",
+    tag: true
   },
   {
     id: 2,
@@ -87,9 +88,9 @@ export const productsDb: Product[] = [
     description: "Your AI curated music and podcast experience.",
     imageSrc: radio,
     lightIcon: lightIcon,
-    tryItLink: "/text-to-speech",
-    demoLink: "/text-to-speech",
-    // tag: "Coming Soon",
+    tryItLink: "/radio",
+    demoLink: "/radio",
+    tag: true
   },
   {
     id: 3,
@@ -97,9 +98,9 @@ export const productsDb: Product[] = [
     description: "Next-generation entertainment, powered by AI",
     imageSrc: tvIcon,
     lightIcon: lightIcon,
-    tryItLink: "/text-to-speech",
-    demoLink: "/text-to-speech",
-    // tag: "Coming Soon",
+    tryItLink: "/tingotv",
+    demoLink: "/tingotv",
+    tag: false
   },
   {
     id: 4,
@@ -107,9 +108,9 @@ export const productsDb: Product[] = [
     description: "Fast, reliable deliveries - Anytime, anywhere",
     imageSrc: express,
     lightIcon: lightIcon,
-    tryItLink: "/text-to-speech",
-    demoLink: "/text-to-speech",
-    // tag: "Coming Soon",
+    tryItLink: "/tingoexp",
+    demoLink: "/tingoexp",
+    tag: false
   },
   {
     id: 5,
@@ -117,9 +118,9 @@ export const productsDb: Product[] = [
     description: "Seamless crypto transactions for the modern world.",
     imageSrc: blockchain,
     lightIcon: lightIcon,
-    tryItLink: "/text-to-speech",
-    demoLink: "/text-to-speech",
-    // tag: "Coming Soon",
+    tryItLink: "/tingoblockchain",
+    demoLink: "/tongoblockchain",
+    tag: false
   },
   {
     id: 6,
@@ -127,12 +128,11 @@ export const productsDb: Product[] = [
     description: "A thriving hub for users to connect, learn and grow in the AI and blockchain space.",
     imageSrc: community,
     lightIcon: lightIcon,
-    tryItLink: "/text-to-speech",
-    demoLink: "/text-to-speech",
-    // tag: "Coming Soon",
+    tryItLink: "/tingocom",
+    demoLink: "/tingocom",
+    tag: false
   },
 ];
-
 
 
 export type Products = {
@@ -142,7 +142,7 @@ export type Products = {
   imageSrc: string;
   tryItLink: string;
   demoLink: string;
-  tag?: string;
+  tag?: boolean;
   lightIcon?: string;
 };
 
@@ -155,7 +155,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/studio",
     demoLink: "/studio",
-    tag: "Active",
+    tag: true,
   },
   {
     id: 2,
@@ -165,6 +165,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: true,
   },
   {
     id: 3,
@@ -174,6 +175,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: false,
   },
   {
     id: 4,
@@ -183,6 +185,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: false,
   },
   {
     id: 5,
@@ -192,6 +195,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: false,
   },
   {
     id: 6,
@@ -201,6 +205,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: false,
   },
   {
     id: 7,
@@ -210,6 +215,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: false,
   },
   {
     id: 8,
@@ -219,6 +225,7 @@ export const tingoProductsDb: Products[] = [
     lightIcon: lightIcon,
     tryItLink: "/text-to-speech",
     demoLink: "/text-to-speech",
+    tag: false,
   },
 ];
 
@@ -241,7 +248,7 @@ export const productsDb2: ProductCategory[] = [
         lightIcon: lightIcon,
         tryItLink: "/studio",
         demoLink: "/studio",
-        tag: "Active",
+        tag: true,
       },
       // {
       //   id: 3,

@@ -1,8 +1,8 @@
-import AskTingoGPT from "./components/AskTingoGPT";
-import TingoResponse from "./components/TingoResponse";
-import UserPrompt from "./components/UserPrompt";
+import AskTingoGPT from "./ravi/AskTingoGPT";
+import TingoResponse from "./ravi/TingoResponse";
+import UserPrompt from "./ravi/UserPrompt";
 
-import repliesSample from "./components/replies/repliesSample.json";
+import repliesSample from "./ravi/replies/repliesSample.json";
 
 const GptHome = () => {
   return (
