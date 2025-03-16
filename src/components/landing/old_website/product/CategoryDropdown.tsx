@@ -12,7 +12,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
   title,
   categories,
   onCategoryChange,
-  defaultCategory = "All", // Default to "All" if not provided
+  defaultCategory = "All",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
