@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { IoMusicalNotes } from "react-icons/io5";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { FiRotateCw } from "react-icons/fi";
-import { SliceText } from "../../../utils/helpers";
+import { SliceText } from "../../../../utils/helpers";
 import DownloadIcon from "./DownloadIcon";
 
 const CustomAudioControl: React.FC<{ audioUrl: string; filename: string }> = ({

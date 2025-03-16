@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProductCard from "../../cards/ProductCard";
-import { Product, productsDb2 } from "../../../db";
+import ProductCard from "../../../cards/ProductCard";
+import { Product, productsDb2 } from "../../../../db";
 import CategoryModal from "./CategoryDropdown";
 
 const ProductGrid: React.FC = () => {

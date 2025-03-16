@@ -8,7 +8,7 @@ interface WaitListFormProps {
   }
 
 
-const SuccessCard: React.FC<WaitListFormProps> = ({onClose}) => {
+const SuccessCard: React.FC<WaitListFormProps> = () => {
    
   return (
     <div className="relative min-h-[258px] lg:h-[258px] w-11/12 mx-auto md:w-[350px] xl:w-[300px] 2xl:w-[380px]  bg-gradient-to-b from-[#797979CC] to-[#232A3E1A] bg-transparent p-6 rounded-xl flex flex-col justify-between border-[0.5px] border-fade-gray-label border border-gray-500">

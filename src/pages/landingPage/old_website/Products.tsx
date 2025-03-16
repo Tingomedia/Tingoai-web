@@ -2,8 +2,6 @@ import React from 'react'
 import Header from '../../../layouts/ai/Header'
 import Footer from '../../../layouts/ai/Footer'
 import HeroTemplate from '../../../components/cards/HeroTemplate'
-// import ProductGrid from '../../components/landing/product/ProductGrid'
-// import OurProducts from '../../components/landing/product/OurProducts'
 import ProductGrid from '../../../components/landing/old_website/product/ProductGrid'
 import OurProducts from '../../../components/landing/old_website/product/OurProducts'
 

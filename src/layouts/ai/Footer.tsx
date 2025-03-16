@@ -1,5 +1,4 @@
 import React from "react";
-// import logo from "../../../assets/icons/tingo_ai_logo.png";
 import logo from "../../assets/icons/tingo_ai_logo.png";
 import { Linkedin, Instagram, Twitter, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";

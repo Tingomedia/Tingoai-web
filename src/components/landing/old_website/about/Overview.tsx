@@ -1,5 +1,6 @@
 import React from "react";
-import image from "../../../assets/images/old_tingo/aboutImg.jpg";
+// import image from "../../../assets/images/old_tingo/aboutImg.jpg";
+import image from "../../../../assets/images/old_tingo/aboutImg.jpg";
 
 const Overview: React.FC = () => {
   return (

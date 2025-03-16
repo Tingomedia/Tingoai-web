@@ -3,7 +3,7 @@ import headset from "../../../assets/images/old_tingo/headset-with-hand.svg";
 import { FaMicrophone } from "react-icons/fa";
 import CustomAudioControl from "./CustomAudioControl";
 import { Loader } from "lucide-react";
-import { SliceText } from "../../../utils/helpers";
+import { SliceText } from "../../../../utils/helpers";
 
 interface MainStudioProps {
   generateMusic: any;

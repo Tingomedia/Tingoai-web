@@ -1,6 +1,5 @@
 import React from "react";
-import { ourProductsDb } from "../../../db";
-
+import { ourProductsDb } from "../../../../db";
 const OurProducts: React.FC = () => {
   return (
     <div className="container mx-auto py-10 px-4 lg:px-[5%] 2xl:px-[10%]">
