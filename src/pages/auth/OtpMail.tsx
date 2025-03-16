@@ -13,7 +13,6 @@ const OtpMail: FC = (): JSX.Element => {
     interface FormValues {
             email: string;
         }
-        
             // Validation for input data
             const validate = Yup.object({
                 email: Yup.string()
@@ -62,7 +61,6 @@ const OtpMail: FC = (): JSX.Element => {
                 <div className="lg:w-[514px] w-[90%] md:w-[60%] h-[455px] flex flex-col gap-[25px] overflow-hidden">
                     <div className="flex justify-center">
                         <Link to='/'>
-                        
                         <img src={tingoai} alt="" className='w-[154px] h-[59px]'/>
                         </Link>
                     </div>
