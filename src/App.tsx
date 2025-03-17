@@ -10,20 +10,20 @@ const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
 const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
-const Signin = lazy(() => import("./pages/auth/Signin"))
+const Signin = lazy(() => import("./pages/auth/Signin"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
 const OtpCode = lazy(() => import("./pages/auth/OtpCode"));
 const OtpMail = lazy(() => import("./pages/auth/OtpMail"));
 const ResetPassword = lazy(() => import("./pages/auth/ResetPassword"));
 const Signup = lazy(() => import("./pages/auth/Signup"));
-const TingoaiProducts = lazy(() => import("./components/tingoai/TingoaiProducts"));
-const GptPromptInput = lazy(() => import("./components/gpt/GptPromtInput"));
+const TingoaiProducts = lazy(
+  () => import("./components/tingoai/TingoaiProducts")
+);
 const RadioLayout = lazy(() => import("./layouts/radio/RadioLayout"));
 const RadioHome = lazy(() => import("./pages/old_radio/radio/RadioHome"));
 const Playlist = lazy(() => import("./pages/old_radio/radio/Playlist"));
 const NewsWeather = lazy(() => import("./pages/old_radio/radio/News&weather"));
 const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
-
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
       <Routes>
         {/* General Routes */}
         <Route path="/" element={<Home />} />
-        <Route path="/tingo-products" element={<NewGridHome/>} />
+        <Route path="/tingo-products" element={<NewGridHome />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Product />} />
@@ -44,22 +44,21 @@ function App() {
 
         {/*=========== TingoGPT Routes ================*/}
         <Route path="/tingogpt" element={<GPTLayout />}>
-          <Route path="" element={<GptPromptInput/>} />
-          <Route path="code" element={<GptHome/>} />
-          <Route path="plus" element={<GptPlusHome/>} />
+          <Route path="" element={<GptHome />} />
+          <Route path="plus" element={<GptPlusHome />} />
         </Route>
 
         {/*============== TingoAI Routes =============*/}
         <Route path="/tingoai" element={<TingoaiLayout />}>
-          <Route path="" element={<TingoaiProducts/>} />
+          <Route path="" element={<TingoaiProducts />} />
         </Route>
 
         {/*============== Tingo Radio =============*/}
-        <Route path="/radio" element={<RadioLayout/>}>
-          <Route path="" element={<RadioHome/>} />
-          <Route path="playlists" element={<Playlist/>} />
-          <Route path="news" element={<NewsWeather/>} />
-          <Route path="reachus" element={<Reachus/>} />
+        <Route path="/radio" element={<RadioLayout />}>
+          <Route path="" element={<RadioHome />} />
+          <Route path="playlists" element={<Playlist />} />
+          <Route path="news" element={<NewsWeather />} />
+          <Route path="reachus" element={<Reachus />} />
         </Route>
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
