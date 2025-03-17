@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
   return (
     <div className="w-full">
       <div
-        className="w-full mx-auto px-4 md:px-[5%] lg:px-[8%] 2xl:px-[5%] bg-[rgb(18, 24, 38)] relative flex flex-col justify-center items-center py-8 lg:p-0 min-h-[700px] md:min-h-[900px] lg:min-h-[900px] bg-cover md:bg-no-repeat"
+        className="w-full mx-auto px-4 md:px-[5%] lg:px-[8%] 2xl:px-[5%] bg-[rgb(18, 24, 38)] relative flex flex-col justify-center items-center py-8 lg:p-0 min-h-[700px] md:min-h-[900px] bg-cover md:bg-no-repeat"
         style={{
           backgroundImage: `url(${herobg})`,
         }}
@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             <div className="absolute w-full h-full bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
 
             {/* Hero Content */}
-            <div className="w-full flex flex-col justify-center items-center pt-32 md:pt-64">
+            <div className="w-full flex flex-col justify-center items-center pt-32">
               <div className="border border-fade-gray p-1 rounded-full flex justify-center items-center gap-4 md:gap-8 max-w-[320px] mx-auto md:mx-0">
                 <button className="text-fade-gray text-lg md:text-2xl border border-fade-gray p-2 px-4 flex gap-2 items-center rounded-full">
                   <div className="w-6 h-6 bg-primary-200/30 rounded-full justify-center flex items-center animate-pulse">

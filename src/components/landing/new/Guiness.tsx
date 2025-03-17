@@ -2,7 +2,7 @@ import React from "react";
 import guinessImage from "../../../assets/images/new_tingo/guinessImage.png";
 import black from "../../../assets/images/new_tingo/black2.png";
 import shadow from "../../../assets/images/new_tingo/Ellipse 13.svg";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Title from "../../../utils/libs/Title";
 // import TingoModal from "../../tingoai/TingoModal";
 // import TingoModalButton from "../../../utils/libs/TingoModalButton";
@@ -44,11 +44,11 @@ const Guiness: React.FC = () => {
             Proceeds will fund a state-of the-art animation studio in Lagos’
             Ijora Badia community.
           </p>
-          {/* <Link to="/data-center">
+          <Link to="/contact">
           <button className="w-[185px] h-[55px] hover:border-none bg-primary-200 rounded-full text-white font-Poppins font-medium  transition-all duration-300 ease-in-out">
             Join Us
           </button>
-          </Link> */}
+          </Link>
           {/* <TingoModalButton modalName="guiness" label="Let's Make History">
             {({ onClose }) => <SuccessCard onClose={onClose || (() => { })} />}
           </TingoModalButton> */}
