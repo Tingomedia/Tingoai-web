@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/icons/tingo_ai_logo.png";
-import { Linkedin, Instagram, Twitter, Facebook } from "lucide-react";
+import { Linkedin, Instagram, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {

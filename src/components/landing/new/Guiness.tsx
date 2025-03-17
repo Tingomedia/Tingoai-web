@@ -2,11 +2,11 @@ import React from "react";
 import guinessImage from "../../../assets/images/new_tingo/guinessImage.png";
 import black from "../../../assets/images/new_tingo/black2.png";
 import shadow from "../../../assets/images/new_tingo/Ellipse 13.svg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Title from "../../../utils/libs/Title";
-import TingoModal from "../../tingoai/TingoModal";
-import TingoModalButton from "../../../utils/libs/TingoModalButton";
-import SuccessCard from "../../cards/SuccessCard";
+// import TingoModal from "../../tingoai/TingoModal";
+// import TingoModalButton from "../../../utils/libs/TingoModalButton";
+// import SuccessCard from "../../cards/SuccessCard";
 
 const Guiness: React.FC = () => {
   return (
@@ -49,9 +49,9 @@ const Guiness: React.FC = () => {
             Join Us
           </button>
           </Link> */}
-          <TingoModalButton modalName="guiness" label="Let's Make History">
+          {/* <TingoModalButton modalName="guiness" label="Let's Make History">
             {({ onClose }) => <SuccessCard onClose={onClose || (() => { })} />}
-          </TingoModalButton>
+          </TingoModalButton> */}
         </div>
       </div>
     </div>

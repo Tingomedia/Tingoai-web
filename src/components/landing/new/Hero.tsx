@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                   Tingo AI
                 </p>
               </div>
-              <h1 className="font-poppins text-fade-white text-center text-[3.5rem] lg:text-[5.6rem] leading-tight md:leading-[79.5px] font-bold">
+              <h1 className="font-poppins text-fade-white text-center text-[3.5rem] lg:text-[5.6rem] leading-tight lg:leading-[79.5px] font-bold">
                 Welcome to {" "}
                 <span className=" text-secondary text-[3.5rem] lg:text-[5.6rem] 2xl:text-[5.6rem]">
                 Tingo AI
