@@ -62,19 +62,16 @@ const Hero: React.FC = () => {
                   Tingo AI
                 </p>
               </div>
-              <h1 className="font-poppins text-fade-white text-center text-[4.5rem] lg:text-[5.6rem] leading-tight md:leading-[79.5px] font-bold">
-                We’re Building A Future
+              <h1 className="font-poppins text-fade-white text-center text-[3.5rem] lg:text-[5.6rem] leading-tight md:leading-[79.5px] font-bold">
+                Welcome to {" "}
+                <span className=" text-secondary text-[3.5rem] lg:text-[5.6rem] 2xl:text-[5.6rem]">
+                Tingo AI
+                </span>,
+                where cutting-edge artificial intelligence meets real-world innovation.
               </h1>
-              <h1 className="font-poppins text-fade-white text-[4.5rem] lg:text-[5.6rem] leading-tight md:leading-[79.5px] font-bold">
-                Powered By{" "}
-                <span className="md:bg-primary-200/10 p-4 rounded-xl text-secondary text-[4.5rem] lg:text-[5.6rem] 2xl:text-[5.6rem]">
-                  Responsible AI
-                </span>
-              </h1>
+              
               <p className="text-[1.8rem] text-center font-poppins leading-relaxed md:leading-[29px] text-[#b8b8b8] animate-fadeInDrop1 py-6">
-                At Tingo AI, we harness cutting-edge artificial intelligence to
-                deliver transformative solutions across education, healthcare,
-                and beyond—empowering humanity’s next chapter.
+              We are a forward-thinking technology company dedicated to harnessing AI to drive digital transformation, enhance business efficiency, and create intelligent solutions for the modern world.
               </p>
               <div className="flex justify-center animate-fadeInDrop1 pb-8 lg:pb-0">
                 <Link to="/radio" className="mr-3">

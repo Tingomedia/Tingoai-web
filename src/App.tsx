@@ -32,14 +32,14 @@ function App() {
       <Routes>
         {/* General Routes */}
         <Route path="/" element={<Home />} />
-        <Route path="/tingo-products" element={<NewGridHome/>} />
+        <Route path="/tingoai-products" element={<NewGridHome/>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Product />} />
-        <Route path="/signin" element={<Signin />} />
         <Route path="/otp-code" element={<OtpCode />} />
         <Route path="/otp-mail" element={<OtpMail />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
 
         {/*=========== TingoGPT Routes ================*/}

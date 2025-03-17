@@ -14,7 +14,7 @@ const OurProduct: React.FC = () => {
       </h3>
       <p className="text-[20px] lg:w-[768px] font-Inter text-center text-white">
         Powerful, self-serve product and growth analysis to help you covert,
-        engage and retain more users. Trusted by over 4,000 startups.
+        engage and retain more users.
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 overflow-auto relative">

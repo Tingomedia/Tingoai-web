@@ -26,7 +26,7 @@ const Header: React.FC = () => {
             About
           </Link>
           <Link
-            to="/tingo-products"
+            to="/tingoai-products"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Products
@@ -37,14 +37,14 @@ const Header: React.FC = () => {
           >
             Community
           </Link>
-          <Link
+          {/* <Link
             to="/"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Team
-          </Link>
+          </Link> */}
           <Link
-            to="/"
+            to="/reachus"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Contact
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
                 About
               </Link>
               <Link
-                to="/tingo-products"
+                to="/tingoai-products"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 Products
@@ -84,12 +84,12 @@ const Header: React.FC = () => {
               >
                 Community
               </Link>
-              <Link
+              {/* <Link
                 to="/community"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 Team
-              </Link>
+              </Link> */}
               <Link
                 to="/radio/reachus"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"

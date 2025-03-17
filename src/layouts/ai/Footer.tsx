@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
       href: "https://www.instagram.com/tingoai_/profilecard/?igsh=d3E0cWFuNmZ6NXA4",
       label: "Instagram",
     },
-    { icon: <Facebook size={24} />, href: "#", label: "Facebook" },
+    // { icon: <Facebook size={24} />, href: "#", label: "Facebook" },
     {
       icon: <Twitter size={24} />,
       href: "https://x.com/TingoAi_?t=oziQKtSlUsVKKsIsz0m97A&s=09",
@@ -42,28 +42,28 @@ const Footer: React.FC = () => {
               first AI-driven radio station.
             </p>
           </div>
-          <div className="lg:w-[697px] w-full h-[240px] flex justify-between ">
+          <div className="lg:w-[497px] w-[250px] h-[240px] flex justify-between ">
             <ul className="lg:w-[211px] h-[204px] flex flex-col gap-[12px]">
               <li className="font-semibold text-[#E5E7EB] font-Poppins">
                 Company
               </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              <li className="text-[#A1A6B4] font-semibold hover:text-primary-200 font-Inter cursor-pointer">
                 About
               </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              <Link to="/tingoai-products" className="text-[#A1A6B4] hover:text-primary-200 font-semibold font-Inter cursor-pointer">
                 Products
-              </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              </Link>
+              <li className="text-[#A1A6B4] hover:text-primary-200 font-semibold font-Inter cursor-pointer">
                 Community
               </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              {/* <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
                 Team
-              </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              </li> */}
+              <li className="text-[#A1A6B4] hover:text-primary-200 font-semibold font-Inter cursor-pointer">
                 Contact
               </li>
             </ul>
-            <ul className="lg:w-[211px] h-[204px] flex flex-col gap-[12px]">
+            {/* <ul className="lg:w-[211px] h-[204px] flex flex-col gap-[12px]">
               <li className="font-semibold text-[#E5E7EB] font-Poppins">
                 Legal
               </li>
@@ -82,21 +82,19 @@ const Footer: React.FC = () => {
               <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
                 Settings
               </li>
-              {/* <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
-                Contact
-              </li> */}
-            </ul>
+             
+            </ul> */}
             <ul className="lg:w-[211px] h-[204px] flex flex-col gap-[12px]">
               <li className="text-[#E5E7EB] font-semibold font-Poppins">
                 Socials
               </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              <li className="text-[#A1A6B4] font-semibold hover:text-primary-200  font-Inter cursor-pointer">
                 Twitter
               </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              <li className="text-[#A1A6B4] font-semibold hover:text-primary-200  font-Inter cursor-pointer">
                 LinkedIn
               </li>
-              <li className="text-[#A1A6B4] font-semibold font-Inter cursor-pointer">
+              <li className="text-[#A1A6B4] font-semibold hover:text-primary-200  font-Inter cursor-pointer">
                 Facebook
               </li>
             </ul>
@@ -122,7 +120,7 @@ const Footer: React.FC = () => {
                   key={index}
                   to={social.href}
                   target="_blank"
-                  className="text-white hover:text-secondary transition-colors"
+                  className="text-white hover:text-primary-200  transition-colors"
                   aria-label={social.label}
                 >
                   {social.icon}
