@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-hot-toast";
@@ -13,7 +13,7 @@ import useFirebaseAuth from "../../hooks/useFirebaseAuth";
 
 const Signup: FC = (): JSX.Element => {
   const [PasswordInputType, ToggleIcon] = usePasswordToggle();
-  const { signUpWithEmail } = useFirebaseAuth();
+  const { firebaseUser, signUpWithEmail } = useFirebaseAuth();
 
   // ✅ Corrected Validation Schema
   const validationSchema = Yup.object({
@@ -65,6 +65,12 @@ const Signup: FC = (): JSX.Element => {
       }
     },
   });
+
+  useEffect(() => {
+    if (firebaseUser) {
+      window.alert("User logged in as " + firebaseUser.displayName);
+    }
+  }, [firebaseUser]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useFormik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import bg from "../../assets/images/gpt/authbg.png";
@@ -24,7 +24,7 @@ interface FormValues {
 
 const Signin: FC = (): JSX.Element => {
   const [PasswordInputType, ToggleIcon] = usePasswordToggle();
-  const { signInWithGoogle, signInWithEmail } = useGoogleAuth();
+  const { firebaseUser, signInWithGoogle, signInWithEmail } = useGoogleAuth();
 
   // Validation for input data
   const validate = Yup.object({
@@ -66,6 +66,12 @@ const Signin: FC = (): JSX.Element => {
     validationSchema: validate,
     onSubmit: handleFormSubmit,
   });
+
+  useEffect(() => {
+    if (firebaseUser) {
+      window.alert("User logged in as " + firebaseUser.displayName);
+    }
+  }, [firebaseUser]);
 
   return (
     <>
