@@ -14,8 +14,7 @@ const OurProduct: React.FC = () => {
         All Tingo AI's Products
       </h3>
       <p className="text-[20px] w-11/12 px-2 lg:w-[768px] font-Inter text-center text-white">
-        Powerful, self-serve product and growth analysis to help you covert,
-        engage and retain more users.
+      Smart, AI-powered solutions designed to help you attract, engage, and retain users effortlessly. Trusted by many, we make growth simple and scalable.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 overflow-hidden relative">
