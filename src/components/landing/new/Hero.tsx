@@ -50,8 +50,8 @@ const Hero: React.FC = () => {
             <div className="absolute w-full h-full bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
 
             {/* Hero Content */}
-            <div className="w-full flex flex-col justify-center items-center pt-32">
-              <div className="border border-fade-gray p-1 rounded-full flex justify-center items-center gap-4 md:gap-8 max-w-[320px] mx-auto md:mx-0">
+            <div className="w-full flex flex-col justify-center items-center pt-32 md:pt-48">
+              <div className="border border-fade-gray p-1 rounded-full flex justify-center items-center gap-4 md:gap-8 max-w-[320px] mx-auto md:mx-0 mb-4">
                 <button className="text-fade-gray text-lg md:text-2xl border border-fade-gray p-2 px-4 flex gap-2 items-center rounded-full">
                   <div className="w-6 h-6 bg-primary-200/30 rounded-full justify-center flex items-center animate-pulse">
                     <div className="w-2 h-2 bg-primary-200 rounded-full"></div>
