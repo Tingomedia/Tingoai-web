@@ -7,7 +7,7 @@ import Footer from "../../layouts/ai/Footer";
 import Testimonial from "../../components/landing/new/Testimonial";
 import FAQSection from "../../components/landing/new/Faq-section";
 import CTASection from "../../components/landing/new/CTA-section";
-import TrustedBy from "../../components/landing/new/TrustedBy";
+// import TrustedBy from "../../components/landing/new/TrustedBy";
 import Extra from "../../components/landing/new/Extra";
 
 const Home: FC = () => {
@@ -27,7 +27,7 @@ const Home: FC = () => {
         </div>
         <CTASection />
         <Extra />
-        <TrustedBy />
+        {/* <TrustedBy /> */}
         <div></div>
       </div>
 
