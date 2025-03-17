@@ -27,28 +27,32 @@ const Guiness: React.FC = () => {
       <div className="w-full container mx-auto bg-transparent min-h-[422px] flex flex-col-reverse gap-10 md:gap-32 pb-10 lg:pb-0 lg:flex-row justify-between relative z-30">
         <img src={guinessImage} alt="Robot image" className="relative z-30" />
         <div className="flex flex-col justify-center bg-transparent items-center lg:items-start px-4 sm:px-8 lg:px-0 gap-4 xl:gap-10 text-white xl:pr-20 relative z-30">
-          <Title>Here’s what we’re up to</Title>
+          {/* <Title></Title> */}
           <h1 className="font-bold text-[24px] md:text-[39px] font-poppins">
-            Our 2025 Mission
+            Our Vision
           </h1>
-          <h3 className="font-semibold text-[16px] text-primary-200  md:text-[29px] font-poppins text-center">
+          <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">To be a global leader in AI-driven transformation, pioneering intelligent solutions that reshape industries, improve lives, and foster sustainable growth for businesses and communities worldwide.</p>
+
+          <h1 className="font-bold text-[24px] md:text-[39px] font-poppins mt-8 md:mt-0">
+            Our Mission
+          </h1>
+          {/* <h3 className="font-semibold text-[16px] text-primary-200  md:text-[29px] font-poppins text-center">
             To Break Guiness World Record!
-          </h3>
+          </h3> */}
           <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">
-            We’re on a mission to revolutionize education in underserved
-            communities. Partnering with global celebrities, we’re breaking the
-            Guinness World Record for the largest AI-generated comic book ever
-            created.
+            Tingo AI is committed to revolutionizing industries through cutting-edge artificial intelligence, empowering businesses and individuals with intelligent, scalable, and efficient solutions. Our mission is to drive innovation, enhance productivity, and create a smarter, more connected world through ethical and responsible AI development.
+
           </p>
-          <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">
+          {/* <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">
             Proceeds will fund a state-of the-art animation studio in Lagos’
             Ijora Badia community.
-          </p>
-          <Link to="/contact">
-          <button className="w-[185px] h-[55px] hover:border-none bg-primary-200 rounded-full text-white font-Poppins font-medium  transition-all duration-300 ease-in-out">
-            Join Us
-          </button>
-          </Link>
+          </p> */}
+          
+          {/* <Link to="/contact">
+            <button className="w-[185px] h-[55px] hover:border-none bg-primary-200 rounded-full text-white font-Poppins font-medium  transition-all duration-300 ease-in-out">
+              Join Us
+            </button>
+          </Link> */}
           {/* <TingoModalButton modalName="guiness" label="Let's Make History">
             {({ onClose }) => <SuccessCard onClose={onClose || (() => { })} />}
           </TingoModalButton> */}
