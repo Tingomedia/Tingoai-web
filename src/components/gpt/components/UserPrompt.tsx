@@ -1,22 +1,21 @@
+import { Message } from "../../../contexts/TingoGPTContext";
 import TextBlock from "./replies/TextBlock";
 
-export type Prompt = {
-  type: "text" | "etc"; // add expected types
-  prompt: string;
-  file?: File;
-};
+// export type Prompt = {
+//   type: "text" | "etc"; // add expected types
+//   prompt: string;
+//   file?: File;
+// };
 
-export default function UserPrompt({ prompt }: { prompt: Prompt }) {
-  const { type, prompt: query, file } = prompt;
-
+export default function UserPrompt({ prompt }: { prompt: Message }) {
   const Prompt = () => {
-    switch (type) {
-      case "text":
+    switch (prompt.content_type) {
+      default:
         return (
           <TextBlock
-            text={query}
+            text={prompt.content}
             file={
-              file &&
+              prompt.file &&
               new File(["dummy content"], "example.txt", { type: "text/plain" }) // replace with file
             }
           />

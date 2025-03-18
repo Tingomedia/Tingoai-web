@@ -1,24 +1,38 @@
+import { useEffect, useRef } from "react";
+import { useConversations } from "../../contexts/TingoGPTContext";
 import AskTingoGPT from "./components/AskTingoGPT";
-import TingoResponse, { Response } from "./components/TingoResponse";
-import UserPrompt, { Prompt } from "./components/UserPrompt";
-
-import repliesSample from "./components/replies/repliesSample.json";
+import TingoResponse from "./components/TingoResponse";
+import UserPrompt from "./components/UserPrompt";
 
 const GptHome = () => {
-  return (
-    <div className="bg-[#121826] text-[#E5E7EB] flex justify-center items-center h-full overflow-y-auto hide-scrollbar">
-      <div className="w-full max-w-[640px] relative h-full px-[16px]">
-        <div className="flex flex-col gap-24 pt-24 pb-32">
-          {repliesSample.map((reply, i) => {
-            if (reply.prompt)
-              return <UserPrompt key={i} prompt={reply as Prompt} />;
-            else return <TingoResponse key={i} response={reply as Response} />;
-          })}
-        </div>
+  const { fetchingMessages, messages } = useConversations();
+  const bottomRef = useRef<HTMLDivElement | null>(null);
 
-        <div className="w-full sticky bottom-12 left-0 flex justify-center z-10 m-1">
-          <AskTingoGPT />
+  useEffect(() => {
+    console.log("messages: \n", messages);
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  return (
+    <div className="bg-[#121826] text-[#E5E7EB] flex flex-col justify-center items-center relative w-full h-full">
+      <div className="w-full h-full px-[16px] flex justify-center overflow-y-auto hide-scrollbar">
+        <div className="flex flex-col w-full max-w-[640px] gap-24 pt-24 pb-96">
+          {messages.map((reply, i) => {
+            if (reply.role === "user")
+              return <UserPrompt key={i} prompt={reply} />;
+            else return <TingoResponse key={i} response={reply} />;
+          })}
+          <div ref={bottomRef} />
+          <br />
         </div>
+        {fetchingMessages && (
+          <div className="absolute inset-0 bg-white/15 text-white flex text-center items-center justify-center">
+            getting Messages..
+          </div>
+        )}
+      </div>
+      <div className="w-full sticky bottom-12 left-0 flex justify-center z-10">
+        <AskTingoGPT />
       </div>
     </div>
   );

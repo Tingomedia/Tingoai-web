@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import ReactMarkdown from "react-markdown";
 
 import { getCodeMirrorLang } from "../utils";
 import copyIcon from "../../../../assets/icons/copy-01.svg";
@@ -57,9 +58,18 @@ const CodeBlock = (props: {
 
   return (
     <div className="flex flex-col gap-4">
-      <span>{props.msg}</span>
+      {/* <span>{props.msg}</span> */}
+      <ReactMarkdown
+        components={{
+          p: ({ node, ...props }) => (
+            <p className="prose prose-invert" {...props} />
+          ),
+        }}
+      >
+        {props.msg}
+      </ReactMarkdown>
 
-      <div className="bg-[#232a3e] relative border border-[#B8B8B8] rounded-[20px]">
+      <div className="bg-[#232a3e] relative border border-[#B8B8B8] rounded-[20px] overflow-hidden">
         <div className="flex justify-between p-[20px] pb-0">
           <span>{props.name}</span>
           <div className="flex gap-[10px] text-[10px] text-[#98A2B3]">

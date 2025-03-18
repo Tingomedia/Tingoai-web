@@ -15,6 +15,7 @@ const provider = new GoogleAuthProvider();
 
 interface AuthState {
   firebaseUser: User | null;
+  isInitialised: boolean;
   error: string | null;
   signInWithGoogle: () => Promise<void>;
   signUpWithEmail: (
@@ -28,12 +29,14 @@ interface AuthState {
 
 const useFirebaseAuth = (): AuthState => {
   const { auth } = useFirebase();
+  const [isInitialised, setIsInitialised] = useState(false);
   const [firebaseUser, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setIsInitialised(true);
     });
     return () => unsubscribe();
   }, [auth]);
@@ -82,6 +85,7 @@ const useFirebaseAuth = (): AuthState => {
     try {
       await signOut(auth);
       setUser(null);
+      window.location.href = "/";
     } catch (err) {
       setError((err as Error).message);
     }
@@ -89,6 +93,7 @@ const useFirebaseAuth = (): AuthState => {
 
   return {
     firebaseUser,
+    isInitialised,
     error,
     signInWithGoogle,
     signUpWithEmail,
