@@ -31,11 +31,11 @@ const Extra = () => {
         {words.map((word, index) => (
           <div
             key={index}
-            className="flex items-center min-w-max px-6 text-fade-black text-[50px] font-semibold"
+            className="flex items-center min-w-max px-6 text-fade-black lg:text-[40px] font-semibold"
           >
             {word}
             {index !== words.length - 1 && (
-              <img src={star} className="w-auto h-[50px] pl-8" alt="star" />
+              <img src={star} className="w-auto lg:h-[30px] pl-8" alt="star" />
             )}
           </div>
         ))}

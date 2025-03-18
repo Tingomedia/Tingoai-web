@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import logo from '../../../assets/icons/tingo_ai_logo.png';
+// import logo from '../../../assets/icons/tingo_ai_logo.png';
+import logo from '../../../assets/radio/Tingo 102.5 FM-01 3.svg'
 import search from '../../../assets/icons/search-outline.svg';
 import { FaUser } from "react-icons/fa";
 import { MenuIcon, X } from 'lucide-react';
@@ -18,9 +19,9 @@ const RHeader: React.FC = () => {
         <img src={logo} alt="Tingo logo" className="md:w-[150px] h-[40px] md:h-[64px]" />
         </Link>
         <ul className="hidden md:flex gap-4 font-Poppins text-fade-gray border border-fade-gray rounded-full p-2">
-          <Link to='/radio' className="rounded-full py-2 px-4 hover:bg-dark-blue cursor-pointer  transition-all duration-300 ease-in-out">Playlists</Link>
-          <Link to='/radio' className="rounded-full py-2 px-4 hover:bg-dark-blue cursor-pointer  transition-all duration-300 ease-in-out">News & Weather</Link>
-          <Link to='/radio' className="rounded-full py-2 px-4 hover:bg-dark-blue cursor-pointer  transition-all duration-300 ease-in-out">Reach Out</Link>
+          <Link to='/radio' className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out">Playlists</Link>
+          <Link to='/radio' className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out">News & Weather</Link>
+          <Link to='/radio' className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out">Reach Out</Link>
         </ul>
 
         <div className="flex items-center gap-5">

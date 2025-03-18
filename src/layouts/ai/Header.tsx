@@ -26,7 +26,7 @@ const Header: React.FC = () => {
             About
           </Link>
           <Link
-            to="/tingo-products"
+            to="/tingoai-products"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Products
@@ -38,13 +38,7 @@ const Header: React.FC = () => {
             Community
           </Link>
           <Link
-            to="/"
-            className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
-          >
-            Team
-          </Link>
-          <Link
-            to="/"
+            to="/contact"
             className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
           >
             Contact
@@ -67,31 +61,25 @@ const Header: React.FC = () => {
           <div className="absolute top-[80px] left-0 w-full bg-[#1D2739] shadow-xl rounded-lg">
             <nav className="flex flex-col items-center px-4 py-6 space-y-4 text-fade-gray font-Poppins">
               <Link
-                to="/radio/playlists"
+                to="/"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 About
               </Link>
               <Link
-                to="/tingo-products"
+                to="/tingoai-products"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 Products
               </Link>
               <Link
-                to="/community"
+                to="/"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 Community
               </Link>
               <Link
-                to="/community"
-                className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
-              >
-                Team
-              </Link>
-              <Link
-                to="/radio/reachus"
+                to="/contact"
                 className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer  transition-all duration-300 ease-in-out"
               >
                 Contact

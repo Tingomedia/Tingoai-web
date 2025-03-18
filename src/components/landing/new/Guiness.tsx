@@ -1,9 +1,8 @@
 import React from "react";
-import guinessImage from "../../../assets/images/new_tingo/guinessImage.png";
+// import guinessImage from "../../../assets/images/new_tingo/guinessImage.png";
+import guinessImage from "../../../assets/images/old_tingo/aboutImg.jpg";
 import black from "../../../assets/images/new_tingo/black2.png";
 import shadow from "../../../assets/images/new_tingo/Ellipse 13.svg";
-import { Link } from "react-router-dom";
-import Title from "../../../utils/libs/Title";
 
 const Guiness: React.FC = () => {
   return (
@@ -22,27 +21,26 @@ const Guiness: React.FC = () => {
 
       {/* Main Content */}
       <div className="w-full container mx-auto bg-transparent min-h-[422px] flex flex-col-reverse gap-10 md:gap-32 pb-10 lg:pb-0 lg:flex-row justify-between relative z-30">
-        <img src={guinessImage} alt="Robot image" className="relative z-30" />
-        <div className="flex flex-col justify-center bg-transparent items-center lg:items-start px-4 sm:px-8 lg:px-0 gap-4 xl:gap-10 text-white xl:pr-20 relative z-30">
-          <Title>Here’s what we’re up to</Title>
-          <h1 className="font-bold text-[24px] md:text-[39px] font-poppins">
-            Our 2025 Mission
+        <div className="w-11/12 mx-auto lg:w-1/2 rounded-lg">
+        <img src={guinessImage} alt="Robot image" className="w-full relative z-30 rounded-xl" />
+        </div>
+        <div className="w-full lg:w-1/2 flex flex-col justify-center bg-transparent items-center lg:items-start px-4 sm:px-8 lg:px-0 gap-4 xl:gap-10 text-white xl:pr-20 relative z-30">
+          {/* <Title></Title> */}
+          <div className="w-full">
+          <h1 className="w-full text-center lg:text-start font-bold text-[24px] font-poppins">
+            Our Vision
           </h1>
+          <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">To be a global leader in AI-driven transformation, pioneering intelligent solutions that reshape industries, improve lives, and foster sustainable growth for businesses and communities worldwide.</p>
+
+          </div>
+         <div className="w-full text-center lg:text-start ">
+         <h1 className="font-bold text-[24px]  font-poppins mt-8 md:mt-0">
+            Our Mission
+          </h1>  
           <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">
-            We’re on a mission to revolutionize education in underserved
-            communities. Partnering with global celebrities, we’re breaking the
-            Guinness World Record for the largest AI-generated comic book ever
-            created.
+            Tingo AI is committed to revolutionizing industries through cutting-edge artificial intelligence, empowering businesses and individuals with intelligent, scalable, and efficient solutions. Our mission is to drive innovation, enhance productivity, and create a smarter, more connected world through ethical and responsible AI development.
           </p>
-          <p className="text-[#b8b8b8] text-[16px] font-Manrope text-center lg:text-start lg:pr-16">
-            Proceeds will fund a state-of the-art animation studio in Lagos’
-            Ijora Badia community.
-          </p>
-          <Link to="/data-center">
-          <button className="w-[185px] h-[55px] hover:border-none bg-primary-200 rounded-full text-white font-Poppins font-medium  transition-all duration-300 ease-in-out">
-            Join Us
-          </button>
-          </Link>
+         </div>
         </div>
       </div>
     </div>

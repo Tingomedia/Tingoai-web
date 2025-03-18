@@ -12,12 +12,12 @@ interface WaitListFormProps {
 const SuccessCard: React.FC<WaitListFormProps> = () => {
    
   return (
-    <div className="relative min-h-[258px] lg:h-[258px] w-11/12 mx-auto md:w-[350px] xl:w-[300px] 2xl:w-[380px]  bg-gradient-to-b from-[#797979CC] to-[#232A3E1A] bg-transparent p-6 rounded-xl flex flex-col justify-between border-[0.5px] border-fade-gray-label border border-gray-500">
+    <div className="relative min-h-[258px] lg:h-[258px] w-full mx-auto bg-gradient-to-b from-[#797979CC] to-[#232A3E1A] bg-transparent p-6 rounded-xl flex flex-col justify-between border-[0.5px] border-fade-gray-label border border-gray-500">
         <div className="w-full mx-auto text-center min:h-[420px] 2xl:px-16">
       <div className="py-16">
         <div className="flex justify-center">
-        <div className="w-[60px] h-[60px] md:w-[150px] md:h-[150px] bg-lime-200 flex justify-center items-center rounded-full">
-        <MdLibraryAddCheck className="w-16 h-16 md:w-40 md:h-40 text-green p-2"/>
+        <div className="w-[60px] h-[60px] md:w-[150px] md:h-[150px] bg-primary-200 flex justify-center items-center rounded-full">
+        <MdLibraryAddCheck className="w-16 h-16 md:w-40 md:h-40 text-green-500 p-2"/>
         </div>
         </div>
         <div className="py-4 w-full border-gray-300">

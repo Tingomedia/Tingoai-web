@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
   return (
     <div className="w-full">
       <div
-        className="w-full mx-auto px-4 md:px-[5%] lg:px-[8%] 2xl:px-[5%] bg-[rgb(18, 24, 38)] relative flex flex-col justify-center items-center py-8 lg:p-0 min-h-[700px] md:min-h-[900px] lg:min-h-[900px] bg-cover md:bg-no-repeat"
+        className="w-full mx-auto px-4 md:px-[5%] lg:px-[8%] 2xl:px-[5%] bg-[rgb(18, 24, 38)] relative flex flex-col justify-center items-center py-8 lg:p-0 min-h-[700px] md:min-h-[900px] bg-cover md:bg-no-repeat"
         style={{
           backgroundImage: `url(${herobg})`,
         }}
@@ -50,8 +50,8 @@ const Hero: React.FC = () => {
             <div className="absolute w-full h-full bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
 
             {/* Hero Content */}
-            <div className="w-full flex flex-col justify-center items-center pt-32 md:pt-64">
-              <div className="border border-fade-gray p-1 rounded-full flex justify-center items-center gap-4 md:gap-8 max-w-[320px] mx-auto md:mx-0">
+            <div className="w-full flex flex-col justify-center items-center pt-32 md:pt-38">
+              <div className="border border-fade-gray p-1 rounded-full flex justify-center items-center gap-4 md:gap-8 max-w-[320px] mx-auto md:mx-0 mb-4">
                 <button className="text-fade-gray text-lg md:text-2xl border border-fade-gray p-2 px-4 flex gap-2 items-center rounded-full">
                   <div className="w-6 h-6 bg-primary-200/30 rounded-full justify-center flex items-center animate-pulse">
                     <div className="w-2 h-2 bg-primary-200 rounded-full"></div>
@@ -62,22 +62,19 @@ const Hero: React.FC = () => {
                   Tingo AI
                 </p>
               </div>
-              <h1 className="font-poppins text-fade-white text-center text-[4.5rem] lg:text-[5.6rem] leading-tight md:leading-[79.5px] font-bold">
-                We’re Building A Future
+              <h1 className="font-poppins text-fade-white text-center text-[3.5rem] lg:text-[5.6rem] leading-tight lg:leading-[79.5px] font-bold">
+                Welcome to {" "}
+                <span className=" text-secondary text-[3.5rem] lg:text-[5.6rem] 2xl:text-[5.6rem]">
+                Tingo AI
+                </span>,
+                where cutting-edge artificial intelligence meets real-world innovation.
               </h1>
-              <h1 className="font-poppins text-fade-white text-[4.5rem] lg:text-[5.6rem] leading-tight md:leading-[79.5px] font-bold">
-                Powered By{" "}
-                <span className="md:bg-primary-200/10 p-4 rounded-xl text-secondary text-[4.5rem] lg:text-[5.6rem] 2xl:text-[5.6rem]">
-                  Responsible AI
-                </span>
-              </h1>
+              
               <p className="text-[1.8rem] text-center font-poppins leading-relaxed md:leading-[29px] text-[#b8b8b8] animate-fadeInDrop1 py-6">
-                At Tingo AI, we harness cutting-edge artificial intelligence to
-                deliver transformative solutions across education, healthcare,
-                and beyond—empowering humanity’s next chapter.
+              We are a forward-thinking technology company dedicated to harnessing AI to drive digital transformation, enhance business efficiency, and create intelligent solutions for the modern world.
               </p>
               <div className="flex justify-center animate-fadeInDrop1 pb-8 lg:pb-0">
-                <Link to="/radio" className="mr-3">
+                <Link to="/radio" target="_blank" className="mr-3">
                   <button className="px-16 py-6 text-center text-lg bg-primary-200 text-white md:text-2xl font-poppins border border-fade-gray rounded-full  hover:bg-fade-gray/40 hover:shadow-inner-custom">
                     Tingo AI Radio
                   </button>

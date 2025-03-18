@@ -9,13 +9,14 @@ const OurProduct: React.FC = () => {
   return (
     <div className="2xl:container mx-auto min-h-[753px] w-full px-[5%] bg-[#121826] flex flex-col items-center justify-center gap-12 py-16">
       <Title>Our Product</Title>
-      <h3 className="text-[24px] md:text-[40px] text-white font-Manrope font-semibold text-center">
+     <div className="">
+     <h3 className="text-[24px] md:text-[40px] text-white font-Manrope font-semibold text-center">
         All Tingo AI's Products
       </h3>
-      <p className="text-[20px] lg:w-[768px] font-Inter text-center text-white">
-        Powerful, self-serve product and growth analysis to help you covert,
-        engage and retain more users. Trusted by over 4,000 startups.
+      <p className="text-[20px] lg:w-[768px] font-Inter text-center text-[#b8b8b8]">
+        Smart, AI-powered solutions designed to help you attract, engage, and retain users effortlessly. Trusted by many, we make growth simple and scalable.
       </p>
+     </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 overflow-auto relative">
         {/* Fluorescent Radial Glow */}

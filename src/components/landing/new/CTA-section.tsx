@@ -27,14 +27,15 @@ export default function CTASection() {
 
             <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[600px] justify-center">
               <Link
-                to="/studio"
-                className="py-5 px-7 rounded-full border border-[#C4C4C41A]/10 bg-[#1e293b]/80 text-white text-center hover:bg-[#1e293b] transition-all duration-300"
+                to="/tingogpt"
+                className="py-5 px-7 rounded-full border border-[#C4C4C41A]/10 bg-[#1e293b]/80 text-white text-center hover:bg-[#4B5563] transition-all duration-300"
               >
-                Try TingoGPT
+                TingoGPT
               </Link>
 
               <Link
-                to="#"
+                to="https://www.instagram.com/tingomedia_"
+                target="_blank"
                 className="py-5 px-7 rounded-full border border-[#C4C4C41A]/10 bg-custom-gradient text-white text-center hover:bg-[#4B5563] transition-all duration-300"
               >
                 Join our Community
