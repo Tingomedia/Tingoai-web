@@ -1,10 +1,20 @@
 [
     {
         "type": "text",
+        "prompt": "What is Dynerious stormborn full title and name?",
+        "file": "dummy"
+    },
+    {
+        "type": "text",
+        "msg": "Her full title is: \\n \"Daenerys Stormborn of House Targaryen, First of Her Name, Queen of the Andals and the First Men, Protector of the Realm, Khaleesi of the Great Grass Sea, Breaker of Chains, and Mother of Dragons.\""
+    },
+    {
+        "type": "text",
         "prompt": "Write a nav bar code"
     },
     {
         "type": "code",
+        "lang": "html",
         "name": "Navbar Component",
         "msg": "Here's a simple, responsive navigation bar using HTML, CSS, and JavaScript:",
         "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Responsive Navbar</title>\n    <style>\n        body {\n            margin: 0;\n            font-family: Arial, sans-serif;\n        }\n        .navbar {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            background-color: #333;\n            padding: 10px 20px;\n        }\n        .navbar a {\n            color: white;\n            text-decoration: none;\n            padding: 10px 15px;\n        }\n        .navbar a:hover {\n            background-color: #575757;\n        }\n        .menu {\n            display: flex;\n        }\n        .menu-toggle {\n            display: none;\n            font-size: 24px;\n            color: white;\n            background: none;\n            border: none;\n            cursor: pointer;\n        }\n        @media (max-width: 768px) {\n            .menu {\n                display: none;\n                flex-direction: column;\n                width: 100%;\n                background-color: #333;\n                position: absolute;\n                top: 50px;\n                left: 0;\n            }\n            .menu a {\n                text-align: center;\n                padding: 15px;\n            }\n            .menu-toggle {\n                display: block;\n            }\n            .menu.active {\n                display: flex;\n            }\n        }\n    </style>\n</head>\n<body>\n    <nav class=\"navbar\">\n        <a href=\"#\" class=\"logo\">Brand</a>\n        <button class=\"menu-toggle\" onclick=\"toggleMenu()\">&#9776;</button>\n        <div class=\"menu\" id=\"menu\">\n            <a href=\"#\">Home</a>\n            <a href=\"#\">About</a>\n            <a href=\"#\">Services</a>\n            <a href=\"#\">Contact</a>\n        </div>\n    </nav>\n    <script>\n        function toggleMenu() {\n            document.getElementById(\"menu\").classList.toggle(\"active\");\n        }\n    </script>\n</body>\n</html>"

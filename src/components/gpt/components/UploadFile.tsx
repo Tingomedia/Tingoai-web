@@ -14,19 +14,21 @@ const UploadFile = ({ onClose }: { onClose: (value: boolean) => void }) => {
   const [file, setFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState(65);
   const [uploadError, setUploadError] = useState("");
-  const [status, setStatus] = useState<UploadState>("success"); //
+  const [status, setStatus] = useState<UploadState>("idle");
   const [isInDrag, setDragState] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const reset = () => {
+    setFile(null);
+    setStatus("idle");
+    setUploadProgress(0);
+    setUploadError("");
+    onClose(false);
+  };
 
   const uploadFile = (file: any) => {
     setStatus("uploading");
     setUploadProgress(0);
-
-    if(file){
-      console.log(file);
-      setUploadError("")
-      
-    }
 
     // Simulating upload progress
     // Replace with backend logic
@@ -67,18 +69,18 @@ const UploadFile = ({ onClose }: { onClose: (value: boolean) => void }) => {
   };
 
   return createPortal(
-    <div className="fixed inset-0 flex items-center justify-center bg-[#121826]/65 z-50">
-      <div className="w-[570px] h-[458px] bg-[#1D2739] flex flex-col items-center p-5 rounded-[20px] relative">
-        <div className="w-full px-5 flex justify-between">
+    <div className="fixed inset-0 flex items-center justify-center bg-[#121826]/65 z-50 p-[24px]">
+      <div className="w-full max-w-[570px] h-[458px] bg-[#1D2739] flex flex-col items-center p-[24px] rounded-[20px] relative">
+        <div className="w-full flex justify-between">
           <span className="text-[15px] text-[#E5E7EB] font-medium">
             Upload Image
           </span>
-          <button onClick={() => onClose(false)}>
+          <button onClick={reset}>
             <img src={cancelIcon} width={20} height={20} />
           </button>
         </div>
         <div
-          className={`border-2 rounded-2xl flex flex-col w-[400px] h-[264px] my-auto px-[24px] py-[28px] gap-[16px] items-center justify-center text-center text-[14px] font-medium ${
+          className={`border-2 rounded-2xl flex flex-col w-full max-w-[400px] h-[264px] my-auto px-[24px] py-[28px] gap-[16px] items-center justify-center text-center text-[14px] font-medium ${
             status === "error"
               ? "border-dashed border-[#E26E6A]"
               : status === "success"
@@ -124,9 +126,9 @@ const UploadFile = ({ onClose }: { onClose: (value: boolean) => void }) => {
                 </span>
               </div>
 
-              <div className="relative flex items-center justify-center w-[337px]">
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 w-[337px] h-[1px] bg-[#98A2B3]/40"></div>
-                <span className="bg-white text-[#98A2B3] p-2 my-2 z-10">
+              <div className="relative flex items-center justify-center w-full max-w-[337px]">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 w-full max-w-[337px] h-[1px] bg-[#98A2B3]/40"></div>
+                <span className="bg-white text-[#98A2B3] px-[8px] my-[8px] z-10">
                   OR
                 </span>
               </div>
