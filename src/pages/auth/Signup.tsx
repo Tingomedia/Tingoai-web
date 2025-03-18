@@ -1,8 +1,8 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import usePasswordToggle from "../../hooks/usePasswordToggle";
 import SpinnerMini from "../../utils/libs/SpinnerMini";
 import bg from "../../assets/images/gpt/authbg.png";
@@ -14,6 +14,8 @@ import useFirebaseAuth from "../../hooks/useFirebaseAuth";
 const Signup: FC = (): JSX.Element => {
   const [PasswordInputType, ToggleIcon] = usePasswordToggle();
   const { firebaseUser, signUpWithEmail } = useFirebaseAuth();
+  const [searchParams] = useSearchParams();
+  const returnUrl = useMemo(() => searchParams.get("returnUrl"), []);
 
   // ✅ Corrected Validation Schema
   const validationSchema = Yup.object({
@@ -68,7 +70,7 @@ const Signup: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (firebaseUser) {
-      window.alert("User logged in as " + firebaseUser.displayName);
+      window.location.href = returnUrl || "/";
     }
   }, [firebaseUser]);
 
@@ -216,7 +218,10 @@ const Signup: FC = (): JSX.Element => {
           <div className="flex justify-center">
             <span className="text-[#A1A6B4] w-[268px] cursor-pointer h-[60px] bg-gradient-to-b from-[#797979CC] to-[#232A3E1A] bg-transparent border border-gradient-to-r from-[#797979CC] to-[#232A3E1A] hover:bg-gradient-to-r from-[#797979CC] to-[#232A3E1A] flex justify-center items-center gap-2 rounded-full text-[14px]">
               Have an account?
-              <Link to="/signin" className="text-[#F8872B]">
+              <Link
+                to={`/signin${returnUrl ? "?returnUrl=" + returnUrl : ""}`}
+                className="text-[#F8872B]"
+              >
                 Sign in
               </Link>
             </span>
