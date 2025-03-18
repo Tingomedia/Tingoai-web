@@ -18,7 +18,7 @@ import useFirebaseAuth from "../../hooks/useFirebaseAuth";
  */
 
 function UserAvatar() {
-  const { firebaseUser, signOutUser } = useFirebaseAuth();
+  const { firebaseUser } = useFirebaseAuth();
   // const { username, role } = useAppContext();
   return (
     <div className="lg:w-1/3 flex gap-4 justify-between items-center bg-[#121826] p-3 rounded-full">
@@ -36,7 +36,7 @@ function UserAvatar() {
         className="hidden lg:flex hover:bg-primary-200"
       />
       <img src={line} alt="avatar" className="hidden lg:flex" />
-      <button onClick={() => signOutUser()}>
+      <button onClick={() => {}}>
         <img
           src={firebaseUser?.photoURL || avatar}
           alt="avatar"

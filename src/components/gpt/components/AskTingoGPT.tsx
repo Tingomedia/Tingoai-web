@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 import InputOptions, { FileSource } from "./InputOptions";
@@ -15,7 +15,15 @@ export default function AskTingoGPT() {
   const [userPrompt, setUserPrompt] = useState("");
   const [showInputs, setShowInputs] = useState(false);
   const [showUploadOption, setShowUploadOption] = useState(false);
-  const { sendMessage } = useConversations();
+  const { gettingResponse, sendMessage } = useConversations();
+  const textInputRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    if (gettingResponse) {
+      textInputRef.current?.blur();
+    } else {
+    }
+  }, [gettingResponse]);
 
   const showFileSelect = (type: FileSource) => {
     setShowInputs(false);
@@ -32,9 +40,16 @@ export default function AskTingoGPT() {
     }
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault(); // Prevents adding a new line
+      sendMessage(userPrompt);
+    }
+  };
+
   return (
     <div
-      className="relative flex items-center justify-between w-full h-[64px] px-[28px] py-[10px] gap-[10px] rounded-[30px] backdrop-blur-[50px] ml-1 mr-4"
+      className="max-w-[640px] relative flex items-center justify-between w-full h-[64px] px-[28px] py-[10px] gap-[10px] rounded-[30px] backdrop-blur-[50px] mx-8 md:mx-2"
       style={{
         position: "relative",
         background:
@@ -49,12 +64,15 @@ export default function AskTingoGPT() {
           <img src={PlusIcon} alt="Plus Icon" className="w-[24px] h-[24px]" />
         </button>
         <TextareaAutosize
+          ref={textInputRef}
+          disabled={gettingResponse}
           value={userPrompt}
           placeholder="Ask TingoGPT"
           className="w-full text-[14px] text-[#B8B8B8] bg-transparent border-none outline-none resize-none hide-scrollbar"
           minRows={1}
           maxRows={2}
           onChange={(e) => setUserPrompt(e.target.value)}
+          onKeyDown={handleKeyPress}
         />
       </div>
       <div className="flex items-center">

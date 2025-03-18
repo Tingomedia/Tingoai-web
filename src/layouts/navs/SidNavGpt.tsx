@@ -15,7 +15,7 @@ const SidebarGpt: FC<SidebarProps> = ({
 }) => {
   return (
     <div
-      className={`bg-[#121826] py-8 flex flex-col gap-12 row-span-full ${className}`}
+      className={`bg-[#121826] flex flex-col h-full gap-12 row-span-full ${className}`}
     >
       <div className="flex items-center justify-center">
         <Link to="/" className="hover:text-white">

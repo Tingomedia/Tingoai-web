@@ -8,9 +8,12 @@ import React, {
 import useAxios from "../hooks/useAxios";
 import useFirebaseAuth from "../hooks/useFirebaseAuth";
 
-interface Message {
+export interface Message {
   id: string;
-  message: string;
+  role: string;
+  content: string;
+  type: string;
+  file: File;
   sender: string;
   timestamp: string;
 }
@@ -18,9 +21,13 @@ interface Message {
 interface Conversation {
   id: string;
   title: string;
+  recent_message: string;
 }
 
 interface TingoGPTContextType {
+  fetchingConversations: boolean;
+  fetchingMessages: boolean;
+  gettingResponse: boolean;
   conversations: Conversation[];
   currentConversationId: string | null;
   messages: Message[];
@@ -41,16 +48,24 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     string | null
   >(null);
   const [messages, setMessages] = useState<Message[]>([]);
+
+  const [fetchingConversations, setFetchingConversations] = useState(false);
+  const [fetchingMessages, setFetchingMessages] = useState(false);
+  const [gettingResponse, setGettingResponse] = useState(false);
+
   const { firebaseUser } = useFirebaseAuth();
   const axiosInstance = useAxios();
 
   // Fetch conversations from API
   const fetchConversations = async () => {
     try {
+      setFetchingConversations(true);
       const { data } = await axiosInstance!.get("/conversations");
       setConversations(data);
+      setFetchingConversations(false);
     } catch (error) {
       console.error("Error fetching conversations:", error);
+      setFetchingConversations(false);
     }
   };
 
@@ -65,12 +80,21 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     const fetchMessages = async () => {
       if (!currentConversationId) return;
       try {
+        setFetchingMessages(true);
         const { data } = await axiosInstance!.get(
-          `/conversation/${currentConversationId}/messages`
+          `/conversation/${currentConversationId}/messages`,
+          {
+            params: {
+              page: 1,
+              size: 20,
+            },
+          }
         );
-        setMessages(data);
+        setMessages(data.reverse());
+        setFetchingMessages(false);
       } catch (error) {
         console.error("Error fetching messages:", error);
+        setFetchingMessages(false);
       }
     };
 
@@ -79,17 +103,40 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
 
   // Send message
   const sendMessage = async (message: string) => {
-    console.log("axiosInstance: \n", axiosInstance);
+    if (!message) return;
+
+    setGettingResponse(true);
+    const prompt: any = {};
+    prompt.id = messages.length + 1;
+    prompt.role = "user";
+    prompt.content = message;
+    prompt.content_type = "text";
+
     try {
-      if (!currentConversationId) await createConversation();
-      if (!currentConversationId) return;
+      let conversationId = currentConversationId;
+
+      if (!conversationId) {
+        conversationId = await createConversation();
+      }
+
+      if (!conversationId) return;
+
       const { data } = await axiosInstance!.post(
-        `/conversation/${currentConversationId}/message`,
+        `/conversation/${conversationId}/message`,
         { message }
       );
-      setMessages((prev) => [...prev, data]);
+
+      const response: any = {};
+      response.id = messages.length + 2;
+      response.role = "assistant";
+      response.content = data.content.content;
+      response.content_type = data.content_type;
+
+      setMessages((prev) => [...prev, prompt, response]);
+      setGettingResponse(false);
     } catch (error) {
       console.error("Error sending message:", error);
+      setGettingResponse(false);
     }
   };
 
@@ -97,8 +144,9 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     if (currentConversationId) return;
     try {
       const { data } = await axiosInstance!.post(`/create_conversation`);
-      setConversations((prev) => [data, ...prev]);
+      setConversations((prev) => [...prev, data]);
       setCurrentConversation(data.id);
+      return data.id;
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -113,6 +161,9 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   return (
     <TingoGPTContext.Provider
       value={{
+        fetchingConversations,
+        fetchingMessages,
+        gettingResponse,
         conversations,
         currentConversationId,
         messages,
