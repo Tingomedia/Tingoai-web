@@ -36,7 +36,7 @@ const GPTLayout: FC = (): JSX.Element => {
         historyData={historyData}
         className={`${
           isSidebarOpen ? "block" : "hidden"
-        } lg:block absolute lg:relative z-20`}
+        } lg:block absolute lg:relative z-20 border-r`}
       />
       <Header toggleSidebar={toggleSidebar} />
 

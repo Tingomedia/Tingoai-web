@@ -32,7 +32,7 @@ const GptHeader: FC<HeaderProps> = ({ toggleSidebar, title="GPT" }) => {
 
   const selectItems = [
     { label: "TingoGPT", path: "/tingogpt"},
-    { label: "TingoGPT Plus", path: "/tingogpt/plus"},
+    { label: "TingoGPT Plus", path: "/upgrade"},
   ];
 
 const handleSelection = (value: string) => {

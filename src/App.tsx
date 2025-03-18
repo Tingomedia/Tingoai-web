@@ -44,11 +44,11 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/upgrade" element={<GptPlusHome />} />
 
         {/*=========== TingoGPT Routes ================*/}
         <Route path="/tingogpt" element={<GPTLayout />}>
           <Route path="" element={<GptHome />} />
-          <Route path="plus" element={<GptPlusHome />} />
         </Route>
 
         {/*============== TingoAI Routes =============*/}

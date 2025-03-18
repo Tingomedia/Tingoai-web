@@ -95,7 +95,7 @@ const CustomDropDown: FC<CustomDropDownProps> = ({
                 >
                   <img src={artificial} className="w-5 h-5" alt="icon" />
                   <p className="text-sm">{item.label}</p>
-                  {item.path == "/tingogpt-plus" && (
+                  {item.path == "upgrade" && (
                     <button className=" text-tremor-brand-faint text-sm border px-2 border-tremor-brand-faint rounded-full">
                       Upgrade
                     </button>
