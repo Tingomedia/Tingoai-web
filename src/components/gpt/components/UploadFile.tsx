@@ -30,6 +30,10 @@ const UploadFile = ({ onClose }: { onClose: (value: boolean) => void }) => {
     setStatus("uploading");
     setUploadProgress(0);
 
+    if(file){
+      console.log(file);
+    }
+
     // Simulating upload progress
     // Replace with backend logic
     const interval = setInterval(() => {
