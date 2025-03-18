@@ -3,6 +3,7 @@ import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import GptHome from "./components/gpt/GptHome";
 import NewGridHome from "./components/landing/new/NewGridHome";
+import { RadioProvider } from "./contexts/RadioContext";
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
@@ -28,6 +29,7 @@ const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
 function App() {
   return (
     <>
+    <RadioProvider>
       <ScrollToTop />
       <Routes>
         {/* General Routes */}
@@ -64,6 +66,7 @@ function App() {
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>
+      </RadioProvider>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import guinessImage from "../../../assets/images/new_tingo/guinessImage.png";
+// import guinessImage from "../../../assets/images/new_tingo/guinessImage.png";
+import guinessImage from "../../../assets/images/old_tingo/aboutImg.jpg";
 import black from "../../../assets/images/new_tingo/black2.png";
 import shadow from "../../../assets/images/new_tingo/Ellipse 13.svg";
 
@@ -20,8 +21,10 @@ const Guiness: React.FC = () => {
 
       {/* Main Content */}
       <div className="w-full container mx-auto bg-transparent min-h-[422px] flex flex-col-reverse gap-10 md:gap-32 pb-10 lg:pb-0 lg:flex-row justify-between relative z-30">
-        <img src={guinessImage} alt="Robot image" className="relative z-30" />
-        <div className="flex flex-col justify-center bg-transparent items-center lg:items-start px-4 sm:px-8 lg:px-0 gap-4 xl:gap-10 text-white xl:pr-20 relative z-30">
+        <div className="w-11/12 mx-auto lg:w-1/2 rounded-lg">
+        <img src={guinessImage} alt="Robot image" className="w-full relative z-30 rounded-xl" />
+        </div>
+        <div className="w-full lg:w-1/2 flex flex-col justify-center bg-transparent items-center lg:items-start px-4 sm:px-8 lg:px-0 gap-4 xl:gap-10 text-white xl:pr-20 relative z-30">
           {/* <Title></Title> */}
           <div className="w-full">
           <h1 className="w-full text-center lg:text-start font-bold text-[24px] font-poppins">
