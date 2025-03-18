@@ -3,7 +3,7 @@ import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import GptHome from "./components/gpt/GptHome";
 import NewGridHome from "./components/landing/new/NewGridHome";
-import { RadioProvider } from "./contexts/RadioContext";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
@@ -29,13 +29,12 @@ const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
 function App() {
   return (
     <>
-    <RadioProvider>
       <ScrollToTop />
       <Routes>
         {/* General Routes */}
         <Route path="/" element={<Home />} />
 
-        <Route path="/tingoai-products" element={<NewGridHome/>} />
+        <Route path="/tingoai-products" element={<NewGridHome />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Product />} />
@@ -46,7 +45,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
         {/*=========== TingoGPT Routes ================*/}
-        <Route path="/tingogpt" element={<GPTLayout />}>
+        <Route
+          path="/tingogpt"
+          element={<ProtectedRoute element={<GPTLayout />} />}
+        >
           <Route path="" element={<GptHome />} />
           <Route path="plus" element={<GptPlusHome />} />
         </Route>
@@ -66,7 +68,6 @@ function App() {
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>
-      </RadioProvider>
     </>
   );
 }
