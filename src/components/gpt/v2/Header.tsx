@@ -9,8 +9,9 @@ export default function Header({
   const { firebaseUser } = useFirebaseAuth();
   return (
     <div
-      className="sticky top-0 w-full h-[72px] p-4 flex items-center justify-between bg-[linear-gradient(0deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05)),linear-gradient(0deg,rgba(0,0,0,0.05),rgba(0,0,0,0.05))]
-                  backdrop-blur-[196px]
+      className="sticky top-0 w-full h-[72px] p-4 flex items-center justify-between 
+                bg-[linear-gradient(0deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05)),linear-gradient(0deg,rgba(0,0,0,0.05),rgba(0,0,0,0.05))]
+                  backdrop-blur-lg
                   shadow-[0px_24px_30px_0px_#0000000D]"
     >
       <div className="flex items-center gap-4">
@@ -20,7 +21,7 @@ export default function Header({
           className="h-[50px] max-h-full max-w-full object-contain pt-2"
         />
         <CgMenuGridO
-          className="text-tremor-brand-muted text-4xl cursor-pointer"
+          className="text-tremor-brand-muted text-4xl cursor-pointer lg:hidden"
           onClick={toggleSideNav}
         />
       </div>

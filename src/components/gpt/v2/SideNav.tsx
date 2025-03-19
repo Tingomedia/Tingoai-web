@@ -1,12 +1,16 @@
 import { useConversations } from "../../../contexts/TingoGPTContext";
 
 export default function SideNav({ hidden }: { hidden: boolean }) {
-  const { fetchingConversations, conversations, setCurrentConversation } =
-    useConversations();
+  const {
+    fetchingConversations,
+    conversations,
+    currentConversationId,
+    setCurrentConversation,
+  } = useConversations();
 
   return (
     <div
-      className="w-full max-w-[320px] hidden lg:flex flex-col justify-between py-[32px] z-20 bg-[linear-gradient(0deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05)),linear-gradient(0deg,rgba(0,0,0,0.05),rgba(0,0,0,0.05))]"
+      className="w-full max-w-[320px] hidden lg:flex flex-col justify-between py-[32px] bg-[linear-gradient(0deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05)),linear-gradient(0deg,rgba(0,0,0,0.05),rgba(0,0,0,0.05))]"
       style={!hidden ? { display: "flex" } : {}}
     >
       <div className="px-[24px] ">
@@ -25,13 +29,15 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
           />
         </div>
       </div>
-      <div className="h-1/2 relative">
+      <div className="h-1/2 flex flex-col gap-8 overflow-y-auto hide-scrollbar relative">
         {conversations.length > 0 ? (
           conversations.map((history) => (
             <button
               key={history.id}
               onClick={() => setCurrentConversation(history.id)}
-              className="flex flex-col items-start justify-start mr-auto max-w-[280px]"
+              className={`flex flex-col items-start justify-start max-w-[320px] px-8 py-2 ${
+                currentConversationId === history.id ? "bg-white/10" : ""
+              }`}
             >
               <span className="text-white font-medium truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
                 {history.recent_message}

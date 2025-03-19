@@ -18,6 +18,7 @@ export default function UserPrompt({ prompt }: { prompt: Message }) {
               prompt.file &&
               new File(["dummy content"], "example.txt", { type: "text/plain" }) // replace with file
             }
+            bg
           />
         );
     }

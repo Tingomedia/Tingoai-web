@@ -44,9 +44,7 @@ const TextBlock = ({
   return (
     <div
       className={
-        bg
-          ? "bg-[#232a3e] p-[15px] rounded-tr-[20px] rounded-bl-[20px]"
-          : "flex flex-col gap-[16px]"
+        bg ? "bg-gray-900 p-[10px] rounded" : "flex flex-col gap-[16px]"
       }
     >
       <div className="flex flex-col gap-4 text-[14px]">
