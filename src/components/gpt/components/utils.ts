@@ -35,5 +35,5 @@ export const getCodeMirrorLang = (lang: string) => {
   const key = lang.toLowerCase() as keyof typeof languageMap;
   if (key in languageMap) return languageMap[key];
 
-  return langs.kotlin();
+  return langs.html();
 };

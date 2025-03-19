@@ -22,6 +22,7 @@ export default function AskTingoGPT() {
     if (gettingResponse) {
       textInputRef.current?.blur();
     } else {
+      textInputRef.current?.focus();
     }
   }, [gettingResponse]);
 
@@ -40,16 +41,23 @@ export default function AskTingoGPT() {
     }
   };
 
+  const handleMessageSubmission = async () => {
+    const success = await sendMessage(userPrompt);
+    if (success) setUserPrompt("");
+  };
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault(); // Prevents adding a new line
-      sendMessage(userPrompt);
+      handleMessageSubmission();
     }
   };
 
   return (
     <div
-      className="max-w-[640px] relative flex items-center justify-between w-full h-[64px] px-[28px] py-[10px] gap-[10px] rounded-[30px] backdrop-blur-[50px] mx-8 md:mx-2"
+      className={`max-w-[640px] relative flex items-center justify-between w-full h-[64px] px-[28px] py-[10px] gap-[10px] rounded-[30px] backdrop-blur-[50px] mx-8 md:mx-2 ${
+        gettingResponse ? "pointer-events-none" : ""
+      }`}
       style={{
         position: "relative",
         background:
@@ -77,7 +85,7 @@ export default function AskTingoGPT() {
       </div>
       <div className="flex items-center">
         {userPrompt && (
-          <button onClick={() => sendMessage(userPrompt)}>
+          <button onClick={() => handleMessageSubmission()}>
             <img src={sendIcon} alt="submit" className="w-[24px] h-[24px]" />
           </button>
         )}
@@ -87,7 +95,11 @@ export default function AskTingoGPT() {
           </button>
         )}
       </div>
-
+      {gettingResponse && (
+        <div className="absolute bottom-50% left-50% bg-white/85 text-gray-500 rounded-full py-4 px-16 pointer-events-none">
+          gettingResponse..
+        </div>
+      )}
       {showInputs && (
         <div className="absolute -top-64">
           <InputOptions onSelect={showFileSelect} />

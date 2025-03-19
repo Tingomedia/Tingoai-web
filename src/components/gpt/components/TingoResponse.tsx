@@ -16,10 +16,14 @@ import CodeBlock from "./replies/CodeBlock";
 //   lang?: string;
 // };
 
-const Actions = () => {
+const Actions = ({ content }: { content: string }) => {
   return (
     <div className="flex gap-[20px] z-10">
-      <button>
+      <button
+        onClick={async () => {
+          await navigator.clipboard.writeText(content);
+        }}
+      >
         <img src={copyIcon} width={18} height={18} />
       </button>
       <button>
@@ -35,25 +39,29 @@ const Actions = () => {
   );
 };
 
-function extractCodeAndLanguage(content: any) {
-  const codeBlockRegex = /```(\w+)?\n([\s\S]*?)\n```/;
-  const match = content.match(codeBlockRegex);
+function extractCodeAndLanguage(response: any) {
+  if (response.content_type !== "image") {
+    const codeBlockRegex = /```(\w+)?\n([\s\S]*?)\n```/;
+    const match: string = response.content.match(codeBlockRegex);
 
-  if (match) {
-    const language = match[1] || "unknown";
-    const code = match[2];
-    return {
-      language,
-      code,
-      description: content.replace(/```[\s\S]*?```/, "").trim(),
-    };
+    if (match) {
+      const language = match[1].toLowerCase() || "unknown";
+      const code = match[2];
+      return {
+        language,
+        code,
+        descriptions: response.content
+          .split(/```[\s\S]*?```/)
+          .map((part: string) => part.trim()),
+      };
+    }
   }
-
   return { language: null, code: null };
 }
 
 export default function TingoResponse({ response }: { response: Message }) {
   if (!response.content) return null;
+  const { language, code, descriptions } = extractCodeAndLanguage(response);
 
   const Response = () => {
     if (response.content_type === "image") {
@@ -65,12 +73,10 @@ export default function TingoResponse({ response }: { response: Message }) {
         />
       );
     }
-    const { language, code, description } = extractCodeAndLanguage(
-      response.content
-    );
+
     if (language) {
       return (
-        <CodeBlock msg={description} code={code} lang={language} name={""} />
+        <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
       );
     }
 
@@ -79,7 +85,13 @@ export default function TingoResponse({ response }: { response: Message }) {
   return (
     <div className="flex flex-col gap-[15px]">
       <Response />
-      <Actions />
+      <Actions
+        content={
+          descriptions?.length
+            ? descriptions[descriptions.length - 1]
+            : response.content
+        }
+      />
     </div>
   );
 }
