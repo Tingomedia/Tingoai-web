@@ -44,11 +44,11 @@ function MainNavGpt({}: MainNavProps) {
             <button
               key={history.id}
               onClick={() => setCurrentConversation(history.id)}
-              className="flex flex-col items-start"
+              className="flex flex-col items-start justify-start mr-auto max-w-[280px]"
             >
-              <h4 className="text-white font-medium truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
+              <span className="text-white font-medium truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
                 {history.recent_message}
-              </h4>
+              </span>
               <p className="text-sm text-gray-400">{`ID: ${history.id}`}</p>
             </button>
           ))

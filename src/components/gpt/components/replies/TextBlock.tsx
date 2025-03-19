@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import closeIcon from "../../../../assets/icons/multiply.svg";
 import pdfIcon from "../../../../assets/icons/pdf-file-type.svg";
 
@@ -10,6 +11,7 @@ const TextBlock = ({
   file?: File;
   bg?: boolean;
 }) => {
+  const paragraphs = text.split("\n").filter((p) => p.trim() !== "");
   const File = ({ file }: { file: File }) => {
     const formatFileSize = (bytes: number) => {
       if (bytes < 1024 * 1024) {
@@ -47,7 +49,21 @@ const TextBlock = ({
           : "flex flex-col gap-[16px]"
       }
     >
-      {text}
+      <div className="flex flex-col gap-4 text-[14px]">
+        {paragraphs.map((para, index) => (
+          <ReactMarkdown
+            key={index}
+            components={{
+              p: ({ node, ...props }) => (
+                <p className="prose prose-invert" {...props} />
+              ),
+            }}
+          >
+            {para}
+          </ReactMarkdown>
+        ))}
+      </div>
+
       {file && <File file={file} />}
     </div>
   );

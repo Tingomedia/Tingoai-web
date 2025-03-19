@@ -32,7 +32,7 @@ interface TingoGPTContextType {
   currentConversationId: string | null;
   messages: Message[];
   setCurrentConversation: (id: string) => void;
-  sendMessage: (message: string) => Promise<void>;
+  sendMessage: (message: string) => Promise<boolean | undefined>;
   fetchConversations: () => Promise<void>;
 }
 
@@ -135,6 +135,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
 
       setMessages((prev) => [...prev, prompt, response]);
       setGettingResponse(false);
+      return true;
     } catch (error) {
       console.error("Error sending message:", error);
       setGettingResponse(false);
