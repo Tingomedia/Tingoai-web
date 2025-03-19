@@ -25,25 +25,25 @@ const GPTLayout: FC = (): JSX.Element => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[30rem_1fr] grid-rows-[auto_1fr] h-screen hide-scrollbar bg-[#1D2739]">
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 z-10 bg-black bg-opacity-50 lg:hidden"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-      <SidebarGpt
-        historyData={historyData}
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } lg:block absolute lg:relative z-20 border-r`}
-      />
-      <Header toggleSidebar={toggleSidebar} />
+    <div className="grid grid-cols-1 lg:grid-cols-[30rem_1fr] grid-rows-[auto_1fr] h-screen overflow-hidden bg-[#1D2739]">
+    {isSidebarOpen && (
+      <div
+        className="fixed inset-0 z-10 bg-black bg-opacity-50 lg:hidden"
+        onClick={toggleSidebar}
+      ></div>
+    )}
+    <SidebarGpt
+      historyData={historyData}
+      className={`${
+        isSidebarOpen ? "block" : "hidden"
+      } lg:block absolute lg:relative z-20 border-r`}
+    />
+    <Header toggleSidebar={toggleSidebar} />
 
-      <div className="col-span-1 lg:col-start-2 overflow-hidden hide-scrollbar">
-        <Outlet />
-      </div>
+    <div className="col-span-1 lg:col-start-2 h-full overflow-hidden">
+      <Outlet />
     </div>
+  </div>
   );
 };
 

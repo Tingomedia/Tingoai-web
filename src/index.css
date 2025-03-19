@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*,
-body,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  scrollbar-width: thin;        
-  scrollbar-color: rgba(247, 139, 41, 1) #f0f0f0; 
-}
-
-html {
-  font-size: 62.5%;
-}
 :root {
   /* Indigo */
   --color-brand-50: #eef2ff;
@@ -57,19 +42,34 @@ html {
   --color-red-800: #991b1b;
 }
 
+*,
+body,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scrollbar-width: thin;        
+  scrollbar-color: rgba(247, 139, 41, 1) #f0f0f0; 
+}
+
+html {
+  font-size: 62.5%;
+  background: #121826;
+}
+
+
 body {
   font-family: "Poppins", sans-serif;
-
-  /* transition: color 0.3s, background-color 0.3s; */
   min-height: 100vh;
+  overflow-x: hidden; 
+  overflow-y: auto;
   line-height: 1.5;
   font-size: 1.6rem;
-  overflow-x: hidden;
-  /* scrollbar-color: rgba(247, 139, 41, 1)  #f0f0f0; */
-  scrollbar-width: 5px;
+  scrollbar-width: thin;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-
 }
+
 
 /* Edge/IE 11 styling for a consistent experience */
 body * {
@@ -138,3 +138,5 @@ li {
     background: linear-gradient(90deg, rgba(201, 201, 201, 0.4) 0%, rgba(201, 201, 201, 0.05) 100%);
   }
 }
+
+

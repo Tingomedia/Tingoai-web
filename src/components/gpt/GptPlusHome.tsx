@@ -50,7 +50,7 @@ const GptPlusHome = () => {
   const [activePlan, setActivePlan] = useState("Personal");
 
   return (
-    <div className="bg-[#1D2739] text-[#E5E7EB] py-12 px-4 grid gap-[32px] justify-items-center">
+    <div className="bg-[#1D2739] text-[#E5E7EB] py-12 px-4 grid gap-[32px] justify-items-center min:h-screen">
       <h2 className="text-center text-[28px] font-poppins font-medium">
         Upgrade your plan
       </h2>

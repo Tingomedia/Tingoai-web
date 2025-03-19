@@ -39,7 +39,7 @@ const handleSelection = (value: string) => {
   console.log("Selected:", value);
 };
   return (
-    <div className="px-16 py-6 bg-[#1D2739] border-b flex justify-between">
+    <div className="px-16 py-6 bg-transparent border-b flex justify-between">
       {/* Hamburger menu icon for mobile */}
       <div className="flex lg:hidden gap-4 items-center justify-center">
         <Link to="/" className="font-bold h1 text-3xl text-tremor-brand-muted">Tingo<span className="text-primary-200">{title}</span></Link>
