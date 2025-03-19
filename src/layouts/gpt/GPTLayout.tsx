@@ -1,12 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../navs/GptHeader";
 import SidebarGpt from "../navs/SidNavGpt";
 import { historyData } from "../../db/gtptDb";
-import {
-  ConversationProvider,
-  useConversations,
-} from "../../contexts/TingoGPTContext";
+import { ConversationProvider } from "../../contexts/TingoGPTContext";
 /**
  * Admin Layout component that wraps the main content of the admin section.
  *
@@ -22,11 +19,6 @@ import {
 
 const GPTLayout: FC = (): JSX.Element => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const { conversations } = useConversations();
-
-  useEffect(() => {
-    console.log("conversations: \n", conversations);
-  }, [conversations]);
 
   // Toggle function for sidebar
   const toggleSidebar = () => {

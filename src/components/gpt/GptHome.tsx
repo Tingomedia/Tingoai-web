@@ -9,7 +9,7 @@ const GptHome = () => {
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log("messages: \n", messages);
+    // console.log("messages: \n", messages);
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
