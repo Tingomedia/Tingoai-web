@@ -4,6 +4,7 @@ import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import GptHome from "./components/gpt/GptHome";
 import NewGridHome from "./components/landing/new/NewGridHome";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import GptHomeV2 from "./components/gpt/v2/GptHome";
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
@@ -65,6 +66,8 @@ function App() {
           <Route path="news" element={<NewsWeather />} />
           <Route path="reachus" element={<Reachus />} />
         </Route>
+
+        <Route path="/test" element={<GptHomeV2 />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>
