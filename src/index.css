@@ -76,6 +76,56 @@ body * {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+}
+
+@font-face {
+  font-family: 'SFPRO';
+  src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFPRO';
+  src: url('/fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFPRO';
+  src: url('/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/MyFont-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/MyFont-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
 input,
 button,
 textarea,

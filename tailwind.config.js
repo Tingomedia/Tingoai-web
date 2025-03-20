@@ -58,13 +58,13 @@ export default {
             inverted: colors.white,
           },
         },
-        
       },
       fontFamily: {
+        sfPro: ["SFPRO", "sans-serif"],
         Manrope: ["Manrope", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
         Inter: ["Inter", "sans-serif"],
-        Poppins: ["Poppins", "sans-serif"]
+        Poppins: ["Poppins", "sans-serif"],
       },
       keyframes: {
         fadeInDrop1: {
@@ -96,11 +96,10 @@ export default {
         spin: "spin 1s linear infinite",
       },
       boxShadow: {
-        custom: '-3px 0px 20px 0px rgba(0, 0, 0, 0.25)',
-        'inner-custom': '-5px -11px 10.8px 0px #00000090 inset',
-        customG: '1.61px 1.61px 8.03px 4.02px hsla(0, 0%, 0%, 0.1)',
+        custom: "-3px 0px 20px 0px rgba(0, 0, 0, 0.25)",
+        "inner-custom": "-5px -11px 10.8px 0px #00000090 inset",
+        customG: "1.61px 1.61px 8.03px 4.02px hsla(0, 0%, 0%, 0.1)",
       },
-
     },
   },
   plugins: [],

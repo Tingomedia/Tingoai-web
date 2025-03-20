@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
-import GptHome from "./components/gpt/GptHome";
+// import GptHome from "./components/gpt/GptHome";
 import NewGridHome from "./components/landing/new/NewGridHome";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import GptHomeV2 from "./components/gpt/v2/GptHome";
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
 const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
-const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
+// const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
 const Signin = lazy(() => import("./pages/auth/Signin"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
@@ -47,9 +48,9 @@ function App() {
         {/*=========== TingoGPT Routes ================*/}
         <Route
           path="/tingogpt"
-          element={<ProtectedRoute element={<GPTLayout />} />}
+          element={<ProtectedRoute element={<GptHomeV2 />} />}
         >
-          <Route path="" element={<GptHome />} />
+          <Route path="" element={<GptHomeV2 />} />
           <Route path="plus" element={<GptPlusHome />} />
         </Route>
 
@@ -65,6 +66,8 @@ function App() {
           <Route path="news" element={<NewsWeather />} />
           <Route path="reachus" element={<Reachus />} />
         </Route>
+
+        <Route path="/test" element={<GptHomeV2 />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>

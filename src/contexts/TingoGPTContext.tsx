@@ -104,7 +104,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   // Send message
   const sendMessage = async (message: string) => {
     if (!message) return;
-
+    setMessages((prev) => [...prev, prompt]);
     setGettingResponse(true);
     const prompt: any = {};
     prompt.id = messages.length + 1;
@@ -133,7 +133,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
         data.content_type === "image" ? data.content : data.content.content;
       response.content_type = data.content_type;
 
-      setMessages((prev) => [...prev, prompt, response]);
+      setMessages((prev) => [...prev, response]);
       setGettingResponse(false);
       return true;
     } catch (error) {

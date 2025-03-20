@@ -80,7 +80,7 @@ export default function TingoResponse({ response }: { response: Message }) {
       );
     }
 
-    return <TextBlock text={response.content} bg />;
+    return <TextBlock text={response.content} />;
   };
   return (
     <div className="flex flex-col gap-[15px]">
