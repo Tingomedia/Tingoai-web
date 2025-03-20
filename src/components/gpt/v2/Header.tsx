@@ -40,7 +40,7 @@ export default function Header({
             <img
               src={firebaseUser?.photoURL || "/images/Avatar.png"}
               alt="avatar"
-              className="w-16 object-cover object-center rounded-full border"
+              className="w-16 object-cover object-center rounded-full"
             />
           </button>
         </div>

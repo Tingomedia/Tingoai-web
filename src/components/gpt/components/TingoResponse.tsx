@@ -7,6 +7,7 @@ import volumeIcon from "../../../assets/icons/volume-high.svg";
 import editIcon from "../../../assets/icons/pencil-edit-01.svg";
 import { Message } from "../../../contexts/TingoGPTContext";
 import CodeBlock from "./replies/CodeBlock";
+import { forwardRef } from "react";
 
 // export type Response = {
 //   type: "text" | "code" | "etc"; // add expected types
@@ -59,39 +60,43 @@ function extractCodeAndLanguage(response: any) {
   return { language: null, code: null };
 }
 
-export default function TingoResponse({ response }: { response: Message }) {
-  if (!response.content) return null;
-  const { language, code, descriptions } = extractCodeAndLanguage(response);
+const TingoResponse = forwardRef<HTMLDivElement, { response: Message }>(
+  ({ response }, ref) => {
+    if (!response.content) return null;
+    const { language, code, descriptions } = extractCodeAndLanguage(response);
 
-  const Response = () => {
-    if (response.content_type === "image") {
-      return (
-        <img
-          // @ts-ignore
-          src={response.content.image_url}
-          className="w-[320px] h-auto"
+    const Response = () => {
+      if (response.content_type === "image") {
+        return (
+          <img
+            // @ts-ignore
+            src={response.content.image_url}
+            className="w-[320px] h-auto"
+          />
+        );
+      }
+
+      if (language) {
+        return (
+          <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
+        );
+      }
+
+      return <TextBlock text={response.content} />;
+    };
+    return (
+      <div className="flex flex-col gap-[15px]" ref={ref}>
+        <Response />
+        <Actions
+          content={
+            descriptions?.length
+              ? descriptions[descriptions.length - 1]
+              : response.content
+          }
         />
-      );
-    }
+      </div>
+    );
+  }
+);
 
-    if (language) {
-      return (
-        <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
-      );
-    }
-
-    return <TextBlock text={response.content} />;
-  };
-  return (
-    <div className="flex flex-col gap-[15px]">
-      <Response />
-      <Actions
-        content={
-          descriptions?.length
-            ? descriptions[descriptions.length - 1]
-            : response.content
-        }
-      />
-    </div>
-  );
-}
+export default TingoResponse;
