@@ -48,9 +48,9 @@ function App() {
         {/*=========== TingoGPT Routes ================*/}
         <Route
           path="/tingogpt"
-          element={<ProtectedRoute element={<GPTLayout />} />}
+          element={<ProtectedRoute element={<GptHomeV2 />} />}
         >
-          <Route path="" element={<GptHome />} />
+          <Route path="" element={<GptHomeV2 />} />
           <Route path="plus" element={<GptPlusHome />} />
         </Route>
 

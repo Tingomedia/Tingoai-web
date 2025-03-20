@@ -4,6 +4,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import InputOptions, { FileSource } from "../components/InputOptions";
 import UploadFile from "../components/UploadFile";
+import Header from "../../../layouts/ai/Header";
 
 export default function PromptInput() {
   const [userPrompt, setUserPrompt] = useState("");
@@ -47,44 +48,46 @@ export default function PromptInput() {
     }
   };
   return (
-    <div
-      className={`fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[97%] max-w-[960px] h-[96px] mx-auto my-4 z-10 shadow-xl ${
-        gettingResponse ? "pointer-events-none" : ""
-      }`}
-    >
-      <div className="w-full h-full flex items-center justify-center rounded-[80px] p-[10px] gap-[10px] bg-white/5 backdrop-filter backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
-        <button className="rounded-full" onClick={() => setShowInputs(true)}>
-          <img src="/icons/add_butt.svg" width={44} height={44} />
-        </button>
-        <div className="w-[480px] h-full max-h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 backdrop-filter backdrop-blur-lg filter blur-[0px] shadow-inner shadow-black/30 rounded-full px-4 relative">
-          <TextareaAutosize
-            ref={textInputRef}
-            disabled={gettingResponse}
-            value={userPrompt}
-            placeholder="Vision OS is the future 🤩"
-            className="w-full h-full px-2 text-[14px] text-[#B8B8B8] bg-transparent border-none outline-none resize-none hide-scrollbar"
-            minRows={1}
-            maxRows={2}
-            onChange={(e) => setUserPrompt(e.target.value)}
-            onKeyDown={handleKeyPress}
-          />
-        </div>
+    <>
+      <div
+        className={`w-[97%] max-w-[960px] h-[120px] mx-auto mb-4 z-10 shadow-xl ${
+          gettingResponse ? "pointer-events-none" : ""
+        }`}
+      >
+        <div className="w-full h-full relative flex items-center justify-center rounded-[80px] p-[10px] lg:gap-[10px] bg-white/5 backdrop-contrast-100 backdrop-filter backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
+          <button className="rounded-full" onClick={() => setShowInputs(true)}>
+            <img src="/icons/add_butt.svg" width={44} height={44} />
+          </button>
+          <div className="w-[480px] h-full max-h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 backdrop-filter backdrop-blur-lg filter blur-[0px] shadow-inner shadow-black/30 rounded-full px-4 relative">
+            <TextareaAutosize
+              ref={textInputRef}
+              disabled={gettingResponse}
+              value={userPrompt}
+              placeholder="What do you have in mind?"
+              className="w-full h-full px-2 text-[14px] text-[#B8B8B8] bg-transparent border-none outline-none resize-none hide-scrollbar"
+              minRows={1}
+              maxRows={2}
+              onChange={(e) => setUserPrompt(e.target.value)}
+              onKeyDown={handleKeyPress}
+            />
+          </div>
 
-        <button className="rounded-full">
-          <img src="/icons/send_butt.svg" width={40} height={40} />
-        </button>
+          <button className="rounded-full">
+            <img src="/icons/send_butt.svg" width={40} height={40} />
+          </button>
+        </div>
+        {/* {gettingResponse && (
+          <div className="absolute bottom-50% left-50% bg-white/85 text-gray-500 rounded-full py-4 px-16 pointer-events-none">
+            gettingResponse..
+          </div>
+        )} */}
+        {showInputs && (
+          <div className="absolute -top-64">
+            <InputOptions onSelect={showFileSelect} />
+          </div>
+        )}
+        {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
       </div>
-      {gettingResponse && (
-        <div className="absolute bottom-50% left-50% bg-white/85 text-gray-500 rounded-full py-4 px-16 pointer-events-none">
-          gettingResponse..
-        </div>
-      )}
-      {showInputs && (
-        <div className="absolute -top-64">
-          <InputOptions onSelect={showFileSelect} />
-        </div>
-      )}
-      {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
-    </div>
+    </>
   );
 }
