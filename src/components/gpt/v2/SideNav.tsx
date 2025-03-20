@@ -21,50 +21,52 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
           : {}
       }
     >
-      <div className="px-[40px] py-[12px] ">
-        <span className="text-[32px] text-white">Conversations</span>
+      <div className="w-full px-[16px] py-[12px] text-center">
+        <span className="text-[2.5rem] lg:text-[3rem] text-white/60">Conversation History</span>
         <div
           className="relative w-full bg-gray-950/35 text-white/60 text-[15px] px-[12px] mt-4
                 shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
-                backdrop-blur-[143.12px] h-[32px] overflow-hidden"
+                backdrop-blur-[143.12px] h-[32px] overflow-hidden rounded-full"
         >
           <input
             type="text"
-            placeholder="Search in Conversations"
-            className="w-full h-full p-1 focus:outline-none bg-transparent"
+            placeholder="Search for Conversations"
+            className="w-full h-full p-1 focus:outline-none rounded-full bg-transparent"
           />
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-4 overflow-y-auto hide-scrollbar relative">
         {fetchingConversations && (
           <div className="absolute inset-0 bg-transparent text-white flex items-start justify-start pt-6 pl-10">
-            <BlinkingDot />
+            <BlinkingDot label="histories..." />
           </div>
         )}
-        {fetchingConversations || conversations.length > 0 ? (
-          conversations.map((history) => (
-            <button
-              key={history.id}
-              onClick={() => setCurrentConversation(history.id)}
-              className={`flex flex-col w-full items-start justify-start max-w-[320px] mr-auto px-16 py-6 hover:bg-white/10 ${
-                currentConversationId === history.id ? "bg-white/10" : ""
-              }`}
-            >
-              <span className="text-white/60 truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
-                {history.recent_message}
-              </span>
-              {/* <p className="text-sm text-gray-400">{`ID: ${history.id}`}</p> */}
-            </button>
-          ))
-        ) : (
-          <p className="text-gray-500 text-center py-2 self-center my-auto">
-            No recent searches
-          </p>
-        )}
+       {fetchingConversations || conversations.length > 0 ? (
+  conversations.slice().reverse().map((history) => ( // Reversing the array
+    <button
+      key={history.id}
+      onClick={() => setCurrentConversation(history.id)}
+      className={`flex flex-col w-full items-start justify-start max-w-[320px] mr-auto px-16 py-6 hover:bg-white/10 ${
+        currentConversationId === history.id ? "bg-white/10" : ""
+      }`}
+    >
+      <span className="text-white/60 truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
+        {history.recent_message}
+      </span>
+    </button>
+  ))
+) : (
+  <p className="text-gray-500 text-center py-2 self-center my-auto">
+    No Conversation <span className="text-primary-200/60">History...</span>
+  </p>
+)}
+
       </div>
-      <div className="flex h-[120px] justify-center items-center bg-white/0">
-        <button className="px-[32px] py-[8px] bg-primary-200 rounded-lg text-white/60">
-          Unlock more features with pro
+      <div className="w-full flex h-[120px] justify-center items-center bg-white/0 ">
+        <button className="w-11/12 bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] py-[8px] border border-white/50 rounded-lg text-white/90 relative text-start px-2 cursor-not-allowed">
+          TingoGPT-v2 <span className="absolute top-2 right-1 bg-primary-200/20 border border-white/90 text-white/90 font-Manrope text-[12px] font-medium px-3 py-1 rounded-full">
+          Coming soon
+        </span>
         </button>
       </div>
     </div>
