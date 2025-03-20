@@ -9,7 +9,7 @@ import TextBlock from "./replies/TextBlock";
 
 export default function UserPrompt({ prompt }: { prompt: Message }) {
   const Prompt = () => {
-    switch (prompt.type) {
+    switch (prompt.content_type) {
       default:
         return (
           <TextBlock

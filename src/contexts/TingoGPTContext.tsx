@@ -12,7 +12,7 @@ export interface Message {
   id: string;
   role: string;
   content: string;
-  type: string;
+  content_type: string;
   file: File;
   sender: string;
   timestamp: string;
@@ -32,7 +32,7 @@ interface TingoGPTContextType {
   currentConversationId: string | null;
   messages: Message[];
   setCurrentConversation: (id: string) => void;
-  sendMessage: (message: string) => Promise<void>;
+  sendMessage: (message: string) => Promise<boolean | undefined>;
   fetchConversations: () => Promise<void>;
 }
 
@@ -129,11 +129,13 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       const response: any = {};
       response.id = messages.length + 2;
       response.role = "assistant";
-      response.content = data.content.content;
+      response.content =
+        data.content_type === "image" ? data.content : data.content.content;
       response.content_type = data.content_type;
 
       setMessages((prev) => [...prev, prompt, response]);
       setGettingResponse(false);
+      return true;
     } catch (error) {
       console.error("Error sending message:", error);
       setGettingResponse(false);
