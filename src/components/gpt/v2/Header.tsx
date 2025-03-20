@@ -1,6 +1,5 @@
 import { CgMenuGridO } from "react-icons/cg";
 import useFirebaseAuth from "../../../hooks/useFirebaseAuth";
-import { Link } from "react-router-dom";
 
 export default function Header({
   toggleSideNav,
@@ -16,13 +15,13 @@ export default function Header({
                   shadow-[0px_24px_30px_0px_#0000000D] z-20"
     >
       <div className="flex items-center gap-4">
-        <Link to="/">
+        {/* <Link to="/"> */}
           <img
             src="/images/logo.svg"
             alt="Logo"
             className="h-[50px] max-h-full max-w-full object-contain pt-2 hidden lg:flex"
           />
-        </Link>
+        {/* </Link> */}
         <CgMenuGridO
           className="text-tremor-brand-muted text-4xl cursor-pointer lg:hidden"
           onClick={toggleSideNav}
