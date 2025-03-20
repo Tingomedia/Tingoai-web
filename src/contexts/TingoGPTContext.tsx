@@ -4,6 +4,7 @@ import React, {
   useState,
   useEffect,
   ReactNode,
+  useRef,
 } from "react";
 import useAxios from "../hooks/useAxios";
 import useFirebaseAuth from "../hooks/useFirebaseAuth";
@@ -53,6 +54,8 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   const [fetchingMessages, setFetchingMessages] = useState(false);
   const [gettingResponse, setGettingResponse] = useState(false);
 
+  const preventMessagesFetch = useRef(false); // prevent it when we start new conversation
+
   const { firebaseUser } = useFirebaseAuth();
   const axiosInstance = useAxios();
 
@@ -79,6 +82,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   useEffect(() => {
     const fetchMessages = async () => {
       if (!currentConversationId) return;
+      if (preventMessagesFetch.current) return;
       try {
         setFetchingMessages(true);
         const { data } = await axiosInstance!.get(
@@ -147,6 +151,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     try {
       const { data } = await axiosInstance!.post(`/create_conversation`);
       setConversations((prev) => [...prev, data]);
+      preventMessagesFetch.current = true;
       setCurrentConversation(data.id);
       return data.id;
     } catch (error) {

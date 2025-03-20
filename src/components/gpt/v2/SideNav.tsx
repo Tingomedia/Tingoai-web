@@ -35,7 +35,7 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
           />
         </div>
       </div>
-      <div className="h-1/2 flex flex-col gap-4 overflow-y-auto hide-scrollbar relative">
+      <div className="flex flex-1 flex-col gap-4 overflow-y-auto hide-scrollbar relative">
         {fetchingConversations && (
           <div className="absolute inset-0 bg-transparent text-white flex items-start justify-start pt-6 pl-10">
             <BlinkingDot />
@@ -46,7 +46,7 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
             <button
               key={history.id}
               onClick={() => setCurrentConversation(history.id)}
-              className={`flex flex-col items-start justify-start max-w-[320px] mr-auto px-16 py-6 ${
+              className={`flex flex-col w-full items-start justify-start max-w-[320px] mr-auto px-16 py-6 hover:bg-white/10 ${
                 currentConversationId === history.id ? "bg-white/10" : ""
               }`}
             >
@@ -62,7 +62,11 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
           </p>
         )}
       </div>
-      <div className="h-[100px] bg-white/0"></div>
+      <div className="flex h-[120px] items-center bg-white/0">
+        <button className="px-[32px] py-[8px]">
+          Unlock more features with pro
+        </button>
+      </div>
     </div>
   );
 }

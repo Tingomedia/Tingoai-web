@@ -114,10 +114,10 @@ body * {
 }
 
 @font-face {
-  font-family: 'MyFont';
-  src: url('/fonts/MyFont-Italic.otf') format('opentype');
+  font-family: 'InriaSans';
+    src: url('/fonts/InriaSans-Light.ttf') format('opentype');
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
 }
 
 @font-face {
