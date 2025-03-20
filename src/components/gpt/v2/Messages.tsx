@@ -8,7 +8,7 @@ export default function Messages() {
   const { fetchingMessages, messages, gettingResponse } = useConversations();
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
   const lastUserMsgRef = useRef<HTMLDivElement | null>(null);
-  const lastAssistantMsgRef = useRef<HTMLDivElement | null>(null);
+  //   const lastAssistantMsgRef = useRef<HTMLDivElement | null>(null);
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(false);
 

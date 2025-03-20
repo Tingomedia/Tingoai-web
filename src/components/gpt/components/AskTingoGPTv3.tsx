@@ -1,5 +1,3 @@
-import React from "react";
-
 const VisionProChatLayout = () => {
   return (
     <div className="w-full h-screen relative">

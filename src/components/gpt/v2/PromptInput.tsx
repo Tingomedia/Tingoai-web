@@ -4,7 +4,6 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import InputOptions, { FileSource } from "../components/InputOptions";
 import UploadFile from "../components/UploadFile";
-import Header from "../../../layouts/ai/Header";
 
 export default function PromptInput() {
   const [userPrompt, setUserPrompt] = useState("");

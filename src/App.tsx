@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
-import GptHome from "./components/gpt/GptHome";
+// import GptHome from "./components/gpt/GptHome";
 import NewGridHome from "./components/landing/new/NewGridHome";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import GptHomeV2 from "./components/gpt/v2/GptHome";
@@ -10,7 +10,7 @@ const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
 const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
-const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
+// const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
 const Signin = lazy(() => import("./pages/auth/Signin"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
