@@ -44,9 +44,7 @@ const TextBlock = ({
   return (
     <div
       className={
-        bg
-          ? "bg-[#232a3e] p-[15px] rounded-tr-[20px] rounded-bl-[20px]"
-          : "flex flex-col gap-[16px]"
+        bg ? "bg-white/5 p-[8px] px-[16px] rounded" : "flex flex-col gap-[16px]"
       }
     >
       <div className="flex flex-col gap-4 text-[14px]">
@@ -54,9 +52,7 @@ const TextBlock = ({
           <ReactMarkdown
             key={index}
             components={{
-              p: ({ node, ...props }) => (
-                <p className="prose prose-invert" {...props} />
-              ),
+              span: ({ node, ...props }) => <span className="" {...props} />,
             }}
           >
             {para}
