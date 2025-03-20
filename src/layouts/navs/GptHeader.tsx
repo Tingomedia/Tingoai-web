@@ -3,8 +3,8 @@ import { FC } from "react";
 import UserAvatar from "../../utils/libs/UserAvatar";
 import { CgMenuGridO } from "react-icons/cg";
 import CustomDropDown from "../../utils/libs/CustomSelect";
+import logo from "../../assets/icons/tingo_ai_logo.png";
 import { Link } from "react-router-dom";
-
 
 
 /**
@@ -28,34 +28,28 @@ interface HeaderProps {
   title?: string;
 }
 
-const GptHeader: FC<HeaderProps> = ({ toggleSidebar, title="GPT" }) => {
+const GptHeader: FC<HeaderProps> = () => {
 
-  const selectItems = [
-    { label: "TingoGPT", path: "/tingogpt"},
-    { label: "TingoGPT Plus", path: "/upgrade"},
-  ];
+  // const selectItems = [
+  //   { label: "TingoGPT", path: "/tingogpt"},
+  //   { label: "TingoGPT Plus", path: "/tingogpt/plus"},
+  // ];
 
-const handleSelection = (value: string) => {
-  console.log("Selected:", value);
-};
+// const handleSelection = (value: string) => {
+//   console.log("Selected:", value);
+// };
   return (
-    <div className="px-16 py-6 bg-transparent border-b flex justify-between">
-      {/* Hamburger menu icon for mobile */}
-      <div className="flex lg:hidden gap-4 items-center justify-center">
-        <Link to="/" className="font-bold h1 text-3xl text-tremor-brand-muted">Tingo<span className="text-primary-200">{title}</span></Link>
-        <CgMenuGridO
-          className="text-tremor-brand-muted text-4xl cursor-pointer"
-          onClick={toggleSidebar}
-        />
-      </div>
-      <div className="hidden lg:flex items-center">
-      <div className="flex items-center text-fade-white  bg-[#121826] p-2 px-3 rounded-full">
-      
-      {/* <SelectDropDown items={selectItems} onChange={handleSelectChange}/> */}
-      <CustomDropDown items={selectItems} onSelect={handleSelection} label="TingoGPT" />
-      </div>
-        </div>
+    <div className="w-full h-[140px] px-8 flex justify-between items-center border-b">
+      <Link to="/" className=" text-white items-baseline relative">
+          <img
+            src={logo}
+            alt="Tingo logo"
+            className="md:w-[150px] h-[40px] md:h-[64px]"
+          />
+        </Link>
+      <div className="w-[150px]">
       <UserAvatar />
+      </div>
     </div>
   );
 };

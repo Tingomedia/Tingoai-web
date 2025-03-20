@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { HiOutlineArrowLeftOnRectangle, HiOutlineCog } from "react-icons/hi2";
 import { useAppContext } from "../../contexts/AppContext";
-import { HiOutlineClipboard } from "react-icons/hi2";
-import { formatTimeHelper } from "../../utils/helpers/formatTimeHelper";
+import { useConversations } from "../../contexts/TingoGPTContext";
+// import { formatTimeHelper } from "../../utils/helpers/formatTimeHelper";
 
 export type NavItem = {
   path: string;
@@ -14,48 +13,54 @@ export type NavItem = {
 
 type MainNavProps = {
   data?: NavItem[];
-  historyData: SearchHistory[]; 
+  historyData: SearchHistory[];
 };
 
-
-
-function MainNavGpt({ historyData }: MainNavProps) {
+function MainNavGpt({}: MainNavProps) {
   const { logout } = useAppContext();
   const navigate = useNavigate();
-  const [copiedId, setCopiedId] = useState<string | null>(null); 
+  // const [copiedId, setCopiedId] = useState<string | null>(null);
+  const { fetchingConversations, conversations, setCurrentConversation } =
+    useConversations();
 
-  const handleCopy = (id: string, text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
+  // const handleCopy = (id: string, text: string) => {
+  //   navigator.clipboard.writeText(text);
+  //   setCopiedId(id);
 
-    setTimeout(() => setCopiedId(null), 2000); 
-  };
+  //   setTimeout(() => setCopiedId(null), 2000);
+  // };
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     logout();
     navigate("/");
-  }
+  };
 
   return (
-    <nav className="h-full flex flex-col justify-between">
-      <HistoryList className="mt-8">
+    <nav className="h-full flex flex-col justify-between max-w-[320px] py-0 md:py-8">
+      <div className="flex flex-1 relative flex-col gap-4 p-4 mt-8">
         {/* <h3 className="text-gray-400 text-lg px-4">Search History</h3> */}
-        {historyData.length > 0 ? (
-          historyData.map((history) => (
-            <HistoryItem key={history.id}>
-              <div>
-                <h4 className="text-white font-medium">{history.title}</h4>
-                <p className="text-sm text-gray-400">{formatTimeHelper(history.timestamp)}</p>
-              </div>
-              <CopyButton onClick={() => handleCopy(history.id, history.copy)}>
-                {copiedId === history.id ? "Copied!" : <HiOutlineClipboard size={20} />}
-              </CopyButton>
-            </HistoryItem>
+        {conversations.length > 0 ? (
+          conversations.map((history) => (
+            <button
+              key={history.id}
+              onClick={() => setCurrentConversation(history.id)}
+              className="flex flex-col items-start justify-start mr-auto max-w-[280px]"
+            >
+              <span className="text-white font-medium truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
+                {history.recent_message}
+              </span>
+              <p className="text-sm text-gray-400">{`ID: ${history.id}`}</p>
+            </button>
           ))
         ) : (
           <p className="text-gray-500 text-center py-2">No recent searches</p>
         )}
-      </HistoryList>
+        {fetchingConversations && (
+          <div className="absolute inset-0 bg-white/15 text-white flex text-center items-center justify-center">
+            getting Conversations..
+          </div>
+        )}
+      </div>
 
       {/* Navigation Links */}
       {/* <NavList>
@@ -86,36 +91,35 @@ function MainNavGpt({ historyData }: MainNavProps) {
   );
 }
 
-
 export default MainNavGpt;
 
-const HistoryList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding: 1rem;
-  overflow-y: auto;
-  max-height: 100%;
-  border-bottom: 1px solid rgba(201, 201, 201, 0.4);
-`;
+// const HistoryList = styled.ul`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.8rem;
+//   padding: 1rem;
+//   overflow-y: auto;
+//   max-height: 100%;
+//   border-bottom: 1px solid rgba(201, 201, 201, 0.4);
+// `;
 
-const HistoryItem = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #1a1f2e;
-  padding: 0.8rem;
-  border-radius: 8px;
-`;
+// const HistoryItem = styled.li`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   background-color: #1a1f2e;
+//   padding: 0.8rem;
+//   border-radius: 8px;
+// `;
 
-const CopyButton = styled.button`
-  color: #a1a6b4;
-  transition: color 0.3s;
+// const CopyButton = styled.button`
+//   color: #a1a6b4;
+//   transition: color 0.3s;
 
-  &:hover {
-    color: white;
-  }
-`;
+//   &:hover {
+//     color: white;
+//   }
+// `;
 
 // const NavList = styled.ul`
 //   display: flex;

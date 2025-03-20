@@ -3,6 +3,7 @@ import avatar from "../../assets/images/gpt/Avatars.png"
 import shareIcon from "../../assets/images/gpt/share-01.png"
 import crown from "../../assets/images/gpt/crown-02.png"
 import menuSq from "../../assets/images/gpt/menu-square.png"
+import useFirebaseAuth from "../../hooks/useFirebaseAuth";
 // import { useAppContext } from "../../contexts/AppContext";
 
 /**
@@ -17,22 +18,22 @@ import menuSq from "../../assets/images/gpt/menu-square.png"
  */
 
 function UserAvatar() {
+  const { firebaseUser} = useFirebaseAuth();
   // const { username, role } = useAppContext();
-
+ 
   return (
-    <div className="flex gap-4 justify-between items-center bg-transparent p-3 rounded-full">
-     
-     <div className="md:flex flex-col items-center">
-       <div className="font-medium text-fade-gray">
-        Blard Omu
-      </div>
+    <div className="flex items-center">
+      <p className="hidden md:block text-fade-white text-[14px] font-Manrope font-medium">
+        {firebaseUser?.displayName || "User"}
+      </p>
       
-     </div>
-      <img
-        src={avatar}
-        alt="avatar"
-        className="w-16 object-cover object-center rounded-full border"
-      />      
+      <button onClick={() => {}}>
+        <img
+          src={firebaseUser?.photoURL || avatar}
+          alt="avatar"
+          className="w-16 object-cover object-center rounded-full border ml-3"
+        />
+      </button>
     </div>
   );
 }

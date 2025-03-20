@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../navs/GptHeader";
 import SidebarGpt from "../navs/SidNavGpt";
 import { historyData } from "../../db/gtptDb";
+import { ConversationProvider } from "../../contexts/TingoGPTContext";
 /**
  * Admin Layout component that wraps the main content of the admin section.
  *
@@ -47,4 +48,10 @@ const GPTLayout: FC = (): JSX.Element => {
   );
 };
 
-export default GPTLayout;
+export default function TingoGPT() {
+  return (
+    <ConversationProvider>
+      <GPTLayout />
+    </ConversationProvider>
+  );
+}

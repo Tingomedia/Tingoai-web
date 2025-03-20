@@ -37,7 +37,7 @@ interface AppProviderProps {
 }
 
 const AppProvider: FC<AppProviderProps> = ({ children }) => {
-  const { firebaseUser } = useFirebaseAuth();
+  const { firebaseUser, signOutUser } = useFirebaseAuth();
 
   // Set Axios Base URL
   axios.defaults.baseURL = "https://homepro-fac9.onrender.com/api";
@@ -129,6 +129,7 @@ const AppProvider: FC<AppProviderProps> = ({ children }) => {
   };
 
   const logout = () => {
+    signOutUser();
     localStorage.removeItem("role");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");

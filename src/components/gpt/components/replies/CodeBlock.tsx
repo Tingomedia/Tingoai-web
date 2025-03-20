@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import ReactMarkdown from "react-markdown";
 
 import { getCodeMirrorLang } from "../utils";
 import copyIcon from "../../../../assets/icons/copy-01.svg";
@@ -41,7 +42,7 @@ const customEditorTheme = EditorView.theme({
 });
 
 const CodeBlock = (props: {
-  msg: string;
+  msg: string[];
   name: string;
   code: string;
   lang: string;
@@ -57,9 +58,19 @@ const CodeBlock = (props: {
 
   return (
     <div className="flex flex-col gap-4">
-      <span>{props.msg}</span>
+      <div className="flex flex-col gap-4 text-[14px]">
+        <ReactMarkdown
+          components={{
+            p: ({ node, ...props }) => (
+              <p className="prose prose-invert" {...props} />
+            ),
+          }}
+        >
+          {props.msg[0]}
+        </ReactMarkdown>
+      </div>
 
-      <div className="bg-[#232a3e] relative border border-[#B8B8B8] rounded-[20px]">
+      <div className="bg-[#232a3e] relative border border-[#B8B8B8] rounded-[20px] overflow-hidden">
         <div className="flex justify-between p-[20px] pb-0">
           <span>{props.name}</span>
           <div className="flex gap-[10px] text-[10px] text-[#98A2B3]">
@@ -101,6 +112,24 @@ const CodeBlock = (props: {
               "linear-gradient(150deg, rgba(18, 24, 38, 0) 0%, rgba(18, 24, 38, 0.9) 100%)",
           }}
         ></div>
+      </div>
+
+      <div className="flex flex-col gap-4 text-[14px] mt-4">
+        {props.msg[1]
+          ?.split("\n")
+          .filter((p) => p.trim() !== "")
+          .map((para, index) => (
+            <ReactMarkdown
+              key={index}
+              components={{
+                p: ({ node, ...props }) => (
+                  <p className="prose prose-invert" {...props} />
+                ),
+              }}
+            >
+              {para}
+            </ReactMarkdown>
+          ))}
       </div>
     </div>
   );

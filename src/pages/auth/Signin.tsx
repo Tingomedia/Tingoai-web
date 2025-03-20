@@ -1,10 +1,10 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { useFormik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import bg from "../../assets/images/gpt/authbg.png";
 import tingoai from "../../assets/icons/tingo_ai_logo.png";
 import dividers from "../../assets/icons/Dividers.png";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 // import { toast } from "react-hot-toast";
 import google from "../../assets/icons/google.png";
 import message from "../../assets/icons/message.png";
@@ -25,6 +25,8 @@ interface FormValues {
 const Signin: FC = (): JSX.Element => {
   const [PasswordInputType, ToggleIcon] = usePasswordToggle();
   const { firebaseUser, signInWithGoogle, signInWithEmail } = useGoogleAuth();
+  const [searchParams] = useSearchParams();
+  const returnUrl = useMemo(() => searchParams.get("returnUrl"), []);
 
   // Validation for input data
   const validate = Yup.object({
@@ -69,7 +71,7 @@ const Signin: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (firebaseUser) {
-      window.alert("User logged in as " + firebaseUser.displayName);
+      window.location.href = returnUrl || "/";
     }
   }, [firebaseUser]);
 
