@@ -1,8 +1,8 @@
 import { FC } from "react";
 // import SearchInput from "../utils/SearchInput";
 import UserAvatar from "../../utils/libs/UserAvatar";
-import { CgMenuGridO } from "react-icons/cg";
-import CustomDropDown from "../../utils/libs/CustomSelect";
+// import { CgMenuGridO } from "react-icons/cg";
+// import CustomDropDown from "../../utils/libs/CustomSelect";
 import logo from "../../assets/icons/tingo_ai_logo.png";
 import { Link } from "react-router-dom";
 
