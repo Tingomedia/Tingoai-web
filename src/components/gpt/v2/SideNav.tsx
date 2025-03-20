@@ -62,8 +62,8 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
           </p>
         )}
       </div>
-      <div className="flex h-[120px] items-center bg-white/0">
-        <button className="px-[32px] py-[8px]">
+      <div className="flex h-[120px] justify-center items-center bg-white/0">
+        <button className="px-[32px] py-[8px] bg-primary-200 rounded-lg text-white/60">
           Unlock more features with pro
         </button>
       </div>

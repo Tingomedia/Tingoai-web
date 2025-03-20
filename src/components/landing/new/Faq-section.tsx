@@ -9,45 +9,11 @@ type FAQItem = {
 }
 
 export default function FAQSection() {
-  const [activeCategory, setActiveCategory] = useState("General")
+  const [activeCategory, setActiveCategory] = useState("TingoGPT")
   const [openItemId, setOpenItemId] = useState<number | null>(1)
 
   const faqItems: FAQItem[] = [
-    {
-      id: 1,
-      question: "How fast are transfers?",
-      answer:
-        "Yes, you can try us for free for 30 days. If you want, we'll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.",
-      category: "General",
-    },
-    {
-      id: 2,
-      question: "What are your fees?",
-      answer:
-        "Our fees are transparent and competitive. We charge a small percentage on each transaction, with no hidden costs. Volume discounts are available for businesses with high transaction volumes.",
-      category: "Pricing",
-    },
-    {
-      id: 3,
-      question: "Is it safe to send money with Pay4me?",
-      answer:
-        "Absolutely. We use bank-level encryption and security protocols to ensure all transactions are secure. We're also compliant with all relevant financial regulations and data protection laws.",
-      category: "General",
-    },
-    {
-      id: 4,
-      question: "Can other info be added to an invoice?",
-      answer:
-        "Yes, you can customize your invoices with additional information such as purchase order numbers, project details, payment terms, and notes to the recipient.",
-      category: "General",
-    },
-    {
-      id: 5,
-      question: "How does billing work?",
-      answer:
-        "We offer monthly billing cycles with detailed reports of all transactions. You can access your billing history anytime through your dashboard and export reports as needed.",
-      category: "Pricing",
-    },
+    
     {
       id: 6,
       question: "How do I change my account email?",
@@ -91,7 +57,7 @@ export default function FAQSection() {
 
           {/* Category Tabs */}
           <div className="flex justify-center gap-2 mb-8">
-            {["General", "Pricing", "TingoGPT"].map((category) => (
+            {["TingoGPT"].map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
