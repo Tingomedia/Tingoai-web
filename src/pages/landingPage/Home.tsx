@@ -5,7 +5,7 @@ import OurProduct from "../../components/landing/new/OurProduct";
 import Guiness from "../../components/landing/new/Guiness";
 import Footer from "../../layouts/ai/Footer";
 // import Testimonial from "../../components/landing/new/Testimonial";
-import FAQSection from "../../components/landing/new/Faq-section";
+// import FAQSection from "../../components/landing/new/Faq-section";
 import CTASection from "../../components/landing/new/CTA-section";
 // import TrustedBy from "../../components/landing/new/TrustedBy";
 import Extra from "../../components/landing/new/Extra";
@@ -22,9 +22,9 @@ const Home: FC = () => {
       <div className="bg-[#121826] w-full pb-[40px]">
         <OurProduct />
         {/* <Testimonial /> */}
-        <div className="bg-[#171D2D]">
+{/*         <div className="bg-[#171D2D]">
           <FAQSection />
-        </div>
+        </div> */}
         <CTASection />
         <Extra />
         {/* <TrustedBy /> */}
