@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Allow: /
+
+Sitemap: https://www.tingomedia.ai/sitemap.xml
