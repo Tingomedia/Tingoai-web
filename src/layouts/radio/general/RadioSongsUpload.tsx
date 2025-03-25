@@ -13,7 +13,7 @@ const RadioSongsUpload: React.FC = () => {
     const YT_SEARCH_URL = import.meta.env.VITE_REACT_APP_YT_SEARCH_URL;
     const YT_DOWNLOAD_URL = import.meta.env.VITE_REACT_APP_YT_DOWNLOAD_URL;
     const YT_API_TOKEN = import.meta.env.VITE_REACT_APP_YT_API_TOKEN;
-    console.log(YT_API_TOKEN);
+    // console.log(YT_API_TOKEN);
     
 
     const searchSongs = async () => {
