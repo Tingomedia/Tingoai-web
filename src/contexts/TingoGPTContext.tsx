@@ -49,6 +49,9 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     string | null
   >(null);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [fetchedConversations, setFetchedConversations] = useState<
+    Record<string, Message[]>
+  >({});
 
   const [fetchingConversations, setFetchingConversations] = useState(false);
   const [fetchingMessages, setFetchingMessages] = useState(false);
@@ -58,6 +61,15 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
 
   const { firebaseUser } = useFirebaseAuth();
   const axiosInstance = useAxios();
+
+  useEffect(() => {
+    if (!currentConversationId) return;
+
+    setFetchedConversations((prev) => ({
+      ...prev, // Keep existing conversations
+      [currentConversationId]: messages, // Update the specific conversation ID
+    }));
+  }, [messages]);
 
   // Fetch conversations from API
   const fetchConversations = async () => {
@@ -80,8 +92,8 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
 
   // Fetch messages when conversation changes
   useEffect(() => {
+    if (!currentConversationId) return;
     const fetchMessages = async () => {
-      if (!currentConversationId) return;
       if (preventMessagesFetch.current) return;
       try {
         setFetchingMessages(true);
@@ -102,7 +114,9 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       }
     };
 
-    fetchMessages();
+    if (fetchedConversations[currentConversationId]) {
+      setMessages(fetchedConversations[currentConversationId]);
+    } else fetchMessages();
   }, [currentConversationId]);
 
   // Send message

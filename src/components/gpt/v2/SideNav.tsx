@@ -35,7 +35,7 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
           />
         </div>
       </div>
-      <div className="flex flex-1 flex-col gap-4 overflow-y-auto hide-scrollbar relative">
+      <div className="flex flex-1 flex-col overflow-y-auto hide-scrollbar relative">
         {fetchingConversations && (
           <div className="absolute inset-0 bg-transparent text-white flex items-start justify-start pt-6 pl-10">
             <BlinkingDot />
@@ -47,7 +47,9 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
               key={history.id}
               onClick={() => setCurrentConversation(history.id)}
               className={`flex flex-col w-full items-start justify-start max-w-[320px] mr-auto px-16 py-6 hover:bg-white/10 ${
-                currentConversationId === history.id ? "bg-white/10" : ""
+                currentConversationId === history.id
+                  ? "bg-white/10 pointer-events-none"
+                  : ""
               }`}
             >
               <span className="text-white/60 truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
