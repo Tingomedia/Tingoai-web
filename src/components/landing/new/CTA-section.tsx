@@ -17,7 +17,7 @@ export default function CTASection() {
           <div className="relative z-10 h-full flex flex-col justify-center items-center gap-5 text-center ">
             <Title>Tingo AI</Title>
 
-            <h2 className="text-[24px] md:text-[40px] md:text-[48px] font-semibold text-[#E5E7EB]">
+            <h2 className="text-[24px] md:text-[40px] font-semibold text-[#E5E7EB]">
               Ready to Power your Future?
             </h2>
 
