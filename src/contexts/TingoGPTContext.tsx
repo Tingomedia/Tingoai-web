@@ -21,7 +21,7 @@ export interface Message {
 
 interface Conversation {
   id: string;
-  title: string;
+  title?: string;
   recent_message: string;
 }
 
@@ -32,7 +32,7 @@ interface TingoGPTContextType {
   conversations: Conversation[];
   currentConversationId: string | null;
   messages: Message[];
-  setCurrentConversation: (id: string) => void;
+  setCurrentConversation: (id: string | null) => void;
   sendMessage: (message: string) => Promise<boolean | undefined>;
   fetchConversations: () => Promise<void>;
 }
@@ -49,6 +49,9 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     string | null
   >(null);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [fetchedConversations, setFetchedConversations] = useState<
+    Record<string, Message[]>
+  >({});
 
   const [fetchingConversations, setFetchingConversations] = useState(false);
   const [fetchingMessages, setFetchingMessages] = useState(false);
@@ -58,6 +61,15 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
 
   const { firebaseUser } = useFirebaseAuth();
   const axiosInstance = useAxios();
+
+  useEffect(() => {
+    if (!currentConversationId) return;
+
+    setFetchedConversations((prev) => ({
+      ...prev, // Keep existing conversations
+      [currentConversationId]: messages, // Update the specific conversation ID
+    }));
+  }, [messages]);
 
   // Fetch conversations from API
   const fetchConversations = async () => {
@@ -80,9 +92,12 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
 
   // Fetch messages when conversation changes
   useEffect(() => {
+    if (!currentConversationId) return;
     const fetchMessages = async () => {
-      if (!currentConversationId) return;
-      if (preventMessagesFetch.current) return;
+      if (preventMessagesFetch.current) {
+        preventMessagesFetch.current = false;
+        return;
+      }
       try {
         setFetchingMessages(true);
         const { data } = await axiosInstance!.get(
@@ -102,21 +117,24 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       }
     };
 
-    fetchMessages();
+    if (fetchedConversations[currentConversationId]) {
+      setMessages(fetchedConversations[currentConversationId]);
+    } else fetchMessages();
   }, [currentConversationId]);
 
   // Send message
   const sendMessage = async (message: string) => {
     if (!message) return;
-    setMessages((prev) => [...prev, prompt]);
-    setGettingResponse(true);
-    const prompt: any = {};
-    prompt.id = messages.length + 1;
-    prompt.role = "user";
-    prompt.content = message;
-    prompt.content_type = "text";
-
     try {
+      const prompt: any = {};
+      prompt.id = messages.length + 1;
+      prompt.role = "user";
+      prompt.content = message;
+      prompt.content_type = "text";
+
+      setMessages((prev) => [...prev, prompt]);
+      setGettingResponse(true);
+
       let conversationId = currentConversationId;
 
       if (!conversationId) {
@@ -124,6 +142,22 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       }
 
       if (!conversationId) return;
+
+      if (preventMessagesFetch.current) {
+        setConversations(
+          (prev) =>
+            prev.some((conv) => conv.id === conversationId)
+              ? prev.map((conv) =>
+                  conv.id === conversationId
+                    ? { ...conv, recent_message: message } // Update existing
+                    : conv
+                )
+              : [
+                  ...prev,
+                  { id: conversationId || "0", recent_message: message },
+                ] // Add new if not found
+        );
+      }
 
       const { data } = await axiosInstance!.post(
         `/conversation/${conversationId}/message`,
@@ -138,6 +172,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       response.content_type = data.content_type;
 
       setMessages((prev) => [...prev, response]);
+
       setGettingResponse(false);
       return true;
     } catch (error) {
@@ -160,9 +195,9 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   // Set current conversation
-  const setCurrentConversation = (id: string) => {
+  const setCurrentConversation = (id: string | null) => {
     setCurrentConversationId(id);
-    setMessages([]); // Clear previous messages before fetching new ones
+    if (!preventMessagesFetch.current) setMessages([]); // Clear previous messages before fetching new ones
   };
 
   return (
