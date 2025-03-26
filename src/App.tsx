@@ -11,6 +11,7 @@ const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
 const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
+const Login = lazy(() => import("./pages/auth/Login"));
 const Signin = lazy(() => import("./pages/auth/Signin"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
 const OtpCode = lazy(() => import("./pages/auth/OtpCode"));
@@ -40,6 +41,7 @@ function App() {
         <Route path="/otp-code" element={<OtpCode />} />
         <Route path="/otp-mail" element={<OtpMail />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/upgrade" element={<GptPlusHome />} />
@@ -67,7 +69,7 @@ function App() {
         </Route>
 
         <Route path="/test" element={<GptHomeV2 />} />
-        <Route path="/radio-upload" element={<RadioSongsUpload/>} />
+        <Route path="/radio-upload" element={<RadioSongsUpload />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>

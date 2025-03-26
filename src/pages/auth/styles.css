@@ -1,0 +1,21 @@
+@keyframes moveBirds {
+    0% {
+        opacity: 0;
+      transform: translate(0, 0) scale(var(--scale));
+    }
+    10% {
+        opacity: var(--opacity);
+      }
+    90% {
+        opacity: var(--opacity);
+      }
+    100% {
+        opacity: 0;
+      transform: translate(300px, -500px) scale(var(--scale));
+    }
+  }
+  
+  .bird {
+    animation: moveBirds linear infinite;
+  }
+  

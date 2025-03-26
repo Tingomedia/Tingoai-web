@@ -1,13 +1,15 @@
-import { ListPlus, PanelRightOpen } from "lucide-react";
+import { PanelRightOpen } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
-import useFirebaseAuth from "../../../hooks/useFirebaseAuth";
-import BlinkingDot from "../components/BlinkingDot";
+import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
+import BlinkingDot from "../../common/BlinkingBird";
 
 export default function SideNav({
   isMobile,
+  isSideNavOpen,
   hideSideNav,
 }: {
   isMobile: boolean;
+  isSideNavOpen: boolean;
   hideSideNav: (value: boolean) => void;
 }) {
   const {
@@ -22,7 +24,9 @@ export default function SideNav({
     <div
       className={`w-full max-w-[240px] hidden md:flex flex-col text-white/60 z-50 
         bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
-      bg-black
+      bg-black transition-all duration-300 ${
+        isSideNavOpen ? "translate-x-0 w-[240px]" : "-translate-x-full w-0"
+      } overflow-hidden
         ${isMobile ? "backdrop-blur-lg" : ""}`}
       style={
         isMobile
@@ -34,10 +38,10 @@ export default function SideNav({
         {/* <span className="text-[2.5rem] lg:text-[3rem] text-white/60">
           Conversation History
         </span> */}
-        <div className="flex gap-6 justify-end mt-3 mb-12">
-          <button onClick={() => setCurrentConversation(null)}>
+        <div className="flex p-2 gap-6 mt-3 mb-12">
+          {/* <button onClick={() => setCurrentConversation(null)}>
             <ListPlus />
-          </button>
+          </button> */}
           <button onClick={() => hideSideNav(false)}>
             <PanelRightOpen />
           </button>
@@ -64,7 +68,7 @@ export default function SideNav({
           <button
             key="new"
             onClick={() => setCurrentConversation(null)}
-            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-3 hover:bg-white/10`}
+            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-0 hover:bg-white/10`}
           >
             New Chat
           </button>
@@ -80,7 +84,7 @@ export default function SideNav({
                   <button
                     key={history.id}
                     onClick={() => setCurrentConversation(history.id)}
-                    className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-3 hover:bg-white/10 ${
+                    className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-2 hover:bg-white/10 ${
                       currentConversationId === history.id
                         ? "bg-white/10 pointer-events-none"
                         : ""
@@ -98,14 +102,6 @@ export default function SideNav({
                 <span className="text-primary-200/60">History...</span>
               </p>
             )}
-      </div>
-      <div className="w-full flex h-[120px] justify-center items-center bg-white/0 ">
-        <button className="w-11/12 bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] py-[8px] border border-white/50 rounded-lg text-white/90 relative text-start px-2 cursor-not-allowed">
-          TingoGPT-v2{" "}
-          <span className="absolute top-2 right-1 bg-primary-200/20 border border-white/90 text-white/90 font-Manrope text-[12px] font-medium px-3 py-1 rounded-full">
-            Coming soon
-          </span>
-        </button>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import { useRef, useEffect, useState } from "react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import TingoResponse from "../components/TingoResponse";
 import UserPrompt from "../components/UserPrompt";
-import BlinkingDot from "../components/BlinkingDot";
-import useFirebaseAuth from "../../../hooks/useFirebaseAuth";
+import BlinkingDot from "../../common/BlinkingBird";
+import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 
 export default function Messages() {
   const { fetchingMessages, messages, gettingResponse, currentConversationId } =
