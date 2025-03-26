@@ -55,10 +55,15 @@ export default function PromptInput() {
       >
         <div className="w-full h-full relative flex items-center justify-center rounded-[80px] p-[10px] lg:gap-[10px] bg-white/5 backdrop-contrast-100 backdrop-filter backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
           <button
-            className="rounded-full"
+            className="rounded-full relative"
             onClick={() => setShowInputs(!showInputs)}
           >
             <img src="/icons/add_butt.svg" width={44} height={44} />
+            {showInputs && (
+              <div className="absolute -top-72">
+                <InputOptions onSelect={showFileSelect} />
+              </div>
+            )}
           </button>
           <div className="w-[480px] h-full max-h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 backdrop-filter backdrop-blur-lg filter blur-[0px] shadow-inner shadow-black/30 rounded-full px-4 relative">
             <TextareaAutosize
@@ -86,11 +91,7 @@ export default function PromptInput() {
             gettingResponse..
           </div>
         )} */}
-        {showInputs && (
-          <div className="absolute -top-64">
-            <InputOptions onSelect={showFileSelect} />
-          </div>
-        )}
+
         {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
       </div>
     </>

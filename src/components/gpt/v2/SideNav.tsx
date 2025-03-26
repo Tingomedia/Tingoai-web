@@ -1,4 +1,5 @@
 import { useConversations } from "../../../contexts/TingoGPTContext";
+import useFirebaseAuth from "../../../hooks/useFirebaseAuth";
 import BlinkingDot from "../components/BlinkingDot";
 
 export default function SideNav({ hidden }: { hidden: boolean }) {
@@ -8,10 +9,11 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
     currentConversationId,
     setCurrentConversation,
   } = useConversations();
+  const { firebaseUser } = useFirebaseAuth();
 
   return (
     <div
-      className={`w-full max-w-[320px] hidden lg:flex flex-col text-white/60 z-50 
+      className={`w-full max-w-[240px] hidden lg:flex flex-col text-white/60 z-50 
         bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
       bg-black
         ${!hidden ? "backdrop-blur-lg" : ""}`}
@@ -43,33 +45,42 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
             <BlinkingDot label="histories..." />
           </div>
         )}
-        {fetchingConversations || conversations.length > 0 ? (
-          conversations
-            .slice()
-            .reverse()
-            .map(
-              (
-                history // Reversing the array
-              ) => (
-                <button
-                  key={history.id}
-                  onClick={() => setCurrentConversation(history.id)}
-                  className={`flex flex-col w-full items-start justify-start max-w-[320px] mr-auto px-16 py-6 hover:bg-white/10 ${
-                    currentConversationId === history.id ? "bg-white/10" : ""
-                  }`}
-                >
-                  <span className="text-white/60 truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
-                    {history.recent_message}
-                  </span>
-                </button>
+        <button
+          key="new"
+          onClick={() => setCurrentConversation(null)}
+          className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-3 hover:bg-white/10`}
+        >
+          New Chat
+        </button>
+        {fetchingConversations || conversations.length > 0
+          ? conversations
+              .slice()
+              .reverse()
+              .map(
+                (
+                  history // Reversing the array
+                ) => (
+                  <button
+                    key={history.id}
+                    onClick={() => setCurrentConversation(history.id)}
+                    className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-3 hover:bg-white/10 ${
+                      currentConversationId === history.id
+                        ? "bg-white/10 pointer-events-none"
+                        : ""
+                    }`}
+                  >
+                    <span className="text-white/60 text-left truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
+                      {history.recent_message}
+                    </span>
+                  </button>
+                )
               )
-            )
-        ) : (
-          <p className="text-gray-500 text-center py-2 self-center my-auto">
-            No Conversation{" "}
-            <span className="text-primary-200/60">History...</span>
-          </p>
-        )}
+          : firebaseUser && (
+              <p className="text-gray-500 text-center py-2 self-center my-auto">
+                No Conversation{" "}
+                <span className="text-primary-200/60">History...</span>
+              </p>
+            )}
       </div>
       <div className="w-full flex h-[120px] justify-center items-center bg-white/0 ">
         <button className="w-11/12 bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] py-[8px] border border-white/50 rounded-lg text-white/90 relative text-start px-2 cursor-not-allowed">

@@ -20,6 +20,16 @@ export default function Messages() {
     const container = chatContainerRef.current;
     if (!container) return;
 
+    if (container.scrollHeight < window.innerHeight) {
+      requestAnimationFrame(() => {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: "instant",
+        });
+      });
+      return;
+    }
+
     const scrollToBottom = () => {
       requestAnimationFrame(() => {
         // First, try smooth scrolling
@@ -39,49 +49,7 @@ export default function Messages() {
     };
 
     // Delay to allow Markdown & CodeMirror to render
-    setTimeout(scrollToBottom, 100); // Increase delay if needed
-  }, [messages]);
-
-  useEffect(() => {
-    return;
-    const container = chatContainerRef.current;
-    if (!container) return;
-
-    const scrollToLastMessage = () => {
-      const screenHeight = window.innerHeight;
-
-      const userMsgHeight = lastUserMsgRef.current?.clientHeight || 0;
-      const assistantMsgHeight = lastAssistantMsgRef.current?.clientHeight || 0;
-      const totalMsgHeight = userMsgHeight + assistantMsgHeight;
-
-      console.log("Screen Height:", screenHeight);
-      console.log("User Message Height:", userMsgHeight);
-      console.log("Assistant Message Height:", assistantMsgHeight);
-      console.log("Total Messages Height:", totalMsgHeight);
-
-      const lastMsgEl =
-        lastAssistantMsgRef.current && lastUserMsgRef.current
-          ? totalMsgHeight <= screenHeight
-            ? lastUserMsgRef.current
-            : lastAssistantMsgRef.current
-          : lastAssistantMsgRef.current || lastUserMsgRef.current;
-
-      console.log("Chosen last message element:", lastMsgEl);
-
-      if (lastMsgEl) {
-        requestAnimationFrame(() => {
-          lastMsgEl.scrollIntoView({
-            behavior: "smooth",
-            block: totalMsgHeight <= screenHeight ? "start" : "end",
-          });
-        });
-
-        console.log("Scrolling to last message element:", lastMsgEl);
-      }
-    };
-
-    // Wait for Markdown & CodeMirror to render fully
-    setTimeout(scrollToLastMessage, 100); // Adjust delay if needed
+    setTimeout(scrollToBottom, 0); // Increase delay if needed
   }, [messages]);
 
   // Prevent scrolling beyond the lastUserMsgRef
@@ -94,19 +62,12 @@ export default function Messages() {
     const assistantMsgHeight = lastAssistantMsgRef.current?.clientHeight || 0;
     const totalMsgHeight = userMsgHeight + assistantMsgHeight;
 
-    console.log("Screen Height:", screenHeight);
-    console.log("User Message Height:", userMsgHeight);
-    console.log("Assistant Message Height:", assistantMsgHeight);
-    console.log("Total Messages Height:", totalMsgHeight);
-
     const lastMsgEl =
       lastAssistantMsgRef.current && lastUserMsgRef.current
         ? totalMsgHeight <= screenHeight
           ? lastUserMsgRef.current
           : lastAssistantMsgRef.current
         : lastAssistantMsgRef.current || lastUserMsgRef.current;
-
-    console.log("Chosen last message element:", lastMsgEl);
 
     // Get positions
     const containerTop = container.getBoundingClientRect().top;
@@ -132,12 +93,6 @@ export default function Messages() {
   };
 
   useEffect(() => {
-    // if (
-    //   messages[messages.length - 1] &&
-    //   messages[messages.length - 1]?.role == "user"
-    // )
-    //   lastAssistantMsgRef.current = null;
-
     const container = chatContainerRef.current;
     if (container) {
       container.addEventListener("scroll", handleScroll);
@@ -157,7 +112,8 @@ export default function Messages() {
       <div className="flex flex-col w-full max-w-[640px] min-h-full gap-8">
         {firebaseUser &&
           currentConversationId === null &&
-          !fetchingMessages && (
+          !fetchingMessages &&
+          !gettingResponse && (
             <div className="absolute inset-0 bg-transparent text-white/60 flex text-center items-center justify-center">
               <div
                 className="self-center text-center bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
@@ -170,7 +126,7 @@ export default function Messages() {
           )}
         {loading && (
           <div className="self-center pb-16">
-            <BlinkingDot label="Conversations..."/>
+            <BlinkingDot label="Conversations..." />
           </div>
         )}
 
