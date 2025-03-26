@@ -1,8 +1,15 @@
+import { ListPlus, PanelRightOpen } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import useFirebaseAuth from "../../../hooks/useFirebaseAuth";
 import BlinkingDot from "../components/BlinkingDot";
 
-export default function SideNav({ hidden }: { hidden: boolean }) {
+export default function SideNav({
+  isMobile,
+  hideSideNav,
+}: {
+  isMobile: boolean;
+  hideSideNav: (value: boolean) => void;
+}) {
   const {
     fetchingConversations,
     conversations,
@@ -13,20 +20,28 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
 
   return (
     <div
-      className={`w-full max-w-[240px] hidden lg:flex flex-col text-white/60 z-50 
+      className={`w-full max-w-[240px] hidden md:flex flex-col text-white/60 z-50 
         bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
       bg-black
-        ${!hidden ? "backdrop-blur-lg" : ""}`}
+        ${isMobile ? "backdrop-blur-lg" : ""}`}
       style={
-        !hidden
+        isMobile
           ? { display: "flex", position: "fixed", left: 0, height: "100%" }
           : {}
       }
     >
       <div className="w-full px-[16px] py-[12px] text-center">
-        <span className="text-[2.5rem] lg:text-[3rem] text-white/60">
+        {/* <span className="text-[2.5rem] lg:text-[3rem] text-white/60">
           Conversation History
-        </span>
+        </span> */}
+        <div className="flex gap-6 justify-end mt-3 mb-12">
+          <button onClick={() => setCurrentConversation(null)}>
+            <ListPlus />
+          </button>
+          <button onClick={() => hideSideNav(false)}>
+            <PanelRightOpen />
+          </button>
+        </div>
         <div
           className="relative w-full bg-gray-950/35 text-white/60 text-[15px] px-[12px] mt-4
                 shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
@@ -45,13 +60,15 @@ export default function SideNav({ hidden }: { hidden: boolean }) {
             <BlinkingDot label="histories..." />
           </div>
         )}
-        <button
-          key="new"
-          onClick={() => setCurrentConversation(null)}
-          className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-3 hover:bg-white/10`}
-        >
-          New Chat
-        </button>
+        {currentConversationId && (
+          <button
+            key="new"
+            onClick={() => setCurrentConversation(null)}
+            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-3 hover:bg-white/10`}
+          >
+            New Chat
+          </button>
+        )}
         {fetchingConversations || conversations.length > 0
           ? conversations
               .slice()
