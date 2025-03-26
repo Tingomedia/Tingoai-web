@@ -1,11 +1,15 @@
-import { CgMenuGridO } from "react-icons/cg";
+import { useConversations } from "../../../contexts/TingoGPTContext";
 import useFirebaseAuth from "../../../hooks/useFirebaseAuth";
+import { ListPlus, PanelRightClose } from "lucide-react";
 
 export default function Header({
   toggleSideNav,
+  isSideNavOpen,
 }: {
   toggleSideNav: () => void;
+  isSideNavOpen: boolean;
 }) {
+  const { setCurrentConversation } = useConversations();
   const { firebaseUser } = useFirebaseAuth();
   return (
     <div
@@ -14,18 +18,28 @@ export default function Header({
                   backdrop-blur-lg
                   shadow-[0px_24px_30px_0px_#0000000D] z-20"
     >
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-8">
         {/* <Link to="/"> */}
-          <img
-            src="/images/logo.svg"
-            alt="Logo"
-            className="h-[50px] max-h-full max-w-full object-contain pt-2 hidden lg:flex"
-          />
+        <img
+          src="/images/logo.svg"
+          alt="Logo"
+          className="h-[50px] max-h-full max-w-full object-contain pt-2 hidden md:flex"
+        />
         {/* </Link> */}
-        <CgMenuGridO
+        {!isSideNavOpen && (
+          <div className="flex gap-6">
+            <button onClick={toggleSideNav}>
+              <PanelRightClose className="" />
+            </button>
+            <button onClick={() => setCurrentConversation(null)}>
+              <ListPlus />
+            </button>
+          </div>
+        )}
+        {/* <CgMenuGridO
           className="text-tremor-brand-muted text-4xl cursor-pointer lg:hidden"
           onClick={toggleSideNav}
-        />
+        /> */}
       </div>
 
       <div className="flex pr-4">
@@ -38,7 +52,7 @@ export default function Header({
               {/* <span>Upgrade to TingoPro</span> */}
             </div>
           )}
-          <button onClick={() => { }}>
+          <button onClick={() => {}}>
             <img
               src={firebaseUser?.photoURL || "/images/Avatar.png"}
               alt="avatar"

@@ -65,7 +65,7 @@ export default function PromptInput() {
               </div>
             )}
           </button>
-          <div className="w-[480px] h-full max-h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 backdrop-filter backdrop-blur-lg filter blur-[0px] shadow-inner shadow-black/30 rounded-full px-4 relative">
+          <div className="w-full max-w-[480px] h-full max-h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 backdrop-filter backdrop-blur-lg filter blur-[0px] shadow-inner shadow-black/30 rounded-full px-4 relative">
             <TextareaAutosize
               ref={textInputRef}
               disabled={gettingResponse}
