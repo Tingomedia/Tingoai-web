@@ -170,7 +170,7 @@ export default function Messages() {
           )}
         {loading && (
           <div className="self-center pb-16">
-            <BlinkingDot />
+            <BlinkingDot label="Conversations..."/>
           </div>
         )}
 
@@ -198,7 +198,7 @@ export default function Messages() {
       {!firebaseUser ||
         (fetchingMessages && (
           <div className="absolute inset-0 bg-transparent text-white/60 flex text-center items-center justify-center">
-            <BlinkingDot />
+            <BlinkingDot label="Conversations..." />
           </div>
         ))}
     </div>

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
-// import GptHome from "./components/gpt/GptHome";
 import NewGridHome from "./components/landing/new/NewGridHome";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import GptHomeV2 from "./components/gpt/v2/GptHome";
@@ -10,7 +10,6 @@ const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
 const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
-// const GPTLayout = lazy(() => import("./layouts/gpt/GPTLayout"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
 const Signin = lazy(() => import("./pages/auth/Signin"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
@@ -18,14 +17,13 @@ const OtpCode = lazy(() => import("./pages/auth/OtpCode"));
 const OtpMail = lazy(() => import("./pages/auth/OtpMail"));
 const ResetPassword = lazy(() => import("./pages/auth/ResetPassword"));
 const Signup = lazy(() => import("./pages/auth/Signup"));
-const TingoaiProducts = lazy(
-  () => import("./components/tingoai/TingoaiProducts")
-);
+const TingoaiProducts = lazy(() => import("./components/tingoai/TingoaiProducts"));
 const RadioLayout = lazy(() => import("./layouts/radio/RadioLayout"));
 const RadioHome = lazy(() => import("./pages/old_radio/radio/RadioHome"));
 const Playlist = lazy(() => import("./pages/old_radio/radio/Playlist"));
 const NewsWeather = lazy(() => import("./pages/old_radio/radio/News&weather"));
 const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
+const RadioSongsUpload = lazy(() => import("./layouts/radio/general/RadioSongsUpload"));
 
 function App() {
   return (
@@ -44,6 +42,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/upgrade" element={<GptPlusHome />} />
 
         {/*=========== TingoGPT Routes ================*/}
         <Route
@@ -68,9 +67,30 @@ function App() {
         </Route>
 
         <Route path="/test" element={<GptHomeV2 />} />
+        <Route path="/radio-upload" element={<RadioSongsUpload/>} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "#FAFAFA",
+            color: "#313131",
+          },
+        }}
+      />
     </>
   );
 }

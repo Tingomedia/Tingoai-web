@@ -50,7 +50,7 @@ const GptPlusHome = () => {
   const [activePlan, setActivePlan] = useState("Personal");
 
   return (
-    <div className=" text-[#E5E7EB] py-12 px-4 grid gap-[32px] justify-items-center">
+    <div className="bg-[#1D2739] text-[#E5E7EB] py-12 px-4 grid gap-[32px] justify-items-center">
       <h2 className="text-center text-[28px] font-poppins font-medium">
         Upgrade your plan
       </h2>
@@ -72,13 +72,13 @@ const GptPlusHome = () => {
           Business
         </button>
       </div>
-      <div className="flex flex-col lg:flex-row justify-center gap-[24px] lg:gap-[10px]">
+      <div className="flex flex-col md:flex-row justify-center flex-wrap gap-[24px] lg:gap-[10px]">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className={`py-[35px] px-[40px]  md:w-[372px] rounded-[12px] border border-gray-700 flex flex-col gap-[24px] md:justify-between ${
+            className={`py-[35px] px-[40px]  md:w-[372px] rounded-[12px] border border-gray-700 hover:border-primary-200 flex flex-col gap-[24px] md:justify-between ${
               plan.highlight ? "bg-[#101928] border-[#04802E] " : ""
-            } ${plan.name === "Plus" ? "md:h-[593px]" : "md:h-[555px]"}`}
+            } ${plan.name === "Plus" ? "lg:h-[593px]" : "md:h-[555px]"}`}
           >
             <div className="grid gap-5">
               <img src={star} alt="star" />
