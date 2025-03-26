@@ -29,19 +29,25 @@ function GptHome() {
           )}
 
           {/* {isSideNavOpen && ( */}
-          {/* <div
-            className={`transition-all duration-300 ${
-              isSideNavOpen
-                ? "translate-x-0 w-[240px]"
-                : "-translate-x-full w-0"
-            } overflow-hidden`}
-          > */}
-          <SideNav
-            isMobile={isMobile}
-            isSideNavOpen={isSideNavOpen}
-            hideSideNav={setIsSideNavOpen}
-          />
-          {/* </div> */}
+          {isMobile ? (
+            <SideNav
+              isMobile={isMobile}
+              isSideNavOpen={isSideNavOpen}
+              hideSideNav={setIsSideNavOpen}
+            />
+          ) : (
+            <div
+              className={`transition-all duration-300 ${
+                isSideNavOpen ? "w-[240px]" : "w-0"
+              } overflow-hidden`}
+            >
+              <SideNav
+                isMobile={isMobile}
+                isSideNavOpen={isSideNavOpen}
+                hideSideNav={setIsSideNavOpen}
+              />
+            </div>
+          )}
           {/* )} */}
 
           <div className="flex flex-col flex-1 w-full h-full justify-center bg-white/5 relative">

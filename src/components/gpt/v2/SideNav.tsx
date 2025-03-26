@@ -24,10 +24,14 @@ export default function SideNav({
     <div
       className={`w-full max-w-[240px] hidden md:flex flex-col text-white/60 z-50 
         bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
-      bg-black transition-all duration-300 ${
-        isSideNavOpen ? "translate-x-0 w-[240px]" : "-translate-x-full w-0"
-      } overflow-hidden
-        ${isMobile ? "backdrop-blur-lg" : ""}`}
+      bg-black 
+        ${
+          isMobile
+            ? `backdrop-blur-lg transition-transform duration-300 z-20 ${
+                isSideNavOpen ? "translate-x-0" : "-translate-x-full"
+              }`
+            : ""
+        }`}
       style={
         isMobile
           ? { display: "flex", position: "fixed", left: 0, height: "100%" }
