@@ -1,4 +1,4 @@
-import { ListPlus, PanelRightOpen } from "lucide-react";
+import { PanelRightOpen } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 import BlinkingDot from "../../common/BlinkingBird";

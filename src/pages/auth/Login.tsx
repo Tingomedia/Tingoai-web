@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import AnimatedBirds from "./AnimatedBirds";
 import AnimatedBirdsCSS from "./AnimatedBirdsCSS";
 import Signin from "./Signin";

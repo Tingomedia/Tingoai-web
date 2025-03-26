@@ -1,6 +1,5 @@
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
-import { useConversations } from "../../../contexts/TingoGPTContext";
-import { ListPlus, PanelRightClose } from "lucide-react";
+import { PanelRightClose } from "lucide-react";
 
 export default function Header({
   toggleSideNav,
@@ -36,10 +35,6 @@ export default function Header({
           className="h-[50px] max-h-full max-w-full object-contain pt-2 hidden md:flex"
         />
         {/* </Link> */}
-        {/* <CgMenuGridO
-          className="text-tremor-brand-muted text-4xl cursor-pointer lg:hidden"
-          onClick={toggleSideNav}
-        /> */}
       </div>
 
       <div className="flex pr-4">
