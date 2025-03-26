@@ -10,7 +10,7 @@ import {
 } from "react";
 import axios from "axios";
 import { Navigate, Outlet } from "react-router-dom";
-import useFirebaseAuth from "../hooks/useFirebaseAuth";
+import { useFirebaseAuth } from "./FirebaseAuthContext";
 
 interface AppContextType {
   role: string;
@@ -37,7 +37,8 @@ interface AppProviderProps {
 }
 
 const AppProvider: FC<AppProviderProps> = ({ children }) => {
-  const { firebaseUser, signOutUser } = useFirebaseAuth();
+  const { firebaseUser, isInitialised, isAuthenticating, signOutUser } =
+    useFirebaseAuth();
 
   // Set Axios Base URL
   axios.defaults.baseURL = "https://homepro-fac9.onrender.com/api";
@@ -58,6 +59,8 @@ const AppProvider: FC<AppProviderProps> = ({ children }) => {
   const [refreshToken, setRefreshToken] = useState<string | null>(
     localStorage.getItem("refreshToken") || null
   );
+
+  useEffect(() => {}, [isInitialised, isAuthenticating]);
 
   useEffect(() => {
     if (!firebaseUser) return;

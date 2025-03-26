@@ -28,9 +28,21 @@ function GptHome() {
             ></div>
           )}
 
-          {isSideNavOpen && (
-            <SideNav isMobile={isMobile} hideSideNav={setIsSideNavOpen} />
-          )}
+          {/* {isSideNavOpen && ( */}
+          {/* <div
+            className={`transition-all duration-300 ${
+              isSideNavOpen
+                ? "translate-x-0 w-[240px]"
+                : "-translate-x-full w-0"
+            } overflow-hidden`}
+          > */}
+          <SideNav
+            isMobile={isMobile}
+            isSideNavOpen={isSideNavOpen}
+            hideSideNav={setIsSideNavOpen}
+          />
+          {/* </div> */}
+          {/* )} */}
 
           <div className="flex flex-col flex-1 w-full h-full justify-center bg-white/5 relative">
             <Header

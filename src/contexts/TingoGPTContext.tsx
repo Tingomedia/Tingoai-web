@@ -7,7 +7,7 @@ import React, {
   useRef,
 } from "react";
 import useAxios from "../hooks/useAxios";
-import useFirebaseAuth from "../hooks/useFirebaseAuth";
+import { useFirebaseAuth } from "./FirebaseAuthContext";
 
 export interface Message {
   id: string;

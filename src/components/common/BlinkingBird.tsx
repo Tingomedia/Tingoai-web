@@ -1,9 +1,9 @@
-import {FC} from "react"
+import { FC } from "react";
 
 interface LoaderProp {
-  label?: string
+  label?: string;
 }
-const BlinkingDot: FC<LoaderProp> = ({}) => {
+const BlinkingBird: FC<LoaderProp> = ({}) => {
   return (
     <div className="flex items-center gap-2">
       <div className="flex gap-1 animate-blink delay-800 items-center">
@@ -13,4 +13,4 @@ const BlinkingDot: FC<LoaderProp> = ({}) => {
   );
 };
 
-export default BlinkingDot;
+export default BlinkingBird;
