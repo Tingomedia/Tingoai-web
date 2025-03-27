@@ -63,7 +63,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   const axiosInstance = useAxios();
 
   useEffect(() => {
-    if (!currentConversationId) return;
+    if (!currentConversationId || messages.length == 0) return;
 
     setFetchedConversations((prev) => ({
       ...prev, // Keep existing conversations
@@ -93,6 +93,8 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   // Fetch messages when conversation changes
   useEffect(() => {
     if (!currentConversationId) return;
+    const controller = new AbortController();
+
     const fetchMessages = async () => {
       if (preventMessagesFetch.current) {
         preventMessagesFetch.current = false;
@@ -107,6 +109,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
               page: 1,
               size: 20,
             },
+            signal: controller.signal,
           }
         );
         setMessages(data.reverse());
@@ -120,6 +123,8 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
     if (fetchedConversations[currentConversationId]) {
       setMessages(fetchedConversations[currentConversationId]);
     } else fetchMessages();
+
+    return () => controller.abort();
   }, [currentConversationId]);
 
   // Send message
