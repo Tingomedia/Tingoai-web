@@ -88,7 +88,7 @@ const Signup: FC = (): JSX.Element => {
           </Link>
         </div> */}
       <div className="text-gray-700 flex flex-col items-center justify-center gap-[20px]">
-        <div className="w-[450px] h-[54px] flex flex-col justify-center items-center gap-[5px]">
+        <div className="flex flex-col justify-center items-center gap-[5px]">
           <h2 className="lg:text-[24px] font-semibold">
             Sign up with your credentials
           </h2>

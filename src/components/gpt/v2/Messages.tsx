@@ -114,6 +114,10 @@ export default function Messages() {
       ref={chatContainerRef}
       className="w-full h-full px-[16px] flex justify-center overflow-y-auto hide-scrollbar pt-24 relative"
     >
+      {/* <div
+        className="absolute inset-0 bg-[url('/icons/Bird-outline.svg')] 
+               bg-left bg-contain bg-no-repeat opacity-10 scale-x-[-1]"
+      ></div> */}
       <div className="flex flex-col w-full max-w-[640px] min-h-full gap-8">
         {firebaseUser &&
           currentConversationId === null &&
@@ -123,7 +127,7 @@ export default function Messages() {
               <div
                 className="self-center text-center bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
   bg-clip-text text-transparent 
-  font-sfPro font-medium text-[32px] leading-[145%] tracking-[0%]"
+  font-sfPro font-medium text-[32px] leading-[145%] tracking-[0%] px-16"
               >
                 Hello, {firebaseUser?.displayName}
               </div>

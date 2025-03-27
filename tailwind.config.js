@@ -8,6 +8,14 @@ export default {
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xs: "480px", // Custom XS breakpoint
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1440px",
+    },
     extend: {
       boxShadow: {
         custom: "0px 7px 29px 0px rgba(100, 100, 111, 0.2)",

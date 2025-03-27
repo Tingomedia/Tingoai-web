@@ -1,14 +1,16 @@
 import { useState } from "react";
-// import AnimatedBirds from "./AnimatedBirds";
 import AnimatedBirdsCSS from "./AnimatedBirdsCSS";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import BlinkingBird from "../../components/common/BlinkingBird";
 import { useFirebaseAuth } from "../../contexts/FirebaseAuthContext";
+import useWindowWidth from "../../hooks/useWindowWidth";
 
 export default function Login() {
   const [showLogin, setShowLogin] = useState(false);
   const { isAuthenticating } = useFirebaseAuth();
+  const { mapRange } = useWindowWidth();
+  const widthPercent = mapRange(640, 480, 66, 90);
 
   const Greet = () => {
     return (
@@ -71,10 +73,14 @@ export default function Login() {
         )}
       </div>
 
-      <div className="hidden sm:flex lg:hidden h-screen bg-gray-200">
+      <div className="flex lg:hidden h-screen bg-gray-200">
         {showLogin && (
           <>
-            <div className="relative w-[66%] ml-auto my-auto flex flex-col justify-center items-center bg-white z-20 p-8 gap-8">
+            <div
+              className={`relative w-[${widthPercent.toFixed(
+                0
+              )}%] ml-auto my-auto flex flex-col justify-center items-center bg-white z-20 p-8 gap-8`}
+            >
               <Signin />
               <div className="text-[14px] text-gray-700">
                 Don't have an account?{" "}
@@ -99,7 +105,11 @@ export default function Login() {
         )}
         {!showLogin && (
           <>
-            <div className="relative w-[66%] my-auto flex flex-col justify-center items-center bg-white z-20 p-8 gap-8">
+            <div
+              className={`relative w-[${widthPercent.toFixed(
+                0
+              )}%] my-auto flex flex-col justify-center items-center bg-white z-20 p-8 gap-8`}
+            >
               <Signup />
               <span className="text-[14px] text-gray-700">
                 Already have an account?{" "}

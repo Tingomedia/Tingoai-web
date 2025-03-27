@@ -89,7 +89,7 @@ const Signin: FC = (): JSX.Element => {
           </Link>
         </div> */}
       <div className="text-gray-700 flex flex-col items-center justify-center gap-[20px]">
-        <div className="lg:w-[450px] w-[90%] h-[54px] flex flex-col justify-center items-center gap-[5px]">
+        <div className="flex flex-col justify-center items-center gap-[5px]">
           <h2 className="text-[24px] font-semibold">Sign in with your email</h2>
           <p className="lg:text-[14px] text-[12px] text-gray-400 font-Poppins">
             Use your email to sign in to your Tingo Media

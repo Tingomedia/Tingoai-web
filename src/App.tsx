@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
@@ -12,19 +12,21 @@ const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
 const Login = lazy(() => import("./pages/auth/Login"));
-const Signin = lazy(() => import("./pages/auth/Signin"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
 const OtpCode = lazy(() => import("./pages/auth/OtpCode"));
 const OtpMail = lazy(() => import("./pages/auth/OtpMail"));
 const ResetPassword = lazy(() => import("./pages/auth/ResetPassword"));
-const Signup = lazy(() => import("./pages/auth/Signup"));
-const TingoaiProducts = lazy(() => import("./components/tingoai/TingoaiProducts"));
+const TingoaiProducts = lazy(
+  () => import("./components/tingoai/TingoaiProducts")
+);
 const RadioLayout = lazy(() => import("./layouts/radio/RadioLayout"));
 const RadioHome = lazy(() => import("./pages/old_radio/radio/RadioHome"));
 const Playlist = lazy(() => import("./pages/old_radio/radio/Playlist"));
 const NewsWeather = lazy(() => import("./pages/old_radio/radio/News&weather"));
 const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
-const RadioSongsUpload = lazy(() => import("./layouts/radio/general/RadioSongsUpload"));
+const RadioSongsUpload = lazy(
+  () => import("./layouts/radio/general/RadioSongsUpload")
+);
 
 function App() {
   return (
@@ -42,8 +44,8 @@ function App() {
         <Route path="/otp-mail" element={<OtpMail />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Navigate to="/login" replace />} />
+        <Route path="/signup" element={<Navigate to="/login" replace />} />
         <Route path="/upgrade" element={<GptPlusHome />} />
 
         {/*=========== TingoGPT Routes ================*/}
