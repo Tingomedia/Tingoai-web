@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 import { PanelRightClose } from "lucide-react";
+import { useConversations } from "../../../contexts/TingoGPTContext";
 
 export default function Header({
   toggleSideNav,
@@ -9,7 +10,7 @@ export default function Header({
   toggleSideNav: () => void;
   isSideNavOpen: boolean;
 }) {
-  // const { setCurrentConversation } = useConversations();
+  const { setCurrentConversation } = useConversations();
   const { firebaseUser, signOutUser } = useFirebaseAuth();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -20,15 +21,21 @@ export default function Header({
                   backdrop-blur-lg
                   shadow-[0px_24px_30px_0px_#0000000D] z-20"
     >
-      <div className="flex items-center gap-8 px-4">
+      <div className="flex items-center gap-8 px-0">
         {!isSideNavOpen && (
-          <div className="flex gap-6">
-            <button onClick={toggleSideNav}>
+          <div className="flex -m-1 gap-4">
+            <button
+              className="opacity-60 hover:opacity-100 hover:bg-white/15 p-2 rounded-md"
+              onClick={toggleSideNav}
+            >
               <PanelRightClose className="" />
             </button>
-            {/* <button onClick={() => setCurrentConversation(null)}>
-              <ListPlus />
-            </button> */}
+            <button
+              onClick={() => setCurrentConversation(null)}
+              className="opacity-40 hover:opacity-80 hover:bg-white/15 p-2 rounded-md"
+            >
+              <img src="/icons/comment-alt-plus.svg" />
+            </button>
           </div>
         )}
         {/* <Link to="/"> */}

@@ -60,6 +60,7 @@ export default {
         },
       },
       fontFamily: {
+        OpenSans: ["OpenSans", "sans-serif"],
         NotoSans: ["NOTO_SANS", "sans-serif"],
         Cera: ["CERA", "sans-serif"],
         sfPro: ["SFPRO", "sans-serif"],
