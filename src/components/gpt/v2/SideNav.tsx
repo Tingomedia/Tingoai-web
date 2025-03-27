@@ -3,15 +3,13 @@ import { useConversations } from "../../../contexts/TingoGPTContext";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 import BlinkingDot from "../../common/BlinkingBird";
 
-export default function SideNav({
-  isMobile,
-  isSideNavOpen,
-  hideSideNav,
-}: {
+interface SideNavProps {
   isMobile: boolean;
   isSideNavOpen: boolean;
   hideSideNav: (value: boolean) => void;
-}) {
+}
+
+const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
   const {
     fetchingConversations,
     conversations,
@@ -22,7 +20,8 @@ export default function SideNav({
 
   return (
     <div
-      className={`w-full max-w-[240px] hidden md:flex flex-col text-white/60 z-50 
+      className={`w-full max-w-[240px] h-full hidden md:flex flex-col z-50 
+        font-NotoSans tracking-normal text-[14px] text-white/90
         bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
       bg-black 
         ${
@@ -42,7 +41,7 @@ export default function SideNav({
         {/* <span className="text-[2.5rem] lg:text-[3rem] text-white/60">
           Conversation History
         </span> */}
-        <div className="flex p-2 gap-6 mt-3 mb-12">
+        <div className="flex p-1 gap-6 mt-3 mb-12">
           {/* <button onClick={() => setCurrentConversation(null)}>
             <ListPlus />
           </button> */}
@@ -51,7 +50,7 @@ export default function SideNav({
           </button>
         </div>
         <div
-          className="relative w-full bg-gray-950/35 text-white/60 text-[15px] px-[12px] mt-4
+          className="relative w-full bg-gray-950/35 font-light text-[14px] px-[12px] mt-4
                 shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
                 backdrop-blur-[143.12px] h-[32px] overflow-hidden rounded-full"
         >
@@ -62,7 +61,7 @@ export default function SideNav({
           />
         </div>
       </div>
-      <div className="flex flex-1 flex-col overflow-y-auto hide-scrollbar relative">
+      <div className="flex flex-1 flex-col overflow-y-auto hide-scrollbar relative font-thin text-[12px] tracking-wider">
         {fetchingConversations && (
           <div className="absolute inset-0 bg-transparent text-white flex items-start justify-start pt-6 pl-10">
             <BlinkingDot label="histories..." />
@@ -72,7 +71,7 @@ export default function SideNav({
           <button
             key="new"
             onClick={() => setCurrentConversation(null)}
-            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-0 hover:bg-white/10`}
+            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-2 hover:bg-white/10`}
           >
             New Chat
           </button>
@@ -88,13 +87,13 @@ export default function SideNav({
                   <button
                     key={history.id}
                     onClick={() => setCurrentConversation(history.id)}
-                    className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-2 hover:bg-white/10 ${
+                    className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-4 hover:bg-white/10 ${
                       currentConversationId === history.id
                         ? "bg-white/10 pointer-events-none"
                         : ""
                     }`}
                   >
-                    <span className="text-white/60 text-left truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
+                    <span className="text-left truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
                       {history.recent_message}
                     </span>
                   </button>
@@ -109,4 +108,34 @@ export default function SideNav({
       </div>
     </div>
   );
+};
+
+export default function SideNavComp({
+  isMobile,
+  isSideNavOpen,
+  hideSideNav,
+}: SideNavProps) {
+  if (isMobile) {
+    return (
+      <SideNav
+        isMobile={isMobile}
+        isSideNavOpen={isSideNavOpen}
+        hideSideNav={hideSideNav}
+      />
+    );
+  } else {
+    return (
+      <div
+        className={`transition-all duration-300 ${
+          isSideNavOpen ? "w-[240px]" : "w-0"
+        } overflow-hidden`}
+      >
+        <SideNav
+          isMobile={isMobile}
+          isSideNavOpen={isSideNavOpen}
+          hideSideNav={hideSideNav}
+        />
+      </div>
+    );
+  }
 }

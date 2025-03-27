@@ -87,7 +87,7 @@ const Signup: FC = (): JSX.Element => {
             <img src={tingoai} alt="" className="w-[154px] h-[59px]" />
           </Link>
         </div> */}
-      <div className="lg:w-[514px] h-[650px] text-gray-700 flex flex-col items-center justify-center gap-[20px]">
+      <div className="text-gray-700 flex flex-col items-center justify-center gap-[20px]">
         <div className="w-[450px] h-[54px] flex flex-col justify-center items-center gap-[5px]">
           <h2 className="lg:text-[24px] font-semibold">
             Sign up with your credentials

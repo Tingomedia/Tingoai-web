@@ -41,6 +41,8 @@ const TextBlock = ({
     );
   };
 
+  // const animate = ;
+
   return (
     <div
       className={

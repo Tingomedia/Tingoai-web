@@ -60,6 +60,8 @@ export default {
         },
       },
       fontFamily: {
+        NotoSans: ["NOTO_SANS", "sans-serif"],
+        Cera: ["CERA", "sans-serif"],
         sfPro: ["SFPRO", "sans-serif"],
         Manrope: ["Manrope", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
