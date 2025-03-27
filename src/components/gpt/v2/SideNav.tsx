@@ -21,7 +21,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
   return (
     <div
       className={`w-full max-w-[240px] h-full hidden md:flex flex-col z-50 
-        font-NotoSans tracking-normal text-[14px] text-white/90
+        font-OpenSans tracking-normal text-[14px] text-white/90
         bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
       bg-black 
         ${
@@ -37,20 +37,26 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
           : {}
       }
     >
-      <div className="w-full px-[16px] py-[12px] text-center">
+      <div className="w-full px-2 py-[12px] text-center">
         {/* <span className="text-[2.5rem] lg:text-[3rem] text-white/60">
           Conversation History
         </span> */}
-        <div className="flex p-1 gap-6 mt-3 mb-12">
-          {/* <button onClick={() => setCurrentConversation(null)}>
-            <ListPlus />
-          </button> */}
-          <button onClick={() => hideSideNav(false)}>
+        <div className="flex justify-between p-1 gap-6 mt-3 mb-12">
+          <button
+            className="opacity-60 hover:opacity-80 hover:bg-white/15 p-2 rounded-md"
+            onClick={() => hideSideNav(false)}
+          >
             <PanelRightOpen />
+          </button>
+          <button
+            className="opacity-60 hover:opacity-80 hover:bg-white/15 p-2 rounded-md"
+            onClick={() => setCurrentConversation(null)}
+          >
+            <img src="/icons/comment-alt-plus.svg" />
           </button>
         </div>
         <div
-          className="relative w-full bg-gray-700/35 font-light text-[14px] px-[10px] mt-4
+          className="relative w-auto mx-3 bg-gray-700/35 font-light text-[14px] px-[10px] mt-4
                 shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
                 backdrop-blur-[143.12px] h-[32px] overflow-hidden"
         >
