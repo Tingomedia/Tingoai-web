@@ -22,8 +22,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
     <div
       className={`w-full max-w-[240px] h-full hidden md:flex flex-col z-50 
         font-OpenSans tracking-normal text-[14px] text-white/90
-        bg-[linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.1)),linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35))]
-      bg-black 
+        bg-[#191919] 
         ${
           isMobile
             ? `backdrop-blur-lg transition-transform duration-300 z-20 ${

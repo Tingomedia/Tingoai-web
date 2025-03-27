@@ -114,6 +114,10 @@ export default function Messages() {
       ref={chatContainerRef}
       className="w-full h-full px-[16px] flex justify-center overflow-y-auto hide-scrollbar pt-24 relative"
     >
+      <div
+        className="absolute inset-0 bg-[url('/icons/Bird-outline.svg')] 
+               bg-left bg-contain bg-no-repeat opacity-10 scale-x-[-1]"
+      ></div>
       <div className="flex flex-col w-full max-w-[640px] min-h-full gap-8">
         {firebaseUser &&
           currentConversationId === null &&
