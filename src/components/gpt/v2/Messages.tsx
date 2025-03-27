@@ -15,6 +15,10 @@ export default function Messages() {
   const [loading, setLoading] = useState(false);
   const { firebaseUser } = useFirebaseAuth();
 
+  const userMsgHeight = lastUserMsgRef.current?.clientHeight || 0;
+  const assistantMsgHeight = lastAssistantMsgRef.current?.clientHeight || 0;
+  const totalMsgHeight = userMsgHeight + assistantMsgHeight;
+
   // Scroll when messages change
   useEffect(() => {
     const container = chatContainerRef.current;
@@ -40,6 +44,7 @@ export default function Messages() {
 
         // After an estimated time (e.g., 500ms), force the instant scroll
         setTimeout(() => {
+          // container.scrollIntoView()
           container.scrollTo({
             top: container.scrollHeight,
             behavior: "instant",
@@ -145,11 +150,23 @@ export default function Messages() {
                 key={i}
                 response={reply}
                 ref={i == messages.length - 1 ? lastAssistantMsgRef : null}
+                animate={i == messages.length - 1}
               />
             );
         })}
         {gettingResponse && <BlinkingDot />}
-        <div ref={bottomRef} className="min-h-[90%]" />
+        <div
+          ref={bottomRef}
+          className={
+            totalMsgHeight < window.innerHeight
+              ? `${
+                  totalMsgHeight < window.innerHeight / 2
+                    ? `min-h-[90%]`
+                    : `min-h-[40%]`
+                }`
+              : `min-h-[5%]`
+          }
+        />
       </div>
       {!firebaseUser ||
         (fetchingMessages && (

@@ -50,14 +50,14 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
           </button>
         </div>
         <div
-          className="relative w-full bg-gray-950/35 font-light text-[14px] px-[12px] mt-4
+          className="relative w-full bg-gray-700/35 font-light text-[14px] px-[10px] mt-4
                 shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
-                backdrop-blur-[143.12px] h-[32px] overflow-hidden rounded-full"
+                backdrop-blur-[143.12px] h-[32px] overflow-hidden"
         >
           <input
             type="text"
             placeholder="Search for Conversations"
-            className="w-full h-full p-1 focus:outline-none rounded-full bg-transparent"
+            className="w-full h-full p-1 focus:outline-none bg-transparent"
           />
         </div>
       </div>
@@ -105,6 +105,33 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
                 <span className="text-primary-200/60">History...</span>
               </p>
             )}
+      </div>
+      <div className="w-full flex h-[120px] justify-center items-center bg-white/0 ">
+        <div className="relative group w-full px-6">
+          {/* Button */}
+          <button className="flex flex-col justify-between items-start pointer-events-none">
+            <span
+              className="bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
+        bg-clip-text text-transparent 
+        font-sfPro font-medium text-[16px] flex"
+            >
+              TingoGPT-v2
+            </span>
+            <span className="text-white/60 font-Manrope text-[12px] font-medium py-1 rounded-full">
+              Unlock more features with pro
+            </span>
+          </button>
+
+          {/* Tooltip (Hidden by Default, Visible on Hover) */}
+          <div
+            className="absolute left-2/3 -translate-x-1/2 bottom-full mb-2 
+                  bg-gray-700 text-white text-[12px] px-6 pt-2 pb-1 rounded-md 
+                  shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 
+                  transition-opacity duration-300"
+          >
+            Coming Soon
+          </div>
+        </div>
       </div>
     </div>
   );

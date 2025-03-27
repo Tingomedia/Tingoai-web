@@ -92,6 +92,9 @@ body * {
   animation: blink 1.5s infinite;
 }
 
+.animate-blink-fast {
+  animation: blink 0.5s infinite;
+}
 @font-face {
   font-family: 'SFPRO';
   src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');

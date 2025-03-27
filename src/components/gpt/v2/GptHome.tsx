@@ -7,7 +7,7 @@ import Messages from "./Messages";
 
 function GptHome() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [isSideNavOpen, setIsSideNavOpen] = useState(!isMobile);
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const toggleSideNav = () => setIsSideNavOpen(!isSideNavOpen);
 
   useEffect(() => {
