@@ -130,8 +130,8 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
 
           {/* Tooltip (Hidden by Default, Visible on Hover) */}
           <div
-            className="absolute left-2/3 -translate-x-1/2 bottom-full mb-2 
-                  bg-gray-700 text-white text-[12px] px-6 pt-2 pb-1 rounded-md 
+            className="absolute left-1/2 -translate-x-1/2 bottom-[90%] mb-2 
+                  bg-white/15 text-[12px] px-6 pt-2 pb-1 rounded-md 
                   shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 
                   transition-opacity duration-300"
           >

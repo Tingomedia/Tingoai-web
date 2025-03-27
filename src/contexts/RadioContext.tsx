@@ -77,6 +77,10 @@ export const RadioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const audio = audioRef.current;
     if (!audio) return;
 
+    if (audio.paused || audio.currentTime === 0) {
+      await audio.play();
+    }
+    
     try {
       if (isPlaying) {
         audio.muted = true;
