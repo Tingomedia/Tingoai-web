@@ -25,14 +25,14 @@ export default function Header({
         {!isSideNavOpen && (
           <div className="flex -m-1 gap-4">
             <button
-              className="opacity-60 hover:opacity-100 hover:bg-white/15 p-2 rounded-md"
+              className="opacity-60 hover:opacity-100 hover:bg-white/10 p-2 rounded-md"
               onClick={toggleSideNav}
             >
               <PanelRightClose className="" />
             </button>
             <button
               onClick={() => setCurrentConversation(null)}
-              className="opacity-40 hover:opacity-80 hover:bg-white/15 p-2 rounded-md"
+              className="opacity-40 hover:opacity-80 hover:bg-white/10 p-2 rounded-md"
             >
               <img src="/icons/comment-alt-plus.svg" />
             </button>
