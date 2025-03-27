@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 import { PanelRightClose } from "lucide-react";
 
@@ -9,7 +10,9 @@ export default function Header({
   isSideNavOpen: boolean;
 }) {
   // const { setCurrentConversation } = useConversations();
-  const { firebaseUser } = useFirebaseAuth();
+  const { firebaseUser, signOutUser } = useFirebaseAuth();
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div
       className="sticky top-0 w-full h-[72px] p-4 flex items-center justify-between 
@@ -38,7 +41,7 @@ export default function Header({
       </div>
 
       <div className="flex pr-4">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center relative">
           {firebaseUser && (
             <div className="flex flex-col text-[14px] text-white/60 leading-tight">
               {/* <span className="text-[16px] text-[#F8872B]">
@@ -47,13 +50,24 @@ export default function Header({
               {/* <span>Upgrade to TingoPro</span> */}
             </div>
           )}
-          <button onClick={() => {}}>
+          <button onClick={() => setShowMenu(!showMenu)}>
             <img
               src={firebaseUser?.photoURL || "/images/Avatar.png"}
               alt="avatar"
               className="w-16 object-cover object-center rounded-full"
             />
           </button>
+
+          {showMenu && (
+            <div className="absolute -bottom-10 right-20 bg-black text-white/60">
+              <button
+                onClick={() => signOutUser()}
+                className="px-6 py-2 bg-gray-400/65 rounded-md"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

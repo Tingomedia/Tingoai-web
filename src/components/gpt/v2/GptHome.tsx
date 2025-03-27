@@ -7,7 +7,7 @@ import Messages from "./Messages";
 
 function GptHome() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [isSideNavOpen, setIsSideNavOpen] = useState(!isMobile);
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const toggleSideNav = () => setIsSideNavOpen(!isSideNavOpen);
 
   useEffect(() => {
@@ -28,27 +28,11 @@ function GptHome() {
             ></div>
           )}
 
-          {/* {isSideNavOpen && ( */}
-          {isMobile ? (
-            <SideNav
-              isMobile={isMobile}
-              isSideNavOpen={isSideNavOpen}
-              hideSideNav={setIsSideNavOpen}
-            />
-          ) : (
-            <div
-              className={`transition-all duration-300 ${
-                isSideNavOpen ? "w-[240px]" : "w-0"
-              } overflow-hidden`}
-            >
-              <SideNav
-                isMobile={isMobile}
-                isSideNavOpen={isSideNavOpen}
-                hideSideNav={setIsSideNavOpen}
-              />
-            </div>
-          )}
-          {/* )} */}
+          <SideNav
+            isMobile={isMobile}
+            isSideNavOpen={isSideNavOpen}
+            hideSideNav={setIsSideNavOpen}
+          />
 
           <div className="flex flex-col flex-1 w-full h-full justify-center bg-white/5 relative">
             <Header

@@ -88,7 +88,7 @@ const Signin: FC = (): JSX.Element => {
             <img src={tingoai} alt="" className="w-[154px] h-[59px]" />
           </Link>
         </div> */}
-      <div className="lg:w-[514px] lg:h-[596px] h-[500px] text-gray-700 flex flex-col items-center py-8 gap-[15px]">
+      <div className="text-gray-700 flex flex-col items-center justify-center gap-[20px]">
         <div className="lg:w-[450px] w-[90%] h-[54px] flex flex-col justify-center items-center gap-[5px]">
           <h2 className="text-[24px] font-semibold">Sign in with your email</h2>
           <p className="lg:text-[14px] text-[12px] text-gray-400 font-Poppins">
@@ -105,7 +105,7 @@ const Signin: FC = (): JSX.Element => {
         <img src={dividers} alt="" className="w-[90%]" />
         <form
           onSubmit={handleSubmit}
-          className="h-[228px] lg:w-[450px] w-[90%] flex flex-col gap-[24px]"
+          className="lg:w-[450px] w-[90%] flex flex-col gap-[24px]"
         >
           <div className="flex flex-col h-[80px] relative">
             <label htmlFor="email" className="text-[14px] font-poppins">
