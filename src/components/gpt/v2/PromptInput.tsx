@@ -70,7 +70,7 @@ export default function PromptInput() {
               ref={textInputRef}
               disabled={gettingResponse}
               value={userPrompt}
-              placeholder="What do you have in mind?"
+              placeholder=" What do you have in mind?"
               className="w-full h-full px-2 text-[14px] text-[#B8B8B8] bg-transparent border-none outline-none resize-none hide-scrollbar"
               minRows={1}
               maxRows={2}
