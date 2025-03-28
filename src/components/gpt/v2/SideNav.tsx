@@ -65,7 +65,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
     <div
       className={`w-full max-w-[300px] h-full hidden md:flex flex-col z-50 
         font-OpenSans tracking-normal text-[14px] text-white/90
-        bg-[#191919] 
+        bg-black
         ${
           isMobile
             ? `backdrop-blur-lg transition-transform duration-300 z-20 ${
@@ -99,7 +99,6 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
         </div>
         <div
           className="relative w-auto mx-3 bg-gray-700/35 font-light text-[14px] px-[10px] mt-4
-                shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
                 backdrop-blur-[143.12px] h-[32px] overflow-hidden rounded-full"
         >
           <input

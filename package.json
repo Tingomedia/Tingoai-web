@@ -17,6 +17,7 @@
     "axios": "^1.8.3",
     "firebase": "^11.4.0",
     "formik": "^2.4.6",
+    "framer-motion": "^12.6.2",
     "hls.js": "^1.5.20",
     "lucide-react": "^0.454.0",
     "motion": "^12.6.0",
