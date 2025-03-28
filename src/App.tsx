@@ -70,7 +70,7 @@ function App() {
           <Route path="reachus" element={<Reachus />} />
         </Route>
 
-        <Route path="/test" element={<GptHomeV2 />} />
+        {/* <Route path="/test" element={<GptHomeV2 />} /> */}
         <Route path="/radio-upload" element={<RadioSongsUpload />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
