@@ -4,9 +4,11 @@ import { PanelRightClose } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 
 export default function Header({
+  isMobile,
   toggleSideNav,
   isSideNavOpen,
 }: {
+  isMobile: boolean;
   toggleSideNav: () => void;
   isSideNavOpen: boolean;
 }) {
@@ -16,21 +18,23 @@ export default function Header({
 
   return (
     <div
-      className="sticky top-0 w-full h-[72px] p-4 flex items-center justify-between 
-                bg-[#323232] shadow-[0px_24px_30px_0px_#0000000D] z-20"
+      className={`${
+        isMobile ? "absolute" : "sticky"
+      } top-0 w-full h-[72px] p-4 flex items-center justify-between 
+                bg-[#323232] shadow-[0px_24px_30px_0px_#0000000D] z-20`}
     >
       <div className="flex items-center gap-8 px-0">
         {!isSideNavOpen && (
           <div className="flex -m-1 gap-4">
             <button
-              className="opacity-60 hover:opacity-100 hover:bg-white/10 p-2 rounded-md"
+              className="opacity-60 hover:opacity-100 hover:bg-white/5 p-2 rounded-md"
               onClick={toggleSideNav}
             >
               <PanelRightClose className="" />
             </button>
             <button
               onClick={() => setCurrentConversation(null)}
-              className="opacity-40 hover:opacity-80 hover:bg-white/10 p-2 rounded-md"
+              className="opacity-40 hover:opacity-80 hover:bg-white/5 p-2 rounded-md"
             >
               <img src="/icons/comment-alt-plus.svg" />
             </button>

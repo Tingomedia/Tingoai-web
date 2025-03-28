@@ -1,6 +1,5 @@
 import { PanelRightOpen } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
-import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 import BlinkingDot from "../../common/BlinkingBird";
 
 interface SideNavProps {
@@ -16,7 +15,51 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
     currentConversationId,
     setCurrentConversation,
   } = useConversations();
-  const { firebaseUser } = useFirebaseAuth();
+
+  const ConversationList = () => {
+    const categories: any = {
+      today: "Today",
+      yesterday: "Yesterday",
+      past7Days: "Past 7 Days",
+      past30Days: "Past 30 Days",
+      older: "Older",
+    };
+
+    return (
+      <div className="flex flex-col py-[24px] space-y-[24px]">
+        {Object.entries(conversations).map(
+          ([key, conversations]) =>
+            conversations.length > 0 && (
+              <div key={key}>
+                <h3 className="text-gray-400 text-sm font-semibold uppercase mb-2 px-4">
+                  {categories[key]}
+                </h3>
+                <div className="flex flex-col">
+                  {conversations
+                    .slice()
+                    .reverse()
+                    .map((history) => (
+                      <button
+                        key={history.id}
+                        onClick={() => setCurrentConversation(history.id)}
+                        className={`flex flex-col w-full items-start justify-start max-w-[240px] p-4 py-2 hover:bg-white/10 ${
+                          currentConversationId === history.id
+                            ? "bg-white/10 pointer-events-none"
+                            : ""
+                        }`}
+                      >
+                        <span className="text-left truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
+                          {history.title || "Untitled Conversation"}
+                        </span>
+                      </button>
+                    ))}
+                </div>
+              </div>
+            )
+        )}
+      </div>
+    );
+  };
 
   return (
     <div
@@ -76,40 +119,12 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
           <button
             key="new"
             onClick={() => setCurrentConversation(null)}
-            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-2 hover:bg-white/10`}
+            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-4 pb-0 hover:bg-white/10`}
           >
             New Chat
           </button>
         )}
-        {fetchingConversations || conversations.length > 0
-          ? conversations
-              .slice()
-              .reverse()
-              .map(
-                (
-                  history // Reversing the array
-                ) => (
-                  <button
-                    key={history.id}
-                    onClick={() => setCurrentConversation(history.id)}
-                    className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-6 py-4 hover:bg-white/10 ${
-                      currentConversationId === history.id
-                        ? "bg-white/10 pointer-events-none"
-                        : ""
-                    }`}
-                  >
-                    <span className="text-left truncate w-full overflow-hidden text-ellipsis whitespace-nowrap">
-                      {history.recent_message}
-                    </span>
-                  </button>
-                )
-              )
-          : firebaseUser && (
-              <p className="text-gray-500 text-center py-2 self-center my-auto">
-                No Conversation{" "}
-                <span className="text-primary-200/60">History...</span>
-              </p>
-            )}
+        <ConversationList />
       </div>
       <div className="w-full flex h-[120px] justify-center items-center bg-white/0 ">
         <div className="relative group w-full px-6">
@@ -149,11 +164,19 @@ export default function SideNavComp({
 }: SideNavProps) {
   if (isMobile) {
     return (
-      <SideNav
-        isMobile={isMobile}
-        isSideNavOpen={isSideNavOpen}
-        hideSideNav={hideSideNav}
-      />
+      <>
+        {isSideNavOpen && (
+          <div
+            className="fixed inset-0 bg-black/5 lg:hidden z-10"
+            onClick={() => hideSideNav(false)}
+          ></div>
+        )}
+        <SideNav
+          isMobile={isMobile}
+          isSideNavOpen={isSideNavOpen}
+          hideSideNav={hideSideNav}
+        />
+      </>
     );
   } else {
     return (

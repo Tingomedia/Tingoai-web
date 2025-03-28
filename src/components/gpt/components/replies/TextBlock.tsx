@@ -17,7 +17,7 @@ const TextBlock = ({
 }) => {
   const [displayedText, setDisplayedText] = useState(animate ? "" : text);
   const textRef = useRef<HTMLDivElement | null>(null);
-  const [birdPosition, setBirdPosition] = useState({ left: 0, top: 0 });
+  // const [birdPosition, setBirdPosition] = useState({ left: 0, top: 0 });
   const speed = 16; // Typing speed in ms per character
   const lastCharRef = useRef<HTMLSpanElement | null>(null);
 
@@ -45,12 +45,10 @@ const TextBlock = ({
 
   useEffect(() => {
     if (lastCharRef.current) {
-      const rect = lastCharRef.current.getBoundingClientRect();
-      setBirdPosition({ left: rect.left, top: rect.top });
+      // const rect = lastCharRef.current.getBoundingClientRect();
+      // setBirdPosition({ left: rect.left, top: rect.top });
     }
   }, [displayedText]);
-
-  useEffect(() => console.log("birdPosition: ", birdPosition), [birdPosition]);
 
   const File = ({ file }: { file: File }) => {
     const formatFileSize = (bytes: number) => {
