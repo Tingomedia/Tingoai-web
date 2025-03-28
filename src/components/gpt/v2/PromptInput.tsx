@@ -49,7 +49,7 @@ export default function PromptInput() {
   return (
     <>
       <div
-        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 shadow-xl relative ${
+        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 relative ${
           gettingResponse ? "pointer-events-none" : ""
         }`}
       >
@@ -87,7 +87,7 @@ export default function PromptInput() {
           </button>
         </div>
         <div className="text-[11px] font-light font-Manrope text-center mt-2">
-          ChatGPT can make mistakes. Check important info.
+          TingoGPT can make mistakes. Check important info.
         </div>
 
         {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
