@@ -1,6 +1,6 @@
 import { useMemo, useEffect } from "react";
 import axios from "axios";
-import useFirebaseAuth from "./useFirebaseAuth";
+import { useFirebaseAuth } from "../contexts/FirebaseAuthContext";
 
 const useAxios = () => {
   const { firebaseUser } = useFirebaseAuth();

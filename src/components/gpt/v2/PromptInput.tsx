@@ -36,8 +36,8 @@ export default function PromptInput() {
   };
 
   const handleMessageSubmission = async () => {
-    const success = await sendMessage(userPrompt);
-    if (success) setUserPrompt("");
+    setUserPrompt("");
+    await sendMessage(userPrompt);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -49,15 +49,23 @@ export default function PromptInput() {
   return (
     <>
       <div
-        className={`w-[97%] max-w-[960px] h-[120px] mx-auto mb-4 z-10 shadow-xl ${
+        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 relative ${
           gettingResponse ? "pointer-events-none" : ""
         }`}
       >
-        <div className="w-full h-full relative flex items-center justify-center rounded-[80px] p-[10px] lg:gap-[10px] bg-white/5 backdrop-contrast-100 backdrop-filter backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
-          <button className="rounded-full" onClick={() => setShowInputs(true)}>
+        <div className="w-full h-auto relative flex items-center justify-center rounded-[80px] p-[16px] xs:p-[24px] lg:gap-[10px] bg-white/5 backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
+          <button
+            className="rounded-full relative"
+            onClick={() => setShowInputs(!showInputs)}
+          >
             <img src="/icons/add_butt.svg" width={44} height={44} />
+            {showInputs && (
+              <div className="absolute -top-72">
+                <InputOptions onSelect={showFileSelect} />
+              </div>
+            )}
           </button>
-          <div className="w-[480px] h-full max-h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 backdrop-filter backdrop-blur-lg filter blur-[0px] shadow-inner shadow-black/30 rounded-full px-4 relative">
+          <div className="w-full max-w-[480px] h-[32px] xs:h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 shadow-inner shadow-black/30 rounded-full px-4 relative">
             <TextareaAutosize
               ref={textInputRef}
               disabled={gettingResponse}
@@ -71,20 +79,17 @@ export default function PromptInput() {
             />
           </div>
 
-          <button className="rounded-full">
+          <button
+            className="rounded-full"
+            onClick={() => handleMessageSubmission()}
+          >
             <img src="/icons/send_butt.svg" width={40} height={40} />
           </button>
         </div>
-        {/* {gettingResponse && (
-          <div className="absolute bottom-50% left-50% bg-white/85 text-gray-500 rounded-full py-4 px-16 pointer-events-none">
-            gettingResponse..
-          </div>
-        )} */}
-        {showInputs && (
-          <div className="absolute -top-64">
-            <InputOptions onSelect={showFileSelect} />
-          </div>
-        )}
+        <div className="text-[11px] font-light font-Manrope text-center mt-2">
+          TingoGPT can make mistakes. Check important info.
+        </div>
+
         {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
       </div>
     </>

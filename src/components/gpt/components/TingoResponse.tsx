@@ -60,43 +60,44 @@ function extractCodeAndLanguage(response: any) {
   return { language: null, code: null };
 }
 
-const TingoResponse = forwardRef<HTMLDivElement, { response: Message }>(
-  ({ response }, ref) => {
-    if (!response.content) return null;
-    const { language, code, descriptions } = extractCodeAndLanguage(response);
+const TingoResponse = forwardRef<
+  HTMLDivElement,
+  { response: Message; animate?: boolean }
+>(({ response, animate }, ref) => {
+  if (!response.content) return null;
+  const { language, code, descriptions } = extractCodeAndLanguage(response);
 
-    const Response = () => {
-      if (response.content_type === "image") {
-        return (
-          <img
-            // @ts-ignore
-            src={response.content.image_url}
-            className="w-[320px] h-auto"
-          />
-        );
-      }
-
-      if (language) {
-        return (
-          <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
-        );
-      }
-
-      return <TextBlock text={response.content} />;
-    };
-    return (
-      <div className="flex flex-col gap-[15px]" ref={ref}>
-        <Response />
-        <Actions
-          content={
-            descriptions?.length
-              ? descriptions[descriptions.length - 1]
-              : response.content
-          }
+  const Response = () => {
+    if (response.content_type === "image") {
+      return (
+        <img
+          // @ts-ignore
+          src={response.content.image_url}
+          className="w-[320px] h-auto"
         />
-      </div>
-    );
-  }
-);
+      );
+    }
+
+    if (language) {
+      return (
+        <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
+      );
+    }
+
+    return <TextBlock text={response.content} animate={animate} />;
+  };
+  return (
+    <div className="flex flex-col gap-[15px]" ref={ref}>
+      <Response />
+      <Actions
+        content={
+          descriptions?.length
+            ? descriptions[descriptions.length - 1]
+            : response.content
+        }
+      />
+    </div>
+  );
+});
 
 export default TingoResponse;

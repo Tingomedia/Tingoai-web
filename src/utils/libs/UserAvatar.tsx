@@ -3,7 +3,7 @@ import avatar from "../../assets/images/gpt/Avatars.png"
 import shareIcon from "../../assets/images/gpt/share-01.png"
 import crown from "../../assets/images/gpt/crown-02.png"
 import menuSq from "../../assets/images/gpt/menu-square.png"
-import useFirebaseAuth from "../../hooks/useFirebaseAuth";
+import { useFirebaseAuth } from "../../contexts/FirebaseAuthContext";
 // import { useAppContext } from "../../contexts/AppContext";
 
 /**

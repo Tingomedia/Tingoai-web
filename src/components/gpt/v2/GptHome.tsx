@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import PromptInput from "./PromptInput";
 import SideNav from "./SideNav";
@@ -6,28 +6,41 @@ import { ConversationProvider } from "../../../contexts/TingoGPTContext";
 import Messages from "./Messages";
 
 function GptHome() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const toggleSideNav = () => setIsSideNavOpen(!isSideNavOpen);
+  // const windowHeight = useWindowHeight();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 960);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className="bg-[url('/images/chat_bg.jpg')] bg-cover bg-center w-full h-screen font-sfPro tracking-wider">
-      <div className="w-full h-full shadow-[inset_-1px_1px_1px_-2px_#FFFFFF59,0px_24px_30px_0px_#0000000D] backdrop-blur-[196px]">
-        <div className="w-full h-full flex bg-white/5 text-white/60">
-          {isSideNavOpen && (
-            <div
-              className="fixed inset-0 bg-black/5 lg:hidden z-10"
-              onClick={() => setIsSideNavOpen(false)}
-            ></div>
-          )}
+    <div
+      className={`bg-[url('/images/chat_bg.jpg')] bg-cover bg-center w-full h-svh font-sfPro tracking-wider`}
+      // style={{ height: `${windowHeight}px` }}
+    >
+      <div className="w-full h-full flex bg-white/10 text-white/60 relative shadow-[inset_-1px_1px_1px_-2px_#FFFFFF59,0px_24px_30px_0px_#0000000D] backdrop-blur-[196px]">
+        {/* <div className="w-full h-full flex flex-col bg-white/10 text-white/60 relative"> */}
+        <SideNav
+          isMobile={isMobile}
+          isSideNavOpen={isSideNavOpen}
+          hideSideNav={setIsSideNavOpen}
+        />
 
-          <SideNav hidden={!isSideNavOpen} />
-
-          <div className="flex flex-col flex-1 w-full h-full justify-center bg-white/5 relative">
-            <Header toggleSideNav={toggleSideNav} />
-            <Messages />
-            <PromptInput />
-          </div>
+        <div className="flex flex-col flex-1 w-full h-full justify-center relative">
+          <Header
+            isMobile={isMobile}
+            isSideNavOpen={isSideNavOpen}
+            toggleSideNav={toggleSideNav}
+          />
+          <Messages />
+          <PromptInput />
         </div>
+        {/* </div> */}
       </div>
     </div>
   );
