@@ -32,7 +32,7 @@ function GptHome() {
           hideSideNav={setIsSideNavOpen}
         />
 
-        <div className="flex flex-col flex-1 w-full h-full justify-center relative">
+        <div className="flex flex-col flex-1 w-full h-full justify-center bg-[#1D1B1C] relative">
           <Header
             isMobile={isMobile}
             isSideNavOpen={isSideNavOpen}

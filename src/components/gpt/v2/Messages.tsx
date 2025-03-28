@@ -123,7 +123,7 @@ export default function Messages() {
           currentConversationId === null &&
           !fetchingMessages &&
           !gettingResponse && (
-            <div className="absolute inset-0 bg-transparent text-white/60 flex text-center items-center justify-center">
+            <div className="absolute inset-0 bg-[#1D1B1C] text-white/60 flex text-center items-center justify-center">
               <div
                 className="self-center text-center bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
   bg-clip-text text-transparent 

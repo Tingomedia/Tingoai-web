@@ -49,11 +49,11 @@ export default function PromptInput() {
   return (
     <>
       <div
-        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 relative ${
+        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 relative bg-[#1D1B1C] ${
           gettingResponse ? "pointer-events-none" : ""
         }`}
       >
-        <div className="w-full h-auto relative flex items-center justify-center rounded-[80px] p-[16px] xs:p-[24px] lg:gap-[10px] bg-black/5 backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
+        <div className="w-full h-auto relative flex items-center justify-center rounded-[80px] p-[16px] xs:p-[24px] lg:gap-[10px] bg-[#292929] shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
           <button
             className="rounded-full relative bg-[#838E99]"
             onClick={() => setShowInputs(!showInputs)}
