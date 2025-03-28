@@ -99,7 +99,6 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
         </div>
         <div
           className="relative w-auto mx-3 bg-gray-700/35 font-light text-[14px] px-[10px] mt-4
-                shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
                 backdrop-blur-[143.12px] h-[32px] overflow-hidden rounded-full"
         >
           <input
