@@ -49,7 +49,7 @@ export default function PromptInput() {
   return (
     <>
       <div
-        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 shadow-xl relative ${
+        className={`w-[90%] max-w-[960px] mx-auto mb-4 z-10 relative ${
           gettingResponse ? "pointer-events-none" : ""
         }`}
       >
