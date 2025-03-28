@@ -15,10 +15,10 @@ const GptLandingPage = () => {
                 </div>
 
                 <div className="w-full flex justify-center gap-8 mt-6">
-                    <Link to="/" className="px-6 py-3 border-2 bg-transparent text-white font-semibold rounded-full shadow-lg hover:scale-105 transition">
+                    <Link to="/tingogpt" className="px-6 py-3 border-2 bg-transparent text-white font-semibold rounded-full shadow-lg hover:scale-105 transition">
                         TingoGPT
                     </Link>
-                    <Link to="/" className="px-6 py-3 border-2 bg-transparent text-white font-semibold rounded-full shadow-lg hover:scale-105 transition">
+                    <Link to="#" className="px-6 py-3 border-2 bg-transparent text-white font-semibold rounded-full shadow-lg hover:scale-105 transition">
                         TeenGPT
                     </Link>
                 </div>

@@ -5,7 +5,7 @@ import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import NewGridHome from "./components/landing/new/NewGridHome";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import GptHomeV2 from "./components/gpt/v2/GptHome";
-import GptLandingPage from "./components/gpt/v2/GptLandingPage";
+import GptLandingPage from "./components/gpt/v2/GptLandingPage"; // GPTLandingPage
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
@@ -48,6 +48,7 @@ function App() {
         <Route path="/signin" element={<Navigate to="/login" replace />} />
         <Route path="/signup" element={<Navigate to="/login" replace />} />
         <Route path="/upgrade" element={<GptPlusHome />} />
+        <Route path="/gpt-home" element={<GptLandingPage/>} /> 
 
         {/*=========== TingoGPT Routes ================*/}
         <Route
@@ -71,7 +72,7 @@ function App() {
           <Route path="reachus" element={<Reachus />} />
         </Route>
 
-        <Route path="/test" element={<GptLandingPage/>} />
+        {/* <Route path="/test" element={<GptLandingPage/>} /> */}
         <Route path="/radio-upload" element={<RadioSongsUpload />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />

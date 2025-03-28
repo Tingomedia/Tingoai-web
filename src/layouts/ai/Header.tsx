@@ -46,7 +46,7 @@ const Header: React.FC = () => {
         </ul>
 
         <div className="flex items-center gap-5">
-          <Link to="/tingogpt" className="hover:text-white">
+          <Link to="/gpt-home" className="hover:text-white">
             <button className="hidden lg:flex gap-2 justify-center items-center md:w-[185px] md:h-[55px] hover:border-none bg-primary-200 hover:bg-fade-gray/40 rounded-full text-white font-Poppins hover:shadow-inner-custom font-medium  transition-all duration-300 ease-in-out">
               TingoGPT
             </button>
@@ -84,7 +84,7 @@ const Header: React.FC = () => {
               >
                 Contact
               </Link>
-              <Link to="/tingogpt/home" className="hover:text-white">
+              <Link to="/gpt-home" className="hover:text-white">
                 <button className="flex gap-2 items-center px-8 py-3 rounded-full border hover:bg-primary-200 hover:text-white hover:border-none text-fade-gray font-medium  transition-all duration-300 ease-in-out">
                   TingoGPT
                 </button>

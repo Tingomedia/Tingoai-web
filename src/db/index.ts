@@ -78,8 +78,8 @@ export const productsDb: Product[] = [
     description: "Unleash AI creativity - Generate text, voice, videos and images instantly!",
     imageSrc: gptIcon,
     lightIcon: lightIcon,
-    tryItLink: "/tingogpt",
-    demoLink: "/tingogpt",
+    tryItLink: "/gpt-home",
+    demoLink: "/gpt-home",
     tag: true
   },
   {
