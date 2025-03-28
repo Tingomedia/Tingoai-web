@@ -11,7 +11,7 @@ import editIcon from "../../../../assets/icons/edit-01.svg";
 
 const customEditorTheme = EditorView.theme({
   "&": {
-    backgroundColor: "#232a3e !important",
+    backgroundColor: "#00000 !important",
     fontFamily: "Cascadia Code, monospace",
     fontWeight: "350",
     fontSize: "14px",
@@ -22,7 +22,7 @@ const customEditorTheme = EditorView.theme({
   },
   // Gutter (Line Number Area) Background & Styling
   ".cm-gutters": {
-    backgroundColor: "#232a3e !important", // Custom background for line numbers
+    backgroundColor: "#000 !important", // Custom background for line numbers
     color: "#A8B2D1", // Line number text color
     border: "none", // Remove border if any
     // padding: "0 10px", // Adjust spacing
@@ -61,16 +61,14 @@ const CodeBlock = (props: {
       <div className="flex flex-col gap-4 text-[14px]">
         <ReactMarkdown
           components={{
-            p: ({ node, ...props }) => (
-              <p className="prose prose-invert" {...props} />
-            ),
+            span: ({ node, ...props }) => <span className="" {...props} />,
           }}
         >
           {props.msg[0]}
         </ReactMarkdown>
       </div>
 
-      <div className="bg-[#232a3e] relative border border-[#B8B8B8] rounded-[20px] overflow-hidden">
+      <div className="bg-[#000] relative overflow-hidden">
         <div className="flex justify-between p-[20px] pb-0">
           <span>{props.name}</span>
           <div className="flex gap-[10px] text-[10px] text-[#98A2B3]">
@@ -105,13 +103,13 @@ const CodeBlock = (props: {
           theme={[vscodeDark, customEditorTheme]}
           editable={isEditable}
         />
-        <div
+        {/* <div
           className="absolute -inset-1 rounded-2xl pointer-events-none"
           style={{
             background:
               "linear-gradient(150deg, rgba(18, 24, 38, 0) 0%, rgba(18, 24, 38, 0.9) 100%)",
           }}
-        ></div>
+        ></div> */}
       </div>
 
       <div className="flex flex-col gap-4 text-[14px] mt-4">

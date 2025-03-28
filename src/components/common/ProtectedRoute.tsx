@@ -1,5 +1,5 @@
-import useFirebaseAuth from "../../hooks/useFirebaseAuth";
 import { useEffect } from "react";
+import { useFirebaseAuth } from "../../contexts/FirebaseAuthContext";
 
 interface ProtectedRouteProps {
   element: JSX.Element;
@@ -13,7 +13,7 @@ const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
     if (!isInitialised) return;
     if (!firebaseUser) {
       const returnUrl = encodeURIComponent(window.location.href);
-      window.location.href = `/signup?returnUrl=${returnUrl}`;
+      window.location.href = `/login?returnUrl=${returnUrl}`;
       // return <Navigate to={`/signup?returnUrl=${returnUrl}`} replace />;
     }
   }, [isInitialised, firebaseUser]);

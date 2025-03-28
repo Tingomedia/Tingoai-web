@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../navs/GptHeader";
-import SidebarGpt from "../navs/SidNavGpt";
-import { historyData } from "../../db/gtptDb";
+// import SidebarGpt from "../navs/SidNavGpt";
+// import { historyData } from "../../db/gtptDb";
 import { ConversationProvider } from "../../contexts/TingoGPTContext";
 /**
  * Admin Layout component that wraps the main content of the admin section.
@@ -33,12 +33,12 @@ const GPTLayout: FC = (): JSX.Element => {
         onClick={toggleSidebar}
       ></div>
     )}
-    <SidebarGpt
+    {/* <SidebarGpt
       historyData={historyData}
       className={`${
         isSidebarOpen ? "block" : "hidden"
       } lg:block absolute lg:relative z-20 border-r`}
-    />
+    /> */}
     <Header toggleSidebar={toggleSidebar} />
 
     <div className="col-span-1 lg:col-start-2 h-full overflow-hidden">

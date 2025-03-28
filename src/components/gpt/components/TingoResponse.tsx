@@ -7,6 +7,7 @@ import volumeIcon from "../../../assets/icons/volume-high.svg";
 import editIcon from "../../../assets/icons/pencil-edit-01.svg";
 import { Message } from "../../../contexts/TingoGPTContext";
 import CodeBlock from "./replies/CodeBlock";
+import { forwardRef } from "react";
 
 // export type Response = {
 //   type: "text" | "code" | "etc"; // add expected types
@@ -59,7 +60,10 @@ function extractCodeAndLanguage(response: any) {
   return { language: null, code: null };
 }
 
-export default function TingoResponse({ response }: { response: Message }) {
+const TingoResponse = forwardRef<
+  HTMLDivElement,
+  { response: Message; animate?: boolean }
+>(({ response, animate }, ref) => {
   if (!response.content) return null;
   const { language, code, descriptions } = extractCodeAndLanguage(response);
 
@@ -80,10 +84,10 @@ export default function TingoResponse({ response }: { response: Message }) {
       );
     }
 
-    return <TextBlock text={response.content} bg />;
+    return <TextBlock text={response.content} animate={animate} />;
   };
   return (
-    <div className="flex flex-col gap-[15px]">
+    <div className="flex flex-col gap-[15px]" ref={ref}>
       <Response />
       <Actions
         content={
@@ -94,4 +98,6 @@ export default function TingoResponse({ response }: { response: Message }) {
       />
     </div>
   );
-}
+});
+
+export default TingoResponse;
