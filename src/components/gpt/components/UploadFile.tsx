@@ -132,7 +132,7 @@ const UploadFile = ({ onClose }: { onClose: (value: boolean) => void }) => {
 
               <div className="relative flex items-center justify-center w-full max-w-[337px]">
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 w-full max-w-[337px] h-[1px] bg-[#98A2B3]/40"></div>
-                <span className="bg-white text-[#98A2B3] px-[8px] my-[8px] z-10">
+                <span className="bg-[#1E1E1E] text-[#98A2B3] px-[8px] my-[8px] z-10">
                   OR
                 </span>
               </div>

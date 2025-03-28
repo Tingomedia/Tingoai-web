@@ -20,7 +20,7 @@ function GptHome() {
 
   return (
     <div
-      className={`bg-[url('/images/chat_bg.jpg')] bg-cover bg-center w-full h-svh font-sfPro tracking-wider`}
+      className={`bg-[#1E1E1E] bg-cover bg-center w-full h-svh font-cera tracking-wider`}
       // style={{ height: `${windowHeight}px` }}
     >
       <div className="w-full h-full flex bg-white/10 text-white/60 relative shadow-[inset_-1px_1px_1px_-2px_#FFFFFF59,0px_24px_30px_0px_#0000000D] backdrop-blur-[196px]">

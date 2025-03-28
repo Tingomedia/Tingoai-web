@@ -53,7 +53,7 @@ export default function PromptInput() {
           gettingResponse ? "pointer-events-none" : ""
         }`}
       >
-        <div className="w-full h-auto relative flex items-center justify-center rounded-[80px] p-[16px] xs:p-[24px] lg:gap-[10px] bg-white/5 backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
+        <div className="w-full h-auto relative flex items-center justify-center rounded-[80px] p-[16px] xs:p-[24px] lg:gap-[10px] bg-black/5 backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
           <button
             className="rounded-full relative"
             onClick={() => setShowInputs(!showInputs)}
@@ -65,7 +65,7 @@ export default function PromptInput() {
               </div>
             )}
           </button>
-          <div className="w-full max-w-[480px] h-[32px] xs:h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-950/35 shadow-inner shadow-black/30 rounded-full px-4 relative">
+          <div className="w-full max-w-[480px] h-[32px] xs:h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-500/35 shadow-inner shadow-black/30 rounded-full px-4 relative">
             <TextareaAutosize
               ref={textInputRef}
               disabled={gettingResponse}
@@ -73,7 +73,7 @@ export default function PromptInput() {
               placeholder="What do you have in mind?"
               className="w-full h-full px-2 text-[14px] text-[#B8B8B8] bg-transparent border-none outline-none resize-none hide-scrollbar"
               minRows={1}
-              maxRows={2}
+              maxRows={window.innerWidth < 480 ? 1 : 2}
               onChange={(e) => setUserPrompt(e.target.value)}
               onKeyDown={handleKeyPress}
             />

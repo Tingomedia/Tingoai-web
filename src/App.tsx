@@ -12,7 +12,7 @@ const Product = lazy(() => import("./pages/landingPage/old_website/Products"));
 const Contact = lazy(() => import("./pages/landingPage/old_website/Contact"));
 const About = lazy(() => import("./pages/landingPage/old_website/About"));
 const TingoaiLayout = lazy(() => import("./components/tingoai/TingoaiLayout"));
-const Login = lazy(() => import("./pages/auth/Login"));
+const Login = lazy(() => import("./pages/auth/v2/Login"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
 const OtpCode = lazy(() => import("./pages/auth/OtpCode"));
 const OtpMail = lazy(() => import("./pages/auth/OtpMail"));
