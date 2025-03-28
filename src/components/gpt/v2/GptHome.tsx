@@ -20,7 +20,7 @@ function GptHome() {
 
   return (
     <div
-      className={`bg-[#1E1E1E] bg-cover bg-center w-full h-svh font-cera tracking-wider`}
+      className={`bg-[#1D1B1C] bg-cover bg-center w-full h-svh font-cera tracking-wider`}
       // style={{ height: `${windowHeight}px` }}
     >
       <div className="w-full h-full flex bg-white/10 text-white/60 relative shadow-[inset_-1px_1px_1px_-2px_#FFFFFF59,0px_24px_30px_0px_#0000000D] backdrop-blur-[196px]">
@@ -31,7 +31,7 @@ function GptHome() {
           hideSideNav={setIsSideNavOpen}
         />
 
-        <div className="flex flex-col flex-1 w-full h-full justify-center relative">
+        <div className="flex flex-col flex-1 w-full h-full justify-center bg-[#1D1B1C] relative">
           <Header
             isMobile={isMobile}
             isSideNavOpen={isSideNavOpen}
