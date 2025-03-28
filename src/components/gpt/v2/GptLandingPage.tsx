@@ -1,5 +1,4 @@
 const GptLandingBirds = ({
-    bgColor = "#4f48c1",
     flip = false,
 }) => {
     const birds = [
