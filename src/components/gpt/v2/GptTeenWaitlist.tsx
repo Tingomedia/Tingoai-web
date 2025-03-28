@@ -1,5 +1,5 @@
 import { useState } from "react";
-// Import axios (or use your custom hook if you prefer)
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import BlinkingBird from "../../../components/common/BlinkingBird";
@@ -14,6 +14,9 @@ export default function GptTeenWaitlist() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -25,6 +28,7 @@ export default function GptTeenWaitlist() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(""); // Clear previous error messages
     setIsSubmitting(true);
 
     try {
@@ -40,11 +44,11 @@ export default function GptTeenWaitlist() {
       if (response.status === 200) {
         setShowConfirmation(true);
       } else {
-        alert("There was an error submitting your waitlist request.");
+        setErrorMsg("Service currently unavailable, please try again later.");
       }
     } catch (error) {
       console.error("Waitlist submission error:", error);
-      alert("An error occurred while submitting the form.");
+      setErrorMsg("Service currently unavailable, please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -73,6 +77,12 @@ export default function GptTeenWaitlist() {
               <h2 className="text-[25px] text-[#2a3795] font-bold mb-4">
                 You are now in the waitlist of TeenGPT
               </h2>
+              <button
+                onClick={() => navigate("/gpt-home")}
+                className="py-2 px-4 bg-[#F8872B] text-white font-semibold rounded-full transition-transform duration-300 hover:scale-105"
+              >
+                Go Back
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="w-full">
@@ -138,6 +148,12 @@ export default function GptTeenWaitlist() {
                   I accept the terms and conditions
                 </label>
               </div>
+              {/* Error message */}
+              {errorMsg && (
+                <div className="mb-4 text-red-500 text-center font-medium">
+                  {errorMsg}
+                </div>
+              )}
               {/* Submit Button */}
               <button
                 type="submit"

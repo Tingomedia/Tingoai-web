@@ -22,7 +22,7 @@ const GptLandingPage = () => {
               TingoGPT
             </Link>
             <Link
-              to="#"
+              to="/gpt-teen-waitlist"
               className="px-6 py-3 border-2 bg-transparent text-white font-semibold rounded-full shadow-lg hover:scale-105 transition"
             >
               TeenGPT
