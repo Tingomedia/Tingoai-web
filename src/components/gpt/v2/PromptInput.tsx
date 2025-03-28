@@ -87,7 +87,7 @@ export default function PromptInput() {
           </button>
         </div>
         <div className="text-[11px] font-light font-Manrope text-center mt-2">
-          TingoGPT can make mistakes. Check important info.
+          I can make mistakes, but I am a very responsible AI.
         </div>
 
         {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
