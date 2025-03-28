@@ -19,12 +19,50 @@
     isPlaying?: boolean;
     liveIndicator?: boolean;
     defaultCoverImage?: string;
-    isMuted: boolean;
-    toggleMute: () => void;
+    isMuted?: boolean;
+    toggleMute?: () => void;
     handlePlayPause?: () => void;
-    volume: number;
-    handleVolumeChange: (volume: number) => void;
+    volume?: number;
+    handleVolumeChange?: (volume: number) => void;
   }
+
+  export const Controls = ({
+    isPlaying,
+    handlePlayPause,
+    liveIndicator = true,
+  }: BottomPlayerBarProps) => {
+    return (
+      <div className="w-1/3 flex justify-center items-center gap-4 md:gap-8">
+        {liveIndicator && (
+          <span className="text-lg md:text-2xl border hidden border-fade-blue p-2 px-4 lg:flex gap-2 items-center rounded-full text-white font-Poppins">
+            <div className="w-6 h-6 bg-lime-600/60 rounded-full justify-center flex items-center animate-pulse">
+              <div className="w-2 h-2 bg-lime-600 rounded-full"></div>
+            </div>
+            Live
+          </span>
+        )}
+        {liveIndicator && (
+          <div className="w-6 h-6 bg-lime-600/60 rounded-full justify-center flex lg:hidden items-center animate-pulse">
+            <div className="w-2 h-2 bg-lime-600 rounded-full"></div>
+          </div>
+        )}
+        <button
+          onClick={handlePlayPause}
+          className="h-[32px] w-[32px] md:h-[40px] md:w-[40px] rounded-full border border-fade-blue flex justify-center items-center cursor-pointer"
+        >
+          {isPlaying ? (
+            <FaPause className="text-white" />
+          ) : (
+            <FaPlay className="text-white" />
+          )}
+        </button>
+        <div className="hidden md:flex items-center">
+          <IoMdShare className="text-fade-white text-[24px] mr-4 cursor-pointer" />
+          <IoIosNotifications className="text-fade-white text-[24px] cursor-pointer" />
+        </div>
+      </div>
+    );
+  };
 
   const BottomPlayerBar: FC<BottomPlayerBarProps> = ({
     currentSong,
@@ -59,31 +97,11 @@
         </div>
 
         {/* Controls Section */}
-        <div className="w-1/3 flex justify-center items-center gap-4 md:gap-8">
-          {liveIndicator && (
-            <span className="text-lg md:text-2xl border hidden border-fade-blue p-2 px-4 lg:flex gap-2 items-center rounded-full text-white font-Poppins">
-              <div className="w-6 h-6 bg-lime-600/60 rounded-full justify-center flex items-center animate-pulse">
-                <div className="w-2 h-2 bg-lime-600 rounded-full"></div>
-              </div>
-              Live
-            </span>
-          )}
-          {liveIndicator && (
-            <div className="w-6 h-6 bg-lime-600/60 rounded-full justify-center flex lg:hidden items-center animate-pulse">
-              <div className="w-2 h-2 bg-lime-600 rounded-full"></div>
-            </div>
-          )}
-          <button
-            onClick={handlePlayPause}
-            className="h-[32px] w-[32px] md:h-[40px] md:w-[40px] rounded-full border border-fade-blue flex justify-center items-center cursor-pointer"
-          >
-            {isPlaying ? <FaPause className="text-white" /> : <FaPlay className="text-white" />}
-          </button>
-          <div className="hidden md:flex items-center">
-            <IoMdShare className="text-fade-white text-[24px] mr-4 cursor-pointer" />
-            <IoIosNotifications className="text-fade-white text-[24px] cursor-pointer" />
-          </div>
-        </div>
+        <Controls
+          isPlaying={isPlaying}
+          liveIndicator={liveIndicator}
+          handlePlayPause={handlePlayPause}
+        />
 
         {/* Volume Controls */}
         <div className="w-1/3 flex justify-center items-center gap-4">
@@ -106,7 +124,10 @@
             max="1"
             step="0.01"
             value={volume}
-            onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+            onChange={(e) =>
+              handleVolumeChange &&
+              handleVolumeChange(parseFloat(e.target.value))
+            }
             className="w-[70px] md:w-[150px] lg:w-[200px] cursor-pointer bg-[#0A0C47] rounded-full accent-fade-blue"
           />
           <div className="">
