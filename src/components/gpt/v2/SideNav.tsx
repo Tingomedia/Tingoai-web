@@ -31,7 +31,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
           ([key, conversations]) =>
             conversations.length > 0 && (
               <div key={key}>
-                <h3 className="text-gray-400 text-sm font-semibold uppercase mb-2 px-4">
+                <h3 className="text-gray-400 text-sm font-semibold uppercase mb-2 px-10">
                   {categories[key]}
                 </h3>
                 <div className="flex flex-col">
@@ -42,7 +42,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
                       <button
                         key={history.id}
                         onClick={() => setCurrentConversation(history.id)}
-                        className={`flex flex-col w-full items-start justify-start max-w-[240px] p-4 py-2 hover:bg-white/10 ${
+                        className={`flex flex-col w-full items-start justify-start max-w-[300px] p-10 py-3 hover:bg-white/10 ${
                           currentConversationId === history.id
                             ? "bg-white/10 pointer-events-none"
                             : ""
@@ -63,7 +63,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
 
   return (
     <div
-      className={`w-full max-w-[240px] h-full hidden md:flex flex-col z-50 
+      className={`w-full max-w-[300px] h-full hidden md:flex flex-col z-50 
         font-OpenSans tracking-normal text-[14px] text-white/90
         bg-[#191919] 
         ${
@@ -100,11 +100,11 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
         <div
           className="relative w-auto mx-3 bg-gray-700/35 font-light text-[14px] px-[10px] mt-4
                 shadow-[inset_0px_-0.73px_0.73px_0px_#FFFFFF59,inset_1.46px_2.92px_2.92px_-0.73px_#00000040] 
-                backdrop-blur-[143.12px] h-[32px] overflow-hidden"
+                backdrop-blur-[143.12px] h-[32px] overflow-hidden rounded-full"
         >
           <input
             type="text"
-            placeholder="Search for Conversations"
+            placeholder="Search for History"
             className="w-full h-full p-1 focus:outline-none bg-transparent"
           />
         </div>
@@ -119,7 +119,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
           <button
             key="new"
             onClick={() => setCurrentConversation(null)}
-            className={`flex flex-col w-full items-start justify-start max-w-[240px] mr-auto p-4 pb-0 hover:bg-white/10`}
+            className={`flex flex-col w-full items-start justify-start max-w-[300px] mr-auto p-4 pb-0 hover:bg-white/10`}
           >
             New Chat
           </button>
@@ -133,7 +133,7 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
             <span
               className="bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
         bg-clip-text text-transparent 
-        font-sfPro font-medium text-[16px] flex"
+        font-cera font-medium text-[16px] flex"
             >
               TingoGPT-v2
             </span>
@@ -182,7 +182,7 @@ export default function SideNavComp({
     return (
       <div
         className={`transition-all duration-300 ${
-          isSideNavOpen ? "w-[240px]" : "w-0"
+          isSideNavOpen ? "w-[300px]" : "w-0"
         } overflow-hidden`}
       >
         <SideNav
