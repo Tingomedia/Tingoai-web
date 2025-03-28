@@ -73,7 +73,7 @@ export default function PromptInput() {
               placeholder="What do you have in mind?"
               className="w-full h-full px-2 text-[14px] text-[#B8B8B8] bg-transparent border-none outline-none resize-none hide-scrollbar"
               minRows={1}
-              maxRows={2}
+              maxRows={window.innerWidth < 480 ? 1 : 2}
               onChange={(e) => setUserPrompt(e.target.value)}
               onKeyDown={handleKeyPress}
             />
