@@ -55,7 +55,7 @@ export default function PromptInput() {
       >
         <div className="w-full h-auto relative flex items-center justify-center rounded-[80px] p-[16px] xs:p-[24px] lg:gap-[10px] bg-black/5 backdrop-blur-lg shadow-[0px_8px_6px_0px_#0000000D,inset_0px_1px_1px_0px_#FFFFFF40,inset_0px_-1px_1px_0px_#FFFFFF40,inset_2px_3px_3px_-3px_#FFFFFF99]">
           <button
-            className="rounded-full relative"
+            className="rounded-full relative bg-[#838E99]"
             onClick={() => setShowInputs(!showInputs)}
           >
             <img src="/icons/add_butt.svg" width={44} height={44} />
@@ -65,7 +65,7 @@ export default function PromptInput() {
               </div>
             )}
           </button>
-          <div className="w-full max-w-[480px] h-[32px] xs:h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-gray-500/35 shadow-inner shadow-black/30 rounded-full px-4 relative">
+          <div className="w-full max-w-[480px] h-[32px] xs:h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-[#3C3C3C] shadow-inner shadow-black/30 rounded-full px-4 relative">
             <TextareaAutosize
               ref={textInputRef}
               disabled={gettingResponse}
