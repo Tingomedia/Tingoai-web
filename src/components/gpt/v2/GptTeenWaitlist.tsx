@@ -53,8 +53,8 @@ export default function GptTeenWaitlist() {
         {/* Main form container */}
         <div className="flex rounded-[16px] overflow-hidden w-full max-w-[360px] md:w-[868px] md:max-w-max bg-white p-8 relative">
           <form onSubmit={handleSubmit} className="w-full">
-            <h1 className="text-[24px] font-bold mb-6 text-center">
-              Join the waitlist of TeenGPT
+            <h1 className="text-[25px] text-[#2a3795] font-bold">
+            Join the waitlist of TeenGPT
             </h1>
             {/* Name Field */}
             <div className="mb-4">
