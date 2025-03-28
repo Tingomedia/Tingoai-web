@@ -18,10 +18,16 @@ export default function Header({
 
   return (
     <div
-      className={`${
-        isMobile ? "absolute" : "sticky"
-      } top-0 w-full h-[72px] p-4 flex items-center justify-between 
-                bg-[#323232] shadow-[0px_24px_30px_0px_#0000000D] z-20`}
+      className={`
+        ${isMobile ? "absolute" : "sticky"}
+        top-0 w-full h-[72px] p-4 flex items-center justify-between 
+        bg-black bg-[url('/images/Tingo_Bird_Grey.svg')] bg-no-repeat
+        shadow-[0px_24px_30px_0px_#0000000D] z-20
+      `}
+      style={{
+        backgroundSize: "800px",
+        backgroundPosition: "center -120px", // Adjust as needed
+      }}
     >
       <div className="flex items-center gap-8 px-0">
         {!isSideNavOpen && (
@@ -42,7 +48,7 @@ export default function Header({
         )}
         {/* <Link to="/"> */}
         <img
-          src="/images/logo.svg"
+          src="/images/TingoGPT-01.svg"
           alt="Logo"
           className="h-[50px] max-h-full max-w-full object-contain pt-2 hidden md:flex"
         />
