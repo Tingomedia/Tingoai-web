@@ -28,13 +28,11 @@ export default function GptTeenWaitlist() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMsg(""); // Clear previous error messages
+    setErrorMsg("");
     setIsSubmitting(true);
 
     try {
-      // Get the API base URL from environment variables
       const baseUrl = import.meta.env.VITE_REACT_APP_TingoGPT_API;
-      // Make POST request to `${baseUrl}/teengpt-waitlist`
       const response = await axios.post(`${baseUrl}/teengpt-waitlist`, {
         name: formData.name,
         email: formData.email,
@@ -56,12 +54,12 @@ export default function GptTeenWaitlist() {
 
   return (
     <>
-      {/* Background animation (same as Login.tsx) */}
+      {/* Background animation */}
       <AnimGraphic />
 
       {/* Page container */}
       <div className="w-screen h-svh flex flex-col gap-[32px] justify-center items-center font-Cera relative">
-        {/* TeenGPT / TingoGPT logo at the top */}
+        {/* Logo at the top */}
         <img
           src="/icons/TingoGPT-01.svg"
           width={300}
@@ -70,8 +68,8 @@ export default function GptTeenWaitlist() {
           className="mt-8"
         />
 
-        {/* Main form container */}
-        <div className="flex rounded-[16px] overflow-hidden w-full max-w-[360px] md:w-[868px] md:max-w-max bg-white p-8 relative">
+        {/* Main form container with reduced width on md screens */}
+        <div className="flex rounded-[16px] overflow-hidden w-full max-w-[360px] md:w-[400px] md:max-w-max bg-white p-8 relative">
           {showConfirmation ? (
             <div className="flex flex-col items-center justify-center w-full h-full">
               <h2 className="text-[25px] text-[#2a3795] font-bold mb-4">
@@ -85,57 +83,43 @@ export default function GptTeenWaitlist() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="w-full">
+            <form onSubmit={handleSubmit} className="w-full space-y-4">
               <h1 className="text-[25px] text-[#2a3795] font-bold">
                 Join the waitlist of TeenGPT
               </h1>
-              {/* Name Field */}
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Enter your name"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
+
+              {/* Full Name Field */}
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter full name"
+                className="w-full bg-gray-100 rounded-full border-none px-4 py-3 placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
               {/* Email Field */}
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter email"
+                className="w-full bg-gray-100 rounded-full border-none px-4 py-3 placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
               {/* Mobile Field */}
-              <div className="mb-4">
-                <label htmlFor="mobile" className="block text-gray-700 mb-2">
-                  Mobile
-                </label>
-                <input
-                  type="text"
-                  id="mobile"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  placeholder="Enter your mobile number"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
+              <input
+                type="text"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                placeholder="Enter mobile number"
+                className="w-full bg-gray-100 rounded-full border-none px-4 py-3 placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
               {/* Terms Checkbox */}
-              <div className="flex items-center mb-6">
+              <div className="flex items-center mt-4">
                 <input
                   type="checkbox"
                   id="accepted"
@@ -144,24 +128,32 @@ export default function GptTeenWaitlist() {
                   onChange={handleChange}
                   className="mr-2"
                 />
-                <label htmlFor="accepted" className="text-gray-700">
-                  I accept the terms and conditions
-                </label>
+                <span className="lg:text-[12px] text-[12px]">
+                  By clicking this, you agree to{" "}
+                  <span className="text-[#F8872B] font-bold">Tingo AI</span>{" "}
+                  <button className="">Terms &amp; Condition,</button>{" "}
+                  <button className="">Privacy</button> and{" "}
+                  <button className="">Policy</button>
+                </span>
               </div>
+
               {/* Error message */}
               {errorMsg && (
-                <div className="mb-4 text-red-500 text-center font-medium">
+                <div className="text-red-500 text-center font-medium">
                   {errorMsg}
                 </div>
               )}
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-2 bg-[#F8872B] text-white font-semibold rounded-full transition-transform duration-300 hover:scale-105"
-              >
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </button>
+
+              {/* Submit Button - Centered */}
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full md:w-[100px] py-3 bg-[#F8872B] text-white font-semibold rounded-full transition-transform duration-300 hover:scale-105"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+              </div>
             </form>
           )}
 
