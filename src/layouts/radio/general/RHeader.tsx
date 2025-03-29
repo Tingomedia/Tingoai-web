@@ -119,7 +119,7 @@ const RHeader: React.FC = () => {
       )}
 
       {/* Mobile Bottom Menu */}
-      <ul className="w-11/12 md:w-2/3 mx-auto px-2 py-2 text-[1.2rem] flex justify-between gap-4 mt-10 text-white/80 font-Cera border border-fade-gray rounded-full sm:hidden">
+      {/* <ul className="w-11/12 md:w-2/3 mx-auto px-2 py-2 text-[1.2rem] flex justify-between gap-4 mt-10 text-white/80 font-Cera border border-fade-gray rounded-full sm:hidden">
         <Link
           to="/radio/playlists"
           className="rounded-full py-2 px-4 hover:bg-dark-blue cursor-pointer transition-all duration-300 ease-in-out"
@@ -138,7 +138,7 @@ const RHeader: React.FC = () => {
         >
           Reach Out
         </Link>
-      </ul>
+      </ul> */}
     </div>
   );
 };
