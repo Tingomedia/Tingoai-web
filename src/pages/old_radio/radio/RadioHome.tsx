@@ -60,12 +60,18 @@ const RadioHome: React.FC = () => {
       {/* Main Content */}
       <div className="relative flex flex-col justify-center items-center w-full h-full text-white gap-6 text-center z-10">
         <div className="flex flex-col">
-          <span className="text-[36px] lg:text-[64px] font-semibold text-center">
+          <span className="text-[48px] lg:text-[64px] font-semibold text-center">
             Tingo <span className="text-primary-200">AI</span> Radio
           </span>
-          <span className="text-[36px] lg:text-[64px] font-semibold text-center leading-none">
+          <span className="text-[48px] lg:text-[64px] font-semibold text-center leading-none">
             102.5 FM
           </span>
+          {/* SVG positioned underneath the 102.5 FM text for mobile only */}
+          <img
+            src="/images/radio_on_air_label.svg"
+            alt="Radio On Air"
+            className="mx-auto block md:hidden w-[350px]"
+          />
         </div>
         <div className="relative font-Muro">
           <img src="/graphics/Radio.svg" width={500} height={500} />
@@ -73,7 +79,10 @@ const RadioHome: React.FC = () => {
           <button
             onClick={handlePlayPause}
             className={`absolute left-[50%] -translate-x-[50%] w-[84px] font-normal text-white flex justify-center items-center gap-4`}
-            style={{ bottom: `${isPlaying ? 29 : 26}%` }}
+            style={{
+              bottom: `${isPlaying ? 29 : 26}%`,
+              transform: "translateX(-50%) translateY(10px)"
+            }}
             disabled={loading}
           >
             {loading ? (
@@ -89,17 +98,13 @@ const RadioHome: React.FC = () => {
                 Pause
               </>
             ) : (
-              <span className="text-[14px] sm:text-[16px]">
+              <span className="text-[14px] sm:text-[15px]">
                 {/* <FaPlay /> */}
                 Start Listening
               </span>
             )}
           </button>
         </div>
-        {/* <p className="text-[12px] sm:text-[14px] md:text-[16px] text-center px-4 py-2 bg-[#121826] rounded-full border border-fade-blue">
-          {isPlaying ? "Powered by AI" : "Tingo AI Radio 102.5 FM"}
-        </p> */}
-
         {/* Error Message */}
         {loading && error && (
           <p className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md text-sm">
@@ -112,3 +117,5 @@ const RadioHome: React.FC = () => {
 };
 
 export default RadioHome;
+
+
