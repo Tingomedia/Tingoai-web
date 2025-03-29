@@ -72,7 +72,7 @@ const RadioHome: React.FC = () => {
           {/* Play/Pause Button with Loading State */}
           <button
             onClick={handlePlayPause}
-            className={`absolute left-[50%] -translate-x-[50%] w-[48px] font-normal rounded-full text-white flex justify-center items-center gap-4`}
+            className={`absolute left-[50%] -translate-x-[50%] w-[84px] font-normal text-white flex justify-center items-center gap-4`}
             style={{ bottom: `${isPlaying ? 29 : 26}%` }}
             disabled={loading}
           >
