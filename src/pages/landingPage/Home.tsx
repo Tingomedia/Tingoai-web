@@ -12,7 +12,7 @@ import Extra from "../../components/landing/new/Extra";
 
 const Home: FC = () => {
   return (
-    <>
+    <div className="h-svh overflow-y-scroll">
       <Header />
       <div className="bg-primary/90">
         <Hero />
@@ -22,7 +22,7 @@ const Home: FC = () => {
       <div className="bg-[#121826] w-full pb-[40px]">
         <OurProduct />
         {/* <Testimonial /> */}
-{/*         <div className="bg-[#171D2D]">
+        {/*         <div className="bg-[#171D2D]">
           <FAQSection />
         </div> */}
         <CTASection />
@@ -32,7 +32,7 @@ const Home: FC = () => {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 };
 
