@@ -4,14 +4,7 @@ import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
 import { Controls } from "../../../pages/old_radio/radio/BottomPlayerBar";
 
 function Radio() {
-  const {
-    isPlaying,
-    handlePlayPause,
-    isMuted,
-    toggleMute,
-    volume,
-    handleVolumeChange,
-  } = useRadio();
+  const { isPlaying, handlePlayPause } = useRadio();
   const [formattedTimeLocation, setFormattedTimeLocation] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
 
@@ -21,6 +14,7 @@ function Radio() {
 
     // Format time as 06:09 AM
     const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+    // @ts-ignore
     const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
 
     // Format date as 28/03/2025
@@ -45,7 +39,7 @@ function Radio() {
 
   return (
     <>
-      {/* <AnimatedBirdsCSS speed={20} /> */}
+      <AnimatedBirdsCSS speed={20} />
       <div className="flex justify-center items-center min-h-screen w-full p-4">
         <div className="w-[90%] max-w-[768px] h-auto bg-[#f06c0e] rounded-[24px] flex flex-col items-center relative">
           <div className="absolute w-full top-2 flex justify-between px-[24px] text-white/65">
