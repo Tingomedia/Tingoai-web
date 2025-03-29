@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { RadioProvider, useRadio } from "../../../contexts/RadioContext";
-// import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
+import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
 import { Controls } from "../../../pages/old_radio/radio/BottomPlayerBar";
 
 function Radio() {

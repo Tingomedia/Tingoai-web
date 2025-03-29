@@ -29,7 +29,6 @@ const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
 const RadioSongsUpload = lazy(
   () => import("./layouts/radio/general/RadioSongsUpload")
 );
-const RadioNew = lazy(() => import("./layouts/radio/v2/Radio"));
 
 function App() {
   return (
