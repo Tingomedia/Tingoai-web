@@ -1,43 +1,65 @@
 import { useEffect, useState } from "react";
 import { RadioProvider, useRadio } from "../../../contexts/RadioContext";
-import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
+// import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
 import { Controls } from "../../../pages/old_radio/radio/BottomPlayerBar";
 
 function Radio() {
   const {
     isPlaying,
     handlePlayPause,
-    isMuted,
-    toggleMute,
-    volume,
-    handleVolumeChange,
   } = useRadio();
   const [formattedTimeLocation, setFormattedTimeLocation] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
 
+  // async function getDateTimeLocation() {
+  //   // Get current date and time
+  //   const now = new Date();
+
+  //   // Format time as 06:09 AM
+  //   const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+  //   const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
+
+  //   // Format date as 28/03/2025
+  //   const formattedDate = now.toLocaleDateString("en-GB").replace(/\//g, "/"); // Ensures day/month/year format
+
+  //   try {
+  //     // Get user's location using IP
+  //     const response = await fetch("https://ipapi.co/json/");
+  //     const data = await response.json();
+  //     const location = `${data.city}, ${data.country_name}`;
+
+  //     setFormattedTimeLocation(`${formattedTime} ${location}`);
+  //     setFormattedDate(formattedDate);
+  //   } catch (error) {
+  //     console.log("Unable to fetch location");
+  //   }
+  // }
+
+  // fixed type issues
   async function getDateTimeLocation() {
     // Get current date and time
     const now = new Date();
 
-    // Format time as 06:09 AM
-    const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+    // Corrected typing for time options
+    const timeOptions: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
     const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
 
     // Format date as 28/03/2025
-    const formattedDate = now.toLocaleDateString("en-GB").replace(/\//g, "/"); // Ensures day/month/year format
+    const formattedDate = now.toLocaleDateString("en-GB").replace(/\//g, "/");
 
     try {
-      // Get user's location using IP
-      const response = await fetch("https://ipapi.co/json/");
-      const data = await response.json();
-      const location = `${data.city}, ${data.country_name}`;
+        // Get user's location using IP
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        const location = `${data.city}, ${data.country_name}`;
 
-      setFormattedTimeLocation(`${formattedTime} ${location}`);
-      setFormattedDate(formattedDate);
+        setFormattedTimeLocation(`${formattedTime} ${location}`);
+        setFormattedDate(formattedDate);
     } catch (error) {
-      console.log("Unable to fetch location");
+        console.log("Unable to fetch location", error);
     }
-  }
+}
+
 
   useEffect(() => {
     getDateTimeLocation();
