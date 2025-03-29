@@ -24,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   tag,
 }) => {
   return (
-    <div className="relative min-h-[258px] lg:h-[258px] w-11/12  min-h-[258px] lg:h-[258px] mx-auto md:w-[350px] xl:w-[300px] 2xl:w-[380px] 2xl:w-[448px] bg-gradient-to-b from-[#797979CC] to-[#232A3E1A] bg-transparent p-6 rounded-xl flex flex-col justify-between border-[0.5px] border-fade-gray-label border border-gray-500">
+    <div className="relative min-h-[258px] lg:h-[258px] w-11/12   mx-auto md:w-[350px] lg:w-[290px] xl:w-[300px] 2xl:w-[380px] bg-gradient-to-b from-[#797979CC] to-[#232A3E1A] bg-transparent p-6 rounded-xl flex flex-col justify-between border-[0.5px] border-fade-gray-label border border-gray-500">
       {/* Badge */}
       {tag ?
         <span className="absolute top-8 right-8 bg-[#E7F6EC] text-[#099137] font-Manrope text-[12px] w-[67px] flex flex-row-reverse gap-2 items-center font-medium px-3 py-1 rounded-full">

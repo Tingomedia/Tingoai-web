@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  overflow: hidden;
   /* Indigo */
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
@@ -50,8 +49,8 @@ body,
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  scrollbar-width: thin;        
-  scrollbar-color: rgba(247, 139, 41, 1) #f0f0f0; 
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247, 139, 41, 1) #f0f0f0;
 }
 
 html {
@@ -63,7 +62,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   overflow-y: auto;
   line-height: 1.5;
   font-size: 1.6rem;
@@ -96,6 +95,7 @@ body * {
 .animate-blink-fast {
   animation: blink 0.5s infinite;
 }
+
 @font-face {
   font-family: 'SFPRO';
   src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
@@ -119,58 +119,60 @@ body * {
 
 @font-face {
   font-family: 'InriaSans';
-    src: url('/fonts/InriaSans-Light.ttf') format('opentype');
+  src: url('/fonts/InriaSans-Light.ttf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'CERA';
-    src: url('/fonts/cera/cera-gr-thin.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'CERA';
-    src: url('/fonts/cera/cera-gr-light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'CERA';
-    src: url('/fonts/cera/cera-gr.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'CERA';
-    src: url('/fonts/cera/cera-gr-medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'CERA';
-    src: url('/fonts/cera/cera-gr-bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-    }
-        @font-face {
-          font-family: 'CERA';
-          src: url('/fonts/cera/cera-gr-black.otf') format('opentype');
-          font-weight: 900;
-          font-style: normal;
-        }
-    
-        @font-face {
-          font-family: 'NOTO_SANS';
-          src: url('/fonts/NotoSans/NotoSans-Light.ttf') format('opentype');
-          font-weight: 100;
-          font-style: normal;
-        }
+  src: url('/fonts/cera/cera-gr-thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CERA';
+  src: url('/fonts/cera/cera-gr-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CERA';
+  src: url('/fonts/cera/cera-gr.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CERA';
+  src: url('/fonts/cera/cera-gr-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CERA';
+  src: url('/fonts/cera/cera-gr-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CERA';
+  src: url('/fonts/cera/cera-gr-black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NOTO_SANS';
+  src: url('/fonts/NotoSans/NotoSans-Light.ttf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'OpenSans';
   src: url('/fonts/OpenSans/OpenSans-Light.ttf') format('opentype');
@@ -213,31 +215,38 @@ li {
 
 /* Custom scrollbar styling for WebKit-based browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 8px; 
-  height: 8px; 
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #232A3E;  /* background color of the scrollbar track */
+  background: #232A3E;
+  /* background color of the scrollbar track */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #232A3E;  /* scrollbar thumb color */
-  border-radius: 6px;         /* rounded corners */
-  border: 3px solid #232A3E;  /* space around scrollbar thumb */
+  background-color: #232A3E;
+  /* scrollbar thumb color */
+  border-radius: 6px;
+  /* rounded corners */
+  border: 3px solid #232A3E;
+  /* space around scrollbar thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #232A3E;  /* color on hover */
+  background-color: #232A3E;
+  /* color on hover */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  display: none;
+  /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 /* For Firefox */
 .hide-scrollbar {
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
 }
 
 @layer utilities {
@@ -245,5 +254,3 @@ li {
     background: linear-gradient(90deg, rgba(201, 201, 201, 0.4) 0%, rgba(201, 201, 201, 0.05) 100%);
   }
 }
-
-
