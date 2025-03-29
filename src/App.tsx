@@ -5,6 +5,7 @@ import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import NewGridHome from "./components/landing/new/NewGridHome";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import GptHomeV2 from "./components/gpt/v2/GptHome";
+import GptTeenWaitList from "./components/gpt/v2/GptTeenWaitlist";
 import GptLandingPage from "./components/gpt/v2/GptLandingPage"; // GPTLandingPage
 const Home = lazy(() => import("./pages/landingPage/Home"));
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
@@ -49,7 +50,8 @@ function App() {
         <Route path="/signin" element={<Navigate to="/login" replace />} />
         <Route path="/signup" element={<Navigate to="/login" replace />} />
         <Route path="/upgrade" element={<GptPlusHome />} />
-        <Route path="/gpt-home" element={<GptLandingPage />} />
+        <Route path="/gpt-home" element={<GptLandingPage/>} /> 
+        <Route path="/gpt-teen-waitlist" element={<GptTeenWaitList/>} /> 
 
         {/*=========== TingoGPT Routes ================*/}
         <Route
