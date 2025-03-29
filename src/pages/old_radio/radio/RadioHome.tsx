@@ -55,17 +55,18 @@ const RadioHome: React.FC = () => {
   const { isPlaying, loading, handlePlayPause, error } = useRadio();
 
   return (
-    <div className="w-full h-screen min-h-screen relative overflow-hidden font-Cera">
+    <div className="w-full h-svh min-h-svh relative overflow-hidden font-Cera">
       <AnimGraphic orangeGraphic />
       {/* Main Content */}
-      <div className="relative flex flex-col justify-center items-center w-full h-full text-white md:gap-6 text-center z-10">
-        <h1 className="text-[36px] lg:text-[76px] font-semibold md:leading-[77px] text-center">
-          Tingo <span className="text-primary-200">AI</span> Radio{" "}
-          <span className="text-[24px] md:text-[48px] font-normal opacity-35 py-8 hidden xs:inline">
-            |
-          </span>{" "}
-          102.5 FM
-        </h1>
+      <div className="relative flex flex-col justify-center items-center w-full h-full text-white gap-6 text-center z-10">
+        <div className="flex flex-col">
+          <span className="text-[36px] lg:text-[64px] font-semibold text-center">
+            Tingo <span className="text-primary-200">AI</span> Radio
+          </span>
+          <span className="text-[36px] lg:text-[64px] font-semibold text-center leading-none">
+            102.5 FM
+          </span>
+        </div>
         <div className="relative font-Muro">
           <img src="/graphics/Radio.svg" width={500} height={500} />
           {/* Play/Pause Button with Loading State */}
