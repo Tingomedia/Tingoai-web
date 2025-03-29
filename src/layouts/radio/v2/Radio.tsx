@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { RadioProvider, useRadio } from "../../../contexts/RadioContext";
-// import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
+import AnimatedBirdsCSS from "../../../pages/auth/v2/AnimatedBirdsCSS";
 import { Controls } from "../../../pages/old_radio/radio/BottomPlayerBar";
 
 function Radio() {
-  const {
-    isPlaying,
-    handlePlayPause,
-  } = useRadio();
+  const { isPlaying, handlePlayPause } = useRadio();
   const [formattedTimeLocation, setFormattedTimeLocation] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
 
@@ -40,26 +37,26 @@ function Radio() {
     // Get current date and time
     const now = new Date();
 
-    // Corrected typing for time options
-    const timeOptions: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+    // Format time as 06:09 AM
+    const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+    // @ts-ignore
     const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
 
     // Format date as 28/03/2025
     const formattedDate = now.toLocaleDateString("en-GB").replace(/\//g, "/");
 
     try {
-        // Get user's location using IP
-        const response = await fetch("https://ipapi.co/json/");
-        const data = await response.json();
-        const location = `${data.city}, ${data.country_name}`;
+      // Get user's location using IP
+      const response = await fetch("https://ipapi.co/json/");
+      const data = await response.json();
+      const location = `${data.city}, ${data.country_name}`;
 
-        setFormattedTimeLocation(`${formattedTime} ${location}`);
-        setFormattedDate(formattedDate);
+      setFormattedTimeLocation(`${formattedTime} ${location}`);
+      setFormattedDate(formattedDate);
     } catch (error) {
-        console.log("Unable to fetch location", error);
+      console.log("Unable to fetch location", error);
     }
-}
-
+  }
 
   useEffect(() => {
     getDateTimeLocation();
@@ -67,7 +64,7 @@ function Radio() {
 
   return (
     <>
-      {/* <AnimatedBirdsCSS speed={20} /> */}
+      <AnimatedBirdsCSS speed={20} />
       <div className="flex justify-center items-center min-h-screen w-full p-4">
         <div className="w-[90%] max-w-[768px] h-auto bg-[#f06c0e] rounded-[24px] flex flex-col items-center relative">
           <div className="absolute w-full top-2 flex justify-between px-[24px] text-white/65">

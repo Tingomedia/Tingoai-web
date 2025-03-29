@@ -179,7 +179,12 @@ body * {
   font-weight: 300;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'Muro';
+  src: url('/fonts/Radio/rawest-medium.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
 input,
 button,
 textarea,

@@ -29,7 +29,6 @@ const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
 const RadioSongsUpload = lazy(
   () => import("./layouts/radio/general/RadioSongsUpload")
 );
-const RadioNew = lazy(() => import("./layouts/radio/v2/Radio"));
 
 function App() {
   return (
@@ -75,7 +74,7 @@ function App() {
           <Route path="reachus" element={<Reachus />} />
         </Route>
 
-        <Route path="/test" element={<RadioNew />} />
+        {/* <Route path="/test" element={<RadioNew />} /> */}
         <Route path="/radio-upload" element={<RadioSongsUpload />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />

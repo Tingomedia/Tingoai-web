@@ -68,6 +68,7 @@ export default {
         },
       },
       fontFamily: {
+        Muro: ["Muro", "sans-serif"],
         OpenSans: ["OpenSans", "sans-serif"],
         NotoSans: ["NOTO_SANS", "sans-serif"],
         Cera: ["CERA", "sans-serif"],

@@ -8,8 +8,8 @@ import RFotter from "./general/RFotter";
 const RadioLayout: FC = (): JSX.Element => {
   return (
     <RadioProvider>
-      <div className="w-full 2xl-contaner mx-auto h-screen bg-[#121826]">
-        <div className="fixed top-0 left-0 w-full mx-auto z-50 bg-[#1D2739]">
+      <div className="w-full 2xl-contaner mx-auto h-screen">
+        <div className="fixed top-0 left-0 w-full mx-auto z-50">
           <RHeader />
         </div>
 

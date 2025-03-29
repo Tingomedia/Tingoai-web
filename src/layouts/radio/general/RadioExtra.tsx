@@ -1,35 +1,35 @@
 import Marquee from "react-fast-marquee";
-import star from "../../../assets/images/new_tingo/Star 1.png";
 
 const words = [
-  "TingoAI Radio 102.5 FM",
-  "Powered by AI",
   "First AI Radio In Africa",
+  "The Future is here Tingo AI Radio 102.5 FM",
+  "Powered by AI",
   "Request A Song now",
   "Ife Mi, Our AI OAP Will Play it",
-  "Responsible AI",
-  "The Future is here",
 ];
 
 const RadioExtra = () => {
   return (
-    <div className="w-full 2xl:container mx-auto bg-transparent overflow-hidden">
+    <div className="w-full relative bg-transparent overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/35 to-white/5 -z-10"></div>
       <Marquee
         speed={50}
         pauseOnHover={true}
         loop={0}
-        gradient={true}
-        className="flex items-center"
+        className="flex gap-8 justify-evenly mx-auto text-[#2a3795] font-Cera font-medium py-4"
       >
-        {words.map((word, index) => (
+        {words.map((word, i) => (
           <div
-            key={index}
-            className="flex items-center min-w-max px-6 text-tremor-brand-muted text-2xl md:text-[30px] font-semibold"
+            key={i}
+            className={`rounded-full px-8 mx-4 py-1 ${
+              i == 0
+                ? "bg-[#2a3795] text-white  font-normal"
+                : i == 4
+                ? "bg-[#ed8733] text-white font-normal"
+                : "bg-white"
+            } `}
           >
             {word}
-            {index !== words.length - 1 && (
-              <img src={star} className="w-auto md:h-[50px] pl-8" alt="star" />
-            )}
           </div>
         ))}
       </Marquee>
