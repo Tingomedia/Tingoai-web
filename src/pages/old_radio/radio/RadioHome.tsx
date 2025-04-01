@@ -49,6 +49,8 @@
 // import radial from "/radicalgradient.svg";
 // import bgvideo from "../../../assets/images/old_tingo/headset-animate.mp4";
 import { useRadio } from "../../../contexts/RadioContext";
+import BottomPlayer from "../../../layouts/radio/general/BottomPlayer";
+import RHeader from "../../../layouts/radio/general/RHeader";
 import AnimGraphic from "../../auth/v2/AnimGraphic";
 
 const RadioHome: React.FC = () => {
@@ -57,6 +59,7 @@ const RadioHome: React.FC = () => {
   return (
     <div className="w-full h-svh min-h-svh relative overflow-hidden font-Cera">
       <AnimGraphic orangeGraphic />
+      <RHeader />
       {/* Main Content */}
       <div className="relative flex flex-col justify-center items-center w-full h-full text-white gap-6 text-center z-10">
         <div className="flex flex-col">
@@ -81,7 +84,7 @@ const RadioHome: React.FC = () => {
             className={`absolute left-[50%] -translate-x-[50%] w-[84px] font-normal text-white flex justify-center items-center gap-4`}
             style={{
               bottom: `${isPlaying ? 29 : 26}%`,
-              transform: "translateX(-50%) translateY(10px)"
+              transform: "translateX(-50%) translateY(10px)",
             }}
             disabled={loading}
           >
@@ -111,6 +114,8 @@ const RadioHome: React.FC = () => {
             {error}
           </p>
         )}
+        {/* Conditional Player */}
+        <BottomPlayer />
       </div>
     </div>
   );

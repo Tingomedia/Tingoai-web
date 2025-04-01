@@ -13,7 +13,7 @@ const RHeader: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="sm:px-[2%] px-[5%] md:pt-0 pt-[2%] fixed w-full top-4 lg:top-10 z-30 flex flex-col gap-[5%] items-center justify-between">
+    <div className="sm:px-[2%] px-[5%] md:pt-0 pt-[2%] w-fullz-30 flex flex-col gap-[5%] items-center justify-between">
       <div className="w-full flex justify-between items-center gap-[5%]">
         <Link to="/" className="text-white relative">
           <img
