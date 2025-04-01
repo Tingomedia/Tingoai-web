@@ -59,7 +59,9 @@ const RadioHome: React.FC = () => {
   return (
     <div className="flex flex-col min-h-svh relative font-Cera">
       <AnimGraphic orangeGraphic />
-      <RHeader />
+      <div className="w-full h-auto mt-8">
+        <RHeader />
+      </div>
       {/* Main Content */}
       <div className="relative flex flex-1 flex-col justify-evenly items-center text-white my-4 gap-2 text-center z-10">
         <div className="flex flex-col">
