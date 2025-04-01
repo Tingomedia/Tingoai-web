@@ -6,7 +6,7 @@ const RadioLayout: FC = (): JSX.Element => {
   return (
     <RadioProvider>
       {/* Main Content */}
-      <div className="flex-1 overflow-y-hidden hide-scrollbar">
+      <div className="flex-1 hide-scrollbar">
         <Outlet />
       </div>
     </RadioProvider>
