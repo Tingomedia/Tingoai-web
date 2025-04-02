@@ -51,8 +51,6 @@
 import { useRadio } from "../../../contexts/RadioContext";
 import BottomPlayer from "../../../layouts/radio/general/BottomPlayer";
 import RHeader from "../../../layouts/radio/general/RHeader";
-import BottomPlayer from "../../../layouts/radio/general/BottomPlayer";
-import RHeader from "../../../layouts/radio/general/RHeader";
 import AnimGraphic from "../../auth/v2/AnimGraphic";
 
 const RadioHome: React.FC = () => {
@@ -66,14 +64,11 @@ const RadioHome: React.FC = () => {
       <div className="relative flex flex-1 flex-col justify-evenly items-center text-white my-4 gap-2 text-center">
         <div className="flex flex-col">
           <span className="text-[clamp(32px,5vw,72px)] font-semibold text-center">
-          <span className="text-[clamp(32px,5vw,72px)] font-semibold text-center">
             Tingo <span className="text-primary-200">AI</span> Radio
           </span>
           <span className="text-[clamp(32px,5vw,72px)] font-semibold text-center leading-none">
-          <span className="text-[clamp(32px,5vw,72px)] font-semibold text-center leading-none">
             102.5 FM
           </span>
-
 
           {/* SVG positioned underneath the 102.5 FM text for mobile only */}
           <img
@@ -89,24 +84,11 @@ const RadioHome: React.FC = () => {
             alt="Radio"
           />
 
-        <div className="relative flex w-full h-auto justify-center items-center font-Muro">
-          <img
-            src="/graphics/Radio.svg"
-            className="w-full max-w-[480px] h-auto"
-            alt="Radio"
-          />
-
           {/* Play/Pause Button with Loading State */}
           <button
             onClick={handlePlayPause}
             className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-white flex justify-center items-center gap-4"
-            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-white flex justify-center items-center gap-4"
             style={{
-              width:
-                "clamp(64px, calc(64px + (20 * ((100vw - 380px) / 100))), 84px)",
-              height:
-                "clamp(30px, calc(30px + (10 * ((100vw - 320px) / 100))), 46px)",
-              bottom: `9%`,
               width:
                 "clamp(64px, calc(64px + (20 * ((100vw - 380px) / 100))), 84px)",
               height:
@@ -119,15 +101,12 @@ const RadioHome: React.FC = () => {
               <div className="flex flex-col justify-center items-center">
                 <div className="animate-spin w-5 h-5 border-2 border-radioprimary border-t-transparent rounded-full"></div>
                 <span className="text-[11px] sm:text-[13px]">
-                <span className="text-[11px] sm:text-[13px]">
                   Connecting...
                 </span>
               </div>
             ) : isPlaying ? (
               <>Pause</>
-              <>Pause</>
             ) : (
-              <span className="text-[12px] xs:text-[15px]">
               <span className="text-[12px] xs:text-[15px]">
                 Start Listening
               </span>
@@ -141,9 +120,7 @@ const RadioHome: React.FC = () => {
           </p>
         )}
         {/* Conditional Player */}
-        {/* Conditional Player */}
       </div>
-      <BottomPlayer />
       <BottomPlayer />
     </div>
   );
