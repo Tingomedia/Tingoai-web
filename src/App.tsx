@@ -51,6 +51,7 @@ function App() {
         <Route path="/upgrade" element={<GptPlusHome />} />
         <Route path="/gpt-home" element={<GptLandingPage />} />
         <Route path="/gpt-teen-waitlist" element={<GptTeenWaitList />} />
+        <Route path="/gpt-mobile-waitlist" element={<GptTeenWaitList App />} />
 
         {/*=========== TingoGPT Routes ================*/}
         <Route

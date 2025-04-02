@@ -5,7 +5,7 @@ import axios from "axios";
 import BlinkingBird from "../../../components/common/BlinkingBird";
 import AnimGraphic from "../../../pages/auth/v2/AnimGraphic";
 
-export default function GptTeenWaitlist() {
+export default function GptTeenWaitlist({ App = false }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,7 +55,7 @@ export default function GptTeenWaitlist() {
   return (
     <>
       {/* Background animation */}
-      <AnimGraphic />
+      <AnimGraphic orangeGraphic />
 
       {/* Page container */}
       <div className="w-screen h-svh flex flex-col gap-[32px] justify-center items-center font-Cera relative">
@@ -73,7 +73,9 @@ export default function GptTeenWaitlist() {
           {showConfirmation ? (
             <div className="flex flex-col items-center justify-center w-full h-full">
               <h2 className="text-[25px] text-[#2a3795] font-bold mb-4">
-                You are now in the waitlist of TeenGPT
+                {App
+                  ? "You are now in the waitlist of Mobile app"
+                  : "You are now in the waitlist of TeenGPT"}
               </h2>
               <button
                 onClick={() => navigate("/gpt-home")}
@@ -85,7 +87,9 @@ export default function GptTeenWaitlist() {
           ) : (
             <form onSubmit={handleSubmit} className="w-full space-y-4">
               <h1 className="text-[25px] text-[#2a3795] font-bold">
-                Join the waitlist of TeenGPT
+                {App
+                  ? "Join the waitlist of Mobile app"
+                  : "Join the waitlist of TeenGPT"}
               </h1>
 
               {/* Full Name Field */}
