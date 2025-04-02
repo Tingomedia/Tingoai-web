@@ -49,8 +49,8 @@ function App() {
         <Route path="/signin" element={<Navigate to="/login" replace />} />
         <Route path="/signup" element={<Navigate to="/login" replace />} />
         <Route path="/upgrade" element={<GptPlusHome />} />
-        <Route path="/gpt-home" element={<GptLandingPage/>} /> 
-        <Route path="/gpt-teen-waitlist" element={<GptTeenWaitList/>} /> 
+        <Route path="/gpt-home" element={<GptLandingPage />} />
+        <Route path="/gpt-teen-waitlist" element={<GptTeenWaitList />} />
 
         {/*=========== TingoGPT Routes ================*/}
         <Route
@@ -74,7 +74,7 @@ function App() {
           <Route path="reachus" element={<Reachus />} />
         </Route>
 
-        {/* <Route path="/test" element={<RadioNew />} /> */}
+        {/* <Route path="/test" element={<GptHomeV2 />} /> */}
         <Route path="/radio-upload" element={<RadioSongsUpload />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />

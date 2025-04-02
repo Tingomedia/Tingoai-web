@@ -4,11 +4,9 @@ import { PanelRightClose } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 
 export default function Header({
-  isMobile,
   toggleSideNav,
   isSideNavOpen,
 }: {
-  isMobile: boolean;
   toggleSideNav: () => void;
   isSideNavOpen: boolean;
 }) {
@@ -18,9 +16,7 @@ export default function Header({
 
   return (
     <div
-      className={`
-        ${isMobile ? "absolute" : "sticky"}
-        top-0 w-full h-[72px] p-4 flex items-center justify-between 
+      className={`w-full h-[72px] p-4 flex items-center justify-between 
         bg-black bg-[url('/images/Tingo_Bird_Grey.svg')] bg-no-repeat
         shadow-[0px_24px_30px_0px_#0000000D] z-20
       `}

@@ -32,6 +32,8 @@ interface TingoGPTContextType {
   conversations: Record<string, Conversation[]>;
   currentConversationId: string | null;
   messages: Message[];
+  animateResponse: boolean;
+  setAnimateResponse: (value: boolean) => void;
   setCurrentConversation: (id: string | null) => void;
   sendMessage: (message: string) => Promise<boolean | undefined>;
   fetchConversations: () => Promise<void>;
@@ -58,6 +60,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   const [fetchingConversations, setFetchingConversations] = useState(false);
   const [fetchingMessages, setFetchingMessages] = useState(false);
   const [gettingResponse, setGettingResponse] = useState(false);
+  const [animateResponse, setAnimateResponse] = useState(false);
 
   const preventMessagesFetch = useRef(false); // prevent it when we start new conversation
 
@@ -252,7 +255,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       response.content_type = data.content_type;
 
       setMessages((prev) => [...prev, response]);
-
+      setAnimateResponse(true);
       setGettingResponse(false);
       return true;
     } catch (error) {
@@ -293,6 +296,8 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
         conversations,
         currentConversationId,
         messages,
+        animateResponse,
+        setAnimateResponse,
         setCurrentConversation,
         sendMessage,
         fetchConversations,

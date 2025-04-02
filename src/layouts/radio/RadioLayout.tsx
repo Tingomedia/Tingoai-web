@@ -5,14 +5,9 @@ import { RadioProvider } from "../../contexts/RadioContext";
 const RadioLayout: FC = (): JSX.Element => {
   return (
     <RadioProvider>
-      {/* Main Content */}
-      <div className="flex-1 hide-scrollbar">
-        <Outlet />
-      </div>
+      <Outlet />
     </RadioProvider>
   );
 };
-
-
 
 export default RadioLayout;

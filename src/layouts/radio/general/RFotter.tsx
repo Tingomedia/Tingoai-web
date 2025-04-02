@@ -3,10 +3,10 @@ import React from 'react'
 import RadioExtra from './RadioExtra'
 const RFotter:React.FC = () => {
   return (
-    <div className='w-full h-[80px]  text-fade-white'>
-    <RadioExtra />
+    <div className="w-full h-auto z-50 text-fade-white">
+      <RadioExtra />
     </div>
-  )
+  );
 }
 
 export default RFotter

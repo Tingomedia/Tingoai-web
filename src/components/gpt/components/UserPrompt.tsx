@@ -28,7 +28,7 @@ const UserPrompt = forwardRef<HTMLDivElement, { prompt: Message }>(
       }
     };
     return (
-      <div className="flex self-end max-w-[70%] pt-16" ref={ref}>
+      <div className="flex self-end max-w-[70%]" ref={ref}>
         <Prompt />
       </div>
     );
