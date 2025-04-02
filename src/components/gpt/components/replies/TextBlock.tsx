@@ -9,16 +9,18 @@ const TextBlock = ({
   file,
   bg,
   animate = false, // New prop to control animation
+  onAnimateFinish,
 }: {
   text: string;
   file?: File;
   bg?: boolean;
   animate?: boolean;
+  onAnimateFinish?: (value: boolean) => void;
 }) => {
   const [displayedText, setDisplayedText] = useState(animate ? "" : text);
   const textRef = useRef<HTMLDivElement | null>(null);
   // const [birdPosition, setBirdPosition] = useState({ left: 0, top: 0 });
-  const speed = 16; // Typing speed in ms per character
+
   const lastCharRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
@@ -29,18 +31,39 @@ const TextBlock = ({
 
     setDisplayedText(""); // Reset text before animation
 
-    const interval = setInterval(() => {
+    const startSpeed = 16;
+    const endSpeed = 2;
+    const holdTime = 500; // 500ms at 16ms speed
+    const transitionTime = 2000; // 2 seconds to transition from 16ms to 2ms
+    const startTime = performance.now();
+
+    let currentSpeed = startSpeed;
+
+    const animateText = () => {
       setDisplayedText((prev) => {
         if (prev.length < text.length) {
-          return prev + text[prev.length]; // Use prev.length instead of i
+          return prev + text[prev.length];
         } else {
-          clearInterval(interval);
+          if (onAnimateFinish) onAnimateFinish(false); // ✅ Correct placement
           return prev;
         }
       });
-    }, speed);
 
-    return () => clearInterval(interval);
+      let elapsed = performance.now() - startTime;
+      if (elapsed > holdTime) {
+        let progress = (elapsed - holdTime) / transitionTime; // Normalize progress (0 to 1)
+        progress = Math.min(progress, 1); // Clamp to max 1
+        currentSpeed = startSpeed + (endSpeed - startSpeed) * progress; // Linear interpolation
+      }
+
+      if (displayedText.length < text.length) {
+        setTimeout(animateText, currentSpeed);
+      }
+    };
+
+    const timeoutId = setTimeout(animateText, startSpeed);
+
+    return () => clearTimeout(timeoutId); // ✅ Cleanup on unmount
   }, [text, animate]);
 
   useEffect(() => {
@@ -89,7 +112,7 @@ const TextBlock = ({
         ref={textRef}
         className={`flex flex-col text-[14px] ${bg ? "" : "tingoResponse"}`}
       >
-        <ReactMarkdown>{text}</ReactMarkdown>
+        <ReactMarkdown>{displayedText}</ReactMarkdown>
         {/* {animate && (
             <span
               className={`flex gap-1 animate-blink-fast delay-800 items-center`}

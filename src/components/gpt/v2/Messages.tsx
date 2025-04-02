@@ -6,25 +6,20 @@ import BlinkingDot from "../../common/BlinkingBird";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 
 export default function Messages() {
-  const { fetchingMessages, messages, gettingResponse, currentConversationId } =
+  const { fetchingMessages, messages, gettingResponse, animateResponse } =
     useConversations();
-  const chatContainerRef = useRef<HTMLDivElement | null>(null);
-  const lastUserMsgRef = useRef<HTMLDivElement | null>(null);
-  const lastAssistantMsgRef = useRef<HTMLDivElement | null>(null);
-  const bottomRef = useRef<HTMLDivElement | null>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const lastUserMsgRef = useRef<HTMLDivElement>(null);
+  const lastAssistantMsgRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
   const { firebaseUser } = useFirebaseAuth();
-
-  const userMsgHeight = lastUserMsgRef.current?.clientHeight || 0;
-  const assistantMsgHeight = lastAssistantMsgRef.current?.clientHeight || 0;
-  const totalMsgHeight = userMsgHeight + assistantMsgHeight;
 
   // Scroll when messages change
   useEffect(() => {
     const container = chatContainerRef.current;
     if (!container) return;
-
-    if (container.scrollHeight < window.innerHeight) {
+    if (container.scrollHeight < container.clientHeight) {
       requestAnimationFrame(() => {
         container.scrollTo({
           top: container.scrollHeight,
@@ -57,19 +52,31 @@ export default function Messages() {
     setTimeout(scrollToBottom, 0); // Increase delay if needed
   }, [messages]);
 
+  useEffect(() => {
+    if (!animateResponse || !lastAssistantMsgRef.current) return;
+    const resizeObserver = new ResizeObserver(() => {
+      if (bottomRef.current)
+        bottomRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    });
+    resizeObserver.observe(lastAssistantMsgRef.current);
+    return () => resizeObserver.disconnect(); // clean up
+  }, [lastAssistantMsgRef.current, animateResponse]);
+
   // Prevent scrolling beyond the lastUserMsgRef
   const handleScroll = () => {
     if (!chatContainerRef.current || !lastUserMsgRef.current) return;
     const container = chatContainerRef.current;
-    const screenHeight = window.innerHeight;
-
+    if (!container) return;
     const userMsgHeight = lastUserMsgRef.current?.clientHeight || 0;
     const assistantMsgHeight = lastAssistantMsgRef.current?.clientHeight || 0;
     const totalMsgHeight = userMsgHeight + assistantMsgHeight;
 
     const lastMsgEl =
       lastAssistantMsgRef.current && lastUserMsgRef.current
-        ? totalMsgHeight <= screenHeight
+        ? totalMsgHeight <= container.clientHeight
           ? lastUserMsgRef.current
           : lastAssistantMsgRef.current
         : lastAssistantMsgRef.current || lastUserMsgRef.current;
@@ -77,7 +84,7 @@ export default function Messages() {
     // Get positions
     const containerTop = container.getBoundingClientRect().top;
     const lastUserTop =
-      totalMsgHeight <= screenHeight
+      totalMsgHeight <= container.clientHeight
         ? lastMsgEl.getBoundingClientRect().top
         : lastMsgEl.getBoundingClientRect().bottom;
 
@@ -98,48 +105,33 @@ export default function Messages() {
   };
 
   useEffect(() => {
-    const container = chatContainerRef.current;
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
-      }
-    };
+    // const container = chatContainerRef.current;
+    if (false) handleScroll();
+    // if (container) {
+    //   container.addEventListener("scroll", handleScroll);
+    // }
+    // return () => {
+    //   if (container) {
+    //     container.removeEventListener("scroll", handleScroll);
+    //   }
+    // };
   }, [messages]);
 
   return (
     <div
       ref={chatContainerRef}
-      className="w-full h-full px-[16px] flex justify-center overflow-y-auto hide-scrollbar pt-24 relative"
+      className="w-full h-full px-[16px] flex justify-center overflow-y-auto hide-scrollbar relative"
     >
       {/* <div
         className="absolute inset-0 bg-[url('/icons/Bird-outline.svg')] 
                bg-left bg-contain bg-no-repeat opacity-10 scale-x-[-1]"
       ></div> */}
-      <div className="flex flex-col w-full max-w-[640px] min-h-full gap-8">
-        {firebaseUser &&
-          currentConversationId === null &&
-          !fetchingMessages &&
-          !gettingResponse && (
-            <div className="absolute inset-0 bg-[#1D1B1C] text-white/60 flex text-center items-center justify-center">
-              <div
-                className="self-center text-center bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
-  bg-clip-text text-transparent 
-  font-cera font-light text-[32px] leading-[145%] tracking-[0%] px-8"
-              >
-                <span className="text-white">Hello, </span>
-                <span className="text-orange-400">{firebaseUser?.displayName}</span>
-              </div>
-            </div>
-          )}
+      <div className="flex flex-col w-full max-w-[640px] min-h-full gap-8 py-16">
         {loading && (
           <div className="self-center pb-16">
             <BlinkingDot label="Conversations..." />
           </div>
         )}
-
         {messages.map((reply, i) => {
           if (reply.role === "user")
             return (
@@ -160,18 +152,7 @@ export default function Messages() {
             );
         })}
         {gettingResponse && <BlinkingDot />}
-        <div
-          ref={bottomRef}
-          className={
-            totalMsgHeight < window.innerHeight
-              ? `${
-                  totalMsgHeight < window.innerHeight / 2
-                    ? `min-h-[90%]`
-                    : `min-h-[40%]`
-                }`
-              : `min-h-[5%]`
-          }
-        />
+        <div ref={bottomRef} className={`min-h-[16px]`}></div>
       </div>
       {!firebaseUser ||
         (fetchingMessages && (

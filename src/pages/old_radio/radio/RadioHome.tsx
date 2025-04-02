@@ -57,13 +57,11 @@ const RadioHome: React.FC = () => {
   const { isPlaying, loading, handlePlayPause, error } = useRadio();
 
   return (
-    <div className="flex flex-col min-h-svh relative font-Cera">
+    <div className="flex flex-col justify-center h-svh py-8 relative font-Cera">
       <AnimGraphic orangeGraphic />
-      <div className="w-full h-auto mt-8">
-        <RHeader />
-      </div>
+      <RHeader />
       {/* Main Content */}
-      <div className="relative flex flex-1 flex-col justify-evenly items-center text-white my-4 gap-2 text-center z-10">
+      <div className="relative flex flex-1 flex-col justify-evenly items-center text-white my-4 gap-2 text-center">
         <div className="flex flex-col">
           <span className="text-[clamp(32px,5vw,72px)] font-semibold text-center">
             Tingo <span className="text-primary-200">AI</span> Radio

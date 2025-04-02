@@ -5,7 +5,7 @@ import copyIcon from "../../../assets/icons/copy-01.svg";
 import likeIcon from "../../../assets/icons/thumbs-up.svg";
 import volumeIcon from "../../../assets/icons/volume-high.svg";
 import editIcon from "../../../assets/icons/pencil-edit-01.svg";
-import { Message } from "../../../contexts/TingoGPTContext";
+import { Message, useConversations } from "../../../contexts/TingoGPTContext";
 import CodeBlock from "./replies/CodeBlock";
 import { forwardRef } from "react";
 
@@ -66,6 +66,7 @@ const TingoResponse = forwardRef<
 >(({ response, animate }, ref) => {
   if (!response.content) return null;
   const { language, code, descriptions } = extractCodeAndLanguage(response);
+  const { animateResponse, setAnimateResponse } = useConversations();
 
   const Response = () => {
     if (response.content_type === "image") {
@@ -84,7 +85,13 @@ const TingoResponse = forwardRef<
       );
     }
 
-    return <TextBlock text={response.content} animate={animate} />;
+    return (
+      <TextBlock
+        text={response.content}
+        animate={animateResponse && animate}
+        onAnimateFinish={setAnimateResponse}
+      />
+    );
   };
   return (
     <div className="flex flex-col gap-[15px]" ref={ref}>

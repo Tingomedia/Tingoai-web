@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 // import logo from '../../../assets/icons/tingo_ai_logo.png';
-import logo from '../../../assets/radio/Tingo 102.5 FM-01 3.svg'
-import search from '../../../assets/icons/search-outline.svg';
+import logo from "../../../assets/radio/Tingo 102.5 FM-01 3.svg";
 import { FaUser } from "react-icons/fa";
-import { MenuIcon, X } from 'lucide-react';
+import { MenuIcon, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 
@@ -23,9 +22,11 @@ const RHeader: React.FC = () => {
           />
         </Link>
 
-        {/* Centered Nav Bar */}
-        <div className="flex sm:flex-1 px-[8px] py-[4px] items-center justify-between sm:border border-fade-gray  bg-transparent rounded-full sm:shadow-customG">
-          <ul className="hidden sm:flex flex-1 mx-[10%] justify-evenly gap-4 font-Cera text-white/80">
+        {/* Centered Nav Bar 
+        // sm:border border-fade-gray sm:shadow-customG 
+        // this border removed for temp */}
+        <div className="flex sm:flex-1 px-[8px] py-[4px] items-center justify-between bg-transparent rounded-full ">
+          <ul className="hidden sm:flex flex-1 mx-[10%] justify-evenly gap-4 font-Cera opacity-0 text-white/80">
             <Link
               to="/radio"
               className="rounded-full py-2 px-4 hover:bg-primary-200 hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
@@ -47,11 +48,6 @@ const RHeader: React.FC = () => {
           </ul>
           {/* Right Side Controls */}
           <div className="flex items-center gap-5">
-            <img
-              src={search}
-              alt="search"
-              className="w-[24px] h-[24px] hidden lg:block"
-            />
             {firebaseUser?.photoURL ? (
               <img
                 src={firebaseUser?.photoURL}
@@ -83,13 +79,13 @@ const RHeader: React.FC = () => {
         </div>
 
         {/* just to mimic some space as per design */}
-        <Link to="/" className="text-white relative opacity-0 hidden xl:inline">
+        {/* <Link to="/" className="text-white relative opacity-0 hidden xl:inline">
           <img
             src={logo}
             alt="Tingo logo"
             className="md:w-[150px] h-[40px] md:h-[64px]"
           />
-        </Link>
+        </Link> */}
 
         {/* Mobile Menu */}
         <button onClick={toggleMenu} className="hidden text-white">
