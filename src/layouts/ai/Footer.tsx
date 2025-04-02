@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-gray-300 font-Manrope mb-2 md:w-[388px]">
-            ingo AI is a pioneering technology company dedicated to harnessing artificial intelligence to create transformative solutions across various sectors, including education, healthcare, and media. Our mission is to empower humanity's next chapter by developing innovative, responsible AI technologies that address real-world challenges. 
+            Tingo AI is a pioneering technology company dedicated to harnessing artificial intelligence to create transformative solutions across various sectors, including education, healthcare, and media. Our mission is to empower humanity's next chapter by developing innovative, responsible AI technologies that address real-world challenges. 
             </p>
           </div>
           <div className="lg:w-[497px] w-[250px] h-[240px] flex justify-between ">
