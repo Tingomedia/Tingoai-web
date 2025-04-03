@@ -108,7 +108,7 @@ export default function PromptInput({
             </button>
           </div>
           <div className="text-[11px] font-light font-Manrope text-center my-2">
-            I can make mistakes, but I am a very responsible AI.
+            I am a responsible AI.
           </div>
           {showInputs && (
             <div
