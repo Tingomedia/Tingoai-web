@@ -11,7 +11,7 @@ import editIcon from "../../../../assets/icons/edit-01.svg";
 
 const customEditorTheme = EditorView.theme({
   "&": {
-    backgroundColor: "#00000 !important",
+    backgroundColor: "#000000 !important",
     fontFamily: "Cascadia Code, monospace",
     fontWeight: "350",
     fontSize: "14px",
@@ -22,7 +22,7 @@ const customEditorTheme = EditorView.theme({
   },
   // Gutter (Line Number Area) Background & Styling
   ".cm-gutters": {
-    backgroundColor: "#000 !important", // Custom background for line numbers
+    backgroundColor: "#000000 !important", // Custom background for line numbers
     color: "#A8B2D1", // Line number text color
     border: "none", // Remove border if any
     // padding: "0 10px", // Adjust spacing
