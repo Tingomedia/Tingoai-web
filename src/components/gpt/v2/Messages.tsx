@@ -152,7 +152,7 @@ export default function Messages() {
             );
         })}
         {gettingResponse && <BlinkingDot />}
-        <div ref={bottomRef} className={`min-h-[225px]`}></div>
+        <div ref={bottomRef} className={`min-h-[160px]`}></div>
       </div>
       {!firebaseUser ||
         (fetchingMessages && (

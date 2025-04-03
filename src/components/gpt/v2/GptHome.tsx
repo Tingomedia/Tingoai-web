@@ -11,7 +11,7 @@ import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
 import BlinkingBird from "../../common/BlinkingBird";
 
 function GptHome() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 960);
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const toggleSideNav = () => setIsSideNavOpen(!isSideNavOpen);
   const { currentConversationId, gettingResponse } = useConversations();
@@ -19,7 +19,7 @@ function GptHome() {
   // const windowHeight = useWindowHeight();
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 960);
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -44,10 +44,10 @@ function GptHome() {
             : isSideNavOpen
             ? "ml-[300px] w-[calc(100%-300px)]"
             : "ml-0 w-full"
-        } h-dvh mt-[72px]`}
+        }`}
       >
         <div
-          className={`flex bg-[#1D1B1C] text-white/60 bg-cover bg-center w-full h-full font-cera tracking-wider`}
+          className={`flex bg-[#1D1B1C] text-white/60 bg-cover bg-center w-full font-cera tracking-wider h-dvh pt-[72px]`}
         >
           {currentConversationId || gettingResponse ? (
             <Messages />
