@@ -1,6 +1,7 @@
 import { PanelRightOpen } from "lucide-react";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import BlinkingDot from "../../common/BlinkingBird";
+import UpgradeButton from "../components/UpgradeButton";
 
 interface SideNavProps {
   isMobile: boolean;
@@ -125,32 +126,8 @@ const SideNav = ({ isMobile, isSideNavOpen, hideSideNav }: SideNavProps) => {
         )}
         <ConversationList />
       </div>
-      <div className="w-full flex h-[120px] justify-center items-center bg-white/0 ">
-        <div className="relative group w-full px-6">
-          {/* Button */}
-          <button className="flex flex-col justify-between items-start pointer-events-none">
-            <span
-              className="bg-[linear-gradient(90.86deg,#F8872B_0.74%,#0037FC_105.83%)] 
-        bg-clip-text text-transparent 
-        font-cera font-medium text-[16px] flex"
-            >
-              TingoGPT-v2
-            </span>
-            <span className="text-white/60 font-Manrope text-[12px] font-medium py-1 rounded-full">
-              Unlock more features with pro
-            </span>
-          </button>
-
-          {/* Tooltip (Hidden by Default, Visible on Hover) */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2 bottom-[90%] mb-2 
-                  bg-white/15 text-[12px] px-6 pt-2 pb-1 rounded-md 
-                  shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 
-                  transition-opacity duration-300"
-          >
-            Coming Soon
-          </div>
-        </div>
+      <div className="w-full flex h-[120px] items-center bg-white/0 ">
+        <UpgradeButton />
       </div>
     </div>
   );

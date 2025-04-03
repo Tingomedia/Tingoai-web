@@ -4,6 +4,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useConversations } from "../../../contexts/TingoGPTContext";
 import InputOptions, { FileSource } from "../components/InputOptions";
 import UploadFile from "../components/UploadFile";
+import useWindowWidth from "../../../hooks/useWindowWidth";
+import UpgradeButton from "../components/UpgradeButton";
 
 export default function PromptInput() {
   const [userPrompt, setUserPrompt] = useState("");
@@ -11,12 +13,13 @@ export default function PromptInput() {
   const [showUploadOption, setShowUploadOption] = useState(false);
   const { gettingResponse, sendMessage } = useConversations();
   const textInputRef = useRef<HTMLTextAreaElement | null>(null);
+  const { width } = useWindowWidth();
 
   useEffect(() => {
     if (gettingResponse) {
       textInputRef.current?.blur();
     } else {
-      textInputRef.current?.focus();
+      if (width > 480) textInputRef.current?.focus();
     }
   }, [gettingResponse]);
 
@@ -60,9 +63,14 @@ export default function PromptInput() {
           >
             <img src="/icons/add_butt.svg" width={44} height={44} />
             {showInputs && (
-              <div className="absolute -top-72">
-                <InputOptions onSelect={showFileSelect} />
-              </div>
+              <>
+                {/* <div className="absolute -top-72 z-20">
+                  <InputOptions onSelect={showFileSelect} />
+                </div> */}
+                <div className="absolute -top-[240%] z-20">
+                  <UpgradeButton bg />
+                </div>
+              </>
             )}
           </button>
           <div className="w-full max-w-[480px] h-[32px] xs:h-[48px] flex items-center my-auto mx-4 text-white text-lg bg-[#3C3C3C] shadow-inner shadow-black/30 rounded-full px-4 relative">
@@ -89,7 +97,12 @@ export default function PromptInput() {
         <div className="text-[11px] font-light font-Manrope text-center mt-2">
           I can make mistakes, but I am a very responsible AI.
         </div>
-
+        {showInputs && (
+          <div
+            className="fixed inset-0"
+            onClick={() => setShowInputs(false)}
+          ></div>
+        )}
         {showUploadOption && <UploadFile onClose={setShowUploadOption} />}
       </div>
     </>
