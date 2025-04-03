@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 import { useConversations } from "../../../contexts/TingoGPTContext";
-import InputOptions, { FileSource } from "../components/InputOptions";
+// import InputOptions, { FileSource } from "../components/InputOptions";
 import UploadFile from "../components/UploadFile";
 import useWindowWidth from "../../../hooks/useWindowWidth";
 import UpgradeButton from "../components/UpgradeButton";
@@ -23,20 +23,20 @@ export default function PromptInput() {
     }
   }, [gettingResponse]);
 
-  const showFileSelect = (type: FileSource) => {
-    setShowInputs(false);
-    switch (type) {
-      case "Image":
-        setShowUploadOption(true);
-        break;
-      case "File":
-        setShowUploadOption(true);
-        break;
-      case "Drive":
-        setShowUploadOption(true);
-        break;
-    }
-  };
+  // const showFileSelect = (type: FileSource) => {
+  //   setShowInputs(false);
+  //   switch (type) {
+  //     case "Image":
+  //       setShowUploadOption(true);
+  //       break;
+  //     case "File":
+  //       setShowUploadOption(true);
+  //       break;
+  //     case "Drive":
+  //       setShowUploadOption(true);
+  //       break;
+  //   }
+  // };
 
   const handleMessageSubmission = async () => {
     setUserPrompt("");

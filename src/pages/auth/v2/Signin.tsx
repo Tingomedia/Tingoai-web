@@ -1,8 +1,7 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { useFormik, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import { Link, useSearchParams } from "react-router-dom";
-// import { toast } from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 import google from "../../../assets/icons/google.png";
 import usePasswordToggle from "../../../hooks/usePasswordToggle";
 import { useFirebaseAuth } from "../../../contexts/FirebaseAuthContext";
