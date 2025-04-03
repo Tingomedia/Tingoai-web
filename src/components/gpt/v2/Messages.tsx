@@ -152,11 +152,11 @@ export default function Messages() {
             );
         })}
         {gettingResponse && <BlinkingDot />}
-        <div ref={bottomRef} className={`min-h-[16px]`}></div>
+        <div ref={bottomRef} className={`min-h-[160px]`}></div>
       </div>
       {!firebaseUser ||
         (fetchingMessages && (
-          <div className="absolute inset-0 bg-transparent text-white/60 flex text-center items-center justify-center">
+          <div className="absolute inset-0 bg-transparent text-white/60 flex text-center items-center justify-center mb-[196px]">
             <BlinkingDot label="Conversations..." />
           </div>
         ))}

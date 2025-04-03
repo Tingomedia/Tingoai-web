@@ -179,6 +179,7 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
   const sendMessage = async (message: string) => {
     if (!message) return;
     try {
+      setGettingResponse(true);
       const prompt: any = {};
       prompt.id = messages.length + 1;
       prompt.role = "user";
@@ -186,7 +187,6 @@ export const ConversationProvider: React.FC<{ children: ReactNode }> = ({
       prompt.content_type = "text";
 
       setMessages((prev) => [...prev, prompt]);
-      setGettingResponse(true);
 
       let conversationId = currentConversationId;
 
