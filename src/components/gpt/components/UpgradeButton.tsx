@@ -1,6 +1,10 @@
 export default function UpgradeButton({ bg = false }) {
   return (
-    <div className="relative group w-[240px] px-6 py-2 bg-[#121826] rounded-[16px]">
+    <div
+      className={`relative group w-[240px] px-6 py-2 rounded-[16px] ${
+        bg ? "bg-[#121826]" : ""
+      }`}
+    >
       {bg && (
         <div
           className="absolute -inset-[1px] rounded-[16px] pointer-events-none z-[-1]"
