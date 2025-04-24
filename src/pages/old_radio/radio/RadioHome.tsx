@@ -1,57 +1,9 @@
-// import { FaPlay, FaPause } from "react-icons/fa6";
-// import { useRadio } from "../../contexts/RadioContext";
-// import tunnel from "/tunnel.svg";
-// import radial from "/radicalgradient.svg";
-// import bgvideo from "../../assets/images/old_tingo/headset-animate.mp4";
-
-// const RadioHome: React.FC = () => {
-//   const { isPlaying, handlePlayPause } = useRadio();
-
-//   return (
-//     <div
-//       className="w-full h-screen relative overflow-hidden"
-//       style={{
-//         backgroundImage: `url(${tunnel})`,
-//         backgroundSize: "cover",
-//         backgroundPosition: "center",
-//       }}
-//     >
-//       {/* Background Video Overlay */}
-//       <video className="absolute top-0 left-0 w-full h-full object-cover opacity-20" src={bgvideo} autoPlay loop muted playsInline></video>
-
-//       {/* Radial Gradient Overlay */}
-//       <div className="absolute inset-0 bg-cover bg-center blur-[150px]" style={{ backgroundImage: `url(${radial})` }}></div>
-
-//       {/* Main Content */}
-//       <div className="relative container mx-auto flex flex-col justify-center items-center w-full h-full text-white md:gap-6 text-center z-10">
-// <h1 className="text-[36px] md:text-[76px] font-semibold md:leading-[77px] text-center">Tingo <span className="text-[36px] md:text-[76px] font-semibold md:leading-[77px] text-center text-primary-200">AI</span> Radio</h1>
-// <h2 className="text-[36px] md:text-[76px] font-semibold md:leading-[77px] text-center text-tremor-background-muted">102.5 FM</h2>
-// <button
-//           onClick={handlePlayPause}
-//           className="bg-fade-white hover:bg-white font-medium rounded-full text-radioprimary px-4 py-2 my-4 md:my-0 md:px-8 md:py-6 flex justify-center items-center gap-4"
-//         >
-//           {isPlaying ? <FaPause /> : <FaPlay />}
-//           {isPlaying ? "Stop Listening" : "Start Listening"}
-//         </button>
-//         <p className="text-[12px] sm:text-[14px] md:text-[16px] text-center px-4 py-2 bg-[#121826] rounded-full border border-fade-blue">
-//             {isPlaying
-//                 ? "Listening to TingoAI Radio" : "AI Radio 102.5 FM"}
-//             </p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default RadioHome;
-
-// import { FaPlay, FaPause } from "react-icons/fa6";
-// import tunnel from "/tunnel.svg";
-// import radial from "/radicalgradient.svg";
-// import bgvideo from "../../../assets/images/old_tingo/headset-animate.mp4";
+import Marquee from "react-fast-marquee";
 import { useRadio } from "../../../contexts/RadioContext";
 import BottomPlayer from "../../../layouts/radio/general/BottomPlayer";
 import RHeader from "../../../layouts/radio/general/RHeader";
 import AnimGraphic from "../../auth/v2/AnimGraphic";
+import { GiOldMicrophone } from "react-icons/gi";
 
 const RadioHome: React.FC = () => {
   const { isPlaying, loading, handlePlayPause, error } = useRadio();
@@ -71,11 +23,22 @@ const RadioHome: React.FC = () => {
           </span>
 
           {/* SVG positioned underneath the 102.5 FM text for mobile only */}
-          <img
+          {/* <img
             src="/images/radio_on_air_label.svg"
             alt="Radio On Air"
             className="mx-auto block md:hidden w-[350px]"
-          />
+          /> */}
+
+          {isPlaying && <div className="w-full flex justify-center items-center">
+            <GiOldMicrophone className="bg-blue-200 text-blue-600 text-6xl border rounded-full p-2 animate-pulse" />
+            <div className="w-2/3 px-2 text-blue-200 border border-white border-l-0 rounded-r-xl">
+              <Marquee>
+                The Traffic Radio show with Ife Mi
+              </Marquee>
+            </div>
+
+          </div>}
+
         </div>
         <div className="relative flex w-full h-auto justify-center items-center font-Muro">
           <img
