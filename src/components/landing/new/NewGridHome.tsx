@@ -8,7 +8,7 @@ import Button from "../../../utils/libs/Button";
 
 const OurProduct: React.FC = () => {
   return (
-    <div className="min-h-screen w-full bg-[#121826] flex flex-col items-center justify-center gap-12 py-16">
+    <div className="min-h-svh w-full bg-[#121826] flex flex-col items-center justify-center gap-12 py-16">
       {/* <Title>Our Product</Title> */}
       <h3 className="text-[24px] md:text-[40px] text-primary-200 font-Manrope font-semibold text-center">
         All Tingo AI's Products
@@ -19,8 +19,8 @@ const OurProduct: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 overflow-hidden relative">
         {/* Fluorescent Radial Glow */}
-        <div className="absolute hidden lg:block w-full h-full bg-[radial-gradient(circle,_rgba(255,165,0,0.1)_20%,_rgba(255,165,0,0)_50%,_rgba(255,165,0,0)_50%)]"></div>
-        <div className="absolute hidden lg:block w-full h-full bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_40%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
+        <div className="absolute hidden lg:block w-full h-full 2xl:hidden bg-[radial-gradient(circle,_rgba(255,165,0,0.1)_20%,_rgba(255,165,0,0)_50%,_rgba(255,165,0,0)_50%)]"></div>
+        <div className="absolute hidden lg:block w-full h-full 2xl:hidden bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_40%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
 
         <img
           src={shadow}

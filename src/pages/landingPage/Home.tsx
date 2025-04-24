@@ -21,10 +21,6 @@ const Home: FC = () => {
       {/* <OurProduct/> */}
       <div className="bg-[#121826] w-full pb-[40px]">
         <OurProduct />
-        {/* <Testimonial /> */}
-        {/*         <div className="bg-[#171D2D]">
-          <FAQSection />
-        </div> */}
         <CTASection />
         <Extra />
         {/* <TrustedBy /> */}

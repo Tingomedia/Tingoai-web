@@ -20,7 +20,7 @@ const words = [
 
 const Extra = () => {
   return (
-    <div className="w-full 2xl:container mx-auto bg-fade-white overflow-hidden">
+    <div className="w-full  mx-auto bg-fade-white overflow-hidden">
       <Marquee
         speed={50}
         pauseOnHover={true}
