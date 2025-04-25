@@ -46,8 +46,8 @@ const Hero: React.FC = () => {
         <div className="w-full max-w-[640px] lg:max-w-[90%] 2xl:max-w-[65%] grid gap-6 md:gap-10 text-center lg:text-left px-4 pt-16 animate-fadeInDrop1 place-items-center">
           <div className="relative w-full h-full 2xl:h-auto text-fade-white flex flex-col justify-center md:justify-between items-center">
             {/* Fluorescent Radial Glow */}
-            <div className="absolute w-full h-full bg-[radial-gradient(circle,_rgba(255,165,0,0.1)_0%,_rgba(255,165,0,0)_50%,_rgba(255,165,0,0)_50%)]"></div>
-            <div className="absolute w-full h-full bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
+            <div className="absolute w-full h-full 2xl:min-h-svh bg-[radial-gradient(circle,_rgba(255,165,0,0.1)_0%,_rgba(255,165,0,0)_50%,_rgba(255,165,0,0)_50%)]"></div>
+            <div className="absolute w-full h-full 2xl:min-h-svh bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_70%)] 2xl:bg-[radial-gradient(circle,_rgba(200,162,255,0.1)_0%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0.1)_20%,_rgba(200,162,255,0)_50%)]"></div>
 
             {/* Hero Content */}
             <div className="w-full flex flex-col justify-center items-center pt-32 md:pt-40  2xl:pt-[15%]">
