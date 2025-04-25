@@ -25,7 +25,7 @@ const OurProduct: React.FC = () => {
         <img
           src={shadow}
           alt="Black overlay"
-          className="absolute  right-2 h-full  object-cover"
+          className="absolute  right-2 h-full 2xl:hidden object-cover"
         />
 
         {productsDb.length > 0 &&
