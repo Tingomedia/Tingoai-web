@@ -1,6 +1,4 @@
 import React from "react";
-// import image from "../../../assets/images/old_tingo/aboutImg.jpg";
-import image from "../../../../assets/images/old_tingo/aboutImg.jpg";
 
 const Overview: React.FC = () => {
   return (
@@ -20,28 +18,34 @@ const Overview: React.FC = () => {
           </p>
         </div>
         <div className="lg:w-[45%] rounded-xl">
-          <img src={image} alt="illustration img" className="w-full rounded-xl" />
+          <img
+            src="/images/aboutImg.jpg"
+            alt="illustration img"
+            className="w-full rounded-xl"
+          />
         </div>
       </div>
       <div className="w-full my-8">
-      <div className="grid md:grid-cols-2 place-items-center gap-8 mx-4">
-        <div className="space-y-6 text-center h-[180px] md:h-auto border p-2 lg:p-3 shadow-lg rounded-xl">
-          <h2 className="font-Manrope text-[40px] font-medium">Our Mission</h2>
-          <p className="text-fade-gray-label">
-            To bridge innovation and accountability, providing AI-powered
-            solutions that transform how businesses and individuals connect,
-            communicate, and consume content.
-          </p>
+        <div className="grid md:grid-cols-2 place-items-center gap-8 mx-4">
+          <div className="space-y-6 text-center h-[180px] md:h-auto border p-2 lg:p-3 shadow-lg rounded-xl">
+            <h2 className="font-Manrope text-[40px] font-medium">
+              Our Mission
+            </h2>
+            <p className="text-fade-gray-label">
+              To bridge innovation and accountability, providing AI-powered
+              solutions that transform how businesses and individuals connect,
+              communicate, and consume content.
+            </p>
+          </div>
+          <div className="space-y-6 text-center h-[180px] md:h-auto border p-2 lg:p-3 shadow-lg rounded-xl">
+            <h2 className="font-Manrope text-[40px] font-medium">Our Vision</h2>
+            <p className="text-fade-gray-label">
+              To be Africa's leading AI innovator, redefining technology’s role
+              in communication, media, and business—anchored in cultural
+              sensitivity, ethical AI, and global excellence.
+            </p>
+          </div>
         </div>
-        <div className="space-y-6 text-center h-[180px] md:h-auto border p-2 lg:p-3 shadow-lg rounded-xl">
-          <h2 className="font-Manrope text-[40px] font-medium">Our Vision</h2>
-          <p className="text-fade-gray-label">
-            To be Africa's leading AI innovator, redefining technology’s role in
-            communication, media, and business—anchored in cultural sensitivity,
-            ethical AI, and global excellence.
-          </p>
-        </div>
-      </div>
       </div>
     </div>
   );
