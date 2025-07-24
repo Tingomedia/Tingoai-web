@@ -63,23 +63,31 @@ const Hero: React.FC = () => {
                 </p>
               </div>
               <h1 className="font-poppins text-fade-white text-center text-[3.5rem] lg:text-[5.6rem] leading-tight lg:leading-[79.5px] font-bold">
-                Welcome to {" "}
+                Welcome to{" "}
                 <span className=" text-secondary text-[3.5rem] lg:text-[5.6rem] 2xl:text-[5.6rem]">
-                Tingo AI
-                </span>,
-                where cutting-edge artificial intelligence meets real-world innovation.
+                  Tingo AI
+                </span>
+                , where cutting-edge artificial intelligence meets real-world
+                innovation.
               </h1>
-              
+
               <p className="text-[1.8rem] text-center font-poppins leading-relaxed md:leading-[29px] text-[#b8b8b8] animate-fadeInDrop1 py-6">
-              We are a forward-thinking technology company dedicated to harnessing AI to drive digital transformation, enhance business efficiency, and create intelligent solutions for the modern world.
+                We are a forward-thinking technology company dedicated to
+                harnessing AI to drive digital transformation, enhance business
+                efficiency, and create intelligent solutions for the modern
+                world.
               </p>
               <div className="flex justify-center animate-fadeInDrop1 pb-8 lg:pb-0">
-                <Link to="/radio" target="_blank" className="mr-3">
+                <Link
+                  to="https://tingoradio.ai/"
+                  target="_blank"
+                  className="mr-3"
+                >
                   <button className="px-16 py-6 text-center text-lg bg-primary-200 text-white md:text-2xl font-poppins border border-fade-gray rounded-full  hover:bg-fade-gray/40 hover:shadow-inner-custom">
                     Tingo AI Radio
                   </button>
                 </Link>
-                <Link to="/gpt-home">
+                <Link to="https://tingogpt.ai/" target="_blank">
                   <button className="px-16 py-6 lg:w-[185px] text-center text-lg md:text-2xl font-poppins border border-fade-gray rounded-full bg-fade-gray/40 hover:bg-primary-200 text-white shadow-inner-custom">
                     TingoGPT
                   </button>
@@ -109,7 +117,6 @@ const Hero: React.FC = () => {
             <img src={heroimage} alt="heroimage" className="w-full h-full" />
           </div>
         </div>
-
       </div>
     </div>
   );

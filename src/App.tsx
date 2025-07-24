@@ -3,8 +3,6 @@ import { Toaster } from "react-hot-toast";
 import { lazy } from "react";
 import { ScrollToTop } from "./utils/helpers/SmoothScroll";
 import NewGridHome from "./components/landing/new/NewGridHome";
-import ProtectedRoute from "./components/common/ProtectedRoute";
-import GptHomeV2 from "./components/gpt/v2/GptHome";
 import GptTeenWaitList from "./components/gpt/v2/GptTeenWaitlist";
 import GptLandingPage from "./components/gpt/v2/GptLandingPage"; // GPTLandingPage
 const Home = lazy(() => import("./pages/landingPage/Home"));
@@ -20,14 +18,6 @@ const OtpMail = lazy(() => import("./pages/auth/OtpMail"));
 const ResetPassword = lazy(() => import("./pages/auth/ResetPassword"));
 const TingoaiProducts = lazy(
   () => import("./components/tingoai/TingoaiProducts")
-);
-const RadioLayout = lazy(() => import("./layouts/radio/RadioLayout"));
-const RadioHome = lazy(() => import("./pages/old_radio/radio/RadioHome"));
-const Playlist = lazy(() => import("./pages/old_radio/radio/Playlist"));
-const NewsWeather = lazy(() => import("./pages/old_radio/radio/News&weather"));
-const Reachus = lazy(() => import("./pages/old_radio/radio/Reachus"));
-const RadioSongsUpload = lazy(
-  () => import("./layouts/radio/general/RadioSongsUpload")
 );
 
 function App() {
@@ -53,30 +43,12 @@ function App() {
         <Route path="/gpt-teen-waitlist" element={<GptTeenWaitList />} />
         <Route path="/gpt-mobile-waitlist" element={<GptTeenWaitList App />} />
 
-        {/*=========== TingoGPT Routes ================*/}
-        <Route
-          path="/tingogpt"
-          element={<ProtectedRoute element={<GptHomeV2 />} />}
-        >
-          <Route path="" element={<GptHomeV2 />} />
-          <Route path="plus" element={<GptPlusHome />} />
-        </Route>
-
         {/*============== TingoAI Routes =============*/}
         <Route path="/tingoai" element={<TingoaiLayout />}>
           <Route path="" element={<TingoaiProducts />} />
         </Route>
 
-        {/*============== Tingo Radio =============*/}
-        <Route path="/radio" element={<RadioLayout />}>
-          <Route path="" element={<RadioHome />} />
-          <Route path="playlists" element={<Playlist />} />
-          <Route path="news" element={<NewsWeather />} />
-          <Route path="reachus" element={<Reachus />} />
-        </Route>
-
-        <Route path="/test" element={<GptHomeV2 />} />
-        <Route path="/radio-upload" element={<RadioSongsUpload />} />
+        {/* <Route path="/test" element={<GptHomeV2 />} /> */}
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>
