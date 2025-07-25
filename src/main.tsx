@@ -4,14 +4,14 @@ import App from "./App.tsx";
 import "./index.css";
 import { AppProvider } from "./contexts/AppContext.tsx";
 import { BrowserRouter } from "react-router-dom";
-import CustomLoader from "./utils/libs/CustomLoader.tsx";
 import ErrorHandler from "./hooks/ErrorHandler.tsx";
 import { FirebaseAuthProvider } from "./contexts/FirebaseAuthContext.tsx";
+import BlinkingBird from "./components/common/BlinkingBird.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <FirebaseAuthProvider>
-      <Suspense fallback={<CustomLoader />}>
+      <Suspense fallback={<BlinkingBird centered />}>
         <BrowserRouter>
           <AppProvider>
             <ErrorHandler>

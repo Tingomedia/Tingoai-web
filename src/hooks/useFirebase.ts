@@ -1,13 +1,22 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+// const firebaseConfig = {
+//   apiKey: import.meta.env.VITE_REACT_APP_APIKEY,
+//   authDomain: import.meta.env.VITE_REACT_APP_AUTHDOMAIN,
+//   projectId: import.meta.env.VITE_REACT_APP_PROJECTID,
+//   storageBucket: import.meta.env.VITE_REACT_APP_STORAGEBUCKET,
+//   messagingSenderId: import.meta.env.VITE_REACT_APP_MESSAGINGSENDERID,
+//   appId: import.meta.env.VITE_REACT_APP_APPID,
+// };
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_REACT_APP_APIKEY,
-  authDomain: import.meta.env.VITE_REACT_APP_AUTHDOMAIN,
-  projectId: import.meta.env.VITE_REACT_APP_PROJECTID,
-  storageBucket: import.meta.env.VITE_REACT_APP_STORAGEBUCKET,
-  messagingSenderId: import.meta.env.VITE_REACT_APP_MESSAGINGSENDERID,
-  appId: import.meta.env.VITE_REACT_APP_APPID,
+  apiKey: "AIzaSyATV7AjEDhipWmqfJjUmYGImGkSzUindK8",
+  authDomain: "account.tingomedia.ai",
+  projectId: "tingo-ai",
+  storageBucket: "tingo-ai.firebasestorage.app",
+  messagingSenderId: "692146268686",
+  appId: "1:692146268686:web:2c0cd5033061ffc5ee2a5f",
 };
 
 const app = initializeApp(firebaseConfig);

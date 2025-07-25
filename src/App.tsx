@@ -7,9 +7,6 @@ import GptHomeV2 from "./components/gpt/v2/GptHome";
 const Page404 = lazy(() => import("./pages/landingPage/Page404"));
 const Login = lazy(() => import("./pages/auth/v2/Login"));
 const GptPlusHome = lazy(() => import("./components/gpt/GptPlusHome"));
-const RadioSongsUpload = lazy(
-  () => import("./layouts/radio/general/RadioSongsUpload")
-);
 
 function App() {
   return (
@@ -18,13 +15,12 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
 
-        <Route path="/" element={<ProtectedRoute element={<GptHomeV2 />} />}>
-          <Route path="" element={<GptHomeV2 />} />
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route index element={<GptHomeV2 />} />
           <Route path="plus" element={<GptPlusHome />} />
         </Route>
 
         {/* <Route path="/test" element={<GptHomeV2 />} /> */}
-        <Route path="/radio-upload" element={<RadioSongsUpload />} />
         {/* 404 Page */}
         <Route path="*" element={<Page404 />} />
       </Routes>

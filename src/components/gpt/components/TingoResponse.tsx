@@ -1,14 +1,15 @@
-// import CodeBlock from "./replies/CodeBlock";
-import TextBlock from "./replies/TextBlock";
-
 import copyIcon from "../../../assets/icons/copy-01.svg";
 import likeIcon from "../../../assets/icons/thumbs-up.svg";
 import volumeIcon from "../../../assets/icons/volume-high.svg";
 import editIcon from "../../../assets/icons/pencil-edit-01.svg";
-import { Message, useConversations } from "../../../contexts/TingoGPTContext";
-import CodeBlock from "./replies/CodeBlock";
-import { forwardRef } from "react";
 
+import { Message, useConversations } from "../../../contexts/TingoGPTContext";
+import TextBlock from "./replies/TextBlock";
+import { lazy, Suspense } from "react";
+import { forwardRef } from "react";
+import BlinkingBird from "../../common/BlinkingBird";
+
+const CodeBlock = lazy(() => import("./replies/CodeBlock"));
 // export type Response = {
 //   type: "text" | "code" | "etc"; // add expected types
 //   msg: string;
@@ -81,7 +82,9 @@ const TingoResponse = forwardRef<
 
     if (language) {
       return (
-        <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
+        <Suspense fallback={<BlinkingBird />}>
+          <CodeBlock msg={descriptions} code={code} lang={language} name={""} />
+        </Suspense>
       );
     }
 
