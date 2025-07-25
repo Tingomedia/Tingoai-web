@@ -87,7 +87,7 @@ const Hero: React.FC = () => {
                     Tingo AI Radio
                   </button>
                 </Link>
-                <Link to="https://tingogpt.ai/" target="_blank">
+                <Link to="/gpt-home">
                   <button className="px-16 py-6 lg:w-[185px] text-center text-lg md:text-2xl font-poppins border border-fade-gray rounded-full bg-fade-gray/40 hover:bg-primary-200 text-white shadow-inner-custom">
                     TingoGPT
                   </button>

@@ -20,7 +20,7 @@ const GptLandingPage = () => {
 
         <div className="w-full flex justify-center gap-8 mt-6">
           <Link
-            to="/tingogpt"
+            to="https://tingogpt.ai/"
             className="px-6 py-3 border-2 bg-transparent text-white font-semibold rounded-full shadow-lg hover:scale-105 transition"
           >
             TingoGPT
